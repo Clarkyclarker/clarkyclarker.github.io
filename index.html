@@ -1,30 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Clark Zhang</title>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clark Zhang | Engineering Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <h1>Clark Zhang</h1>
+  <header class="hero">
+    <nav>
+      <h2>Clark Zhang</h2>
+      <div>
+        <a href="#projects">Projects</a>
+        <a href="resume.pdf">Resume</a>
+        <a href="mailto:your.email@example.com">Contact</a>
+      </div>
+    </nav>
 
-  <p>Recent Integrated Engineering graduate from UBC specializing in mechatronics, robotics, and mechanical design.</p>
+    <div class="hero-content">
+      <h1>Mechatronics Engineer focused on robotics, mechanical design, and automation.</h1>
+      <p>
+        I am a recent UBC Integrated Engineering graduate specializing in mechatronics.
+        My work spans robotic lab automation, mechanical design, manufacturing, controls,
+        and self-driving chemistry platforms.
+      </p>
 
-  <h2>Projects</h2>
+      <div class="hero-buttons">
+        <a class="button" href="#projects">View Projects</a>
+        <a class="button secondary" href="resume.pdf">View Resume</a>
+      </div>
+    </div>
+  </header>
 
-  <h3>Robotic Drug-Analysis Platform</h3>
-  <p>Designed and integrated low-cost automation modules for sample preparation, liquid handling, centrifugation, and robotic workflow control.</p>
+  <section class="about">
+    <h2>About Me</h2>
+    <p>
+      I enjoy building electromechanical systems from concept to working prototype.
+      My experience includes SolidWorks, Fusion 360, CATIA, Python, C++, ROS2,
+      PCB design, PLC control, CNC machining, waterjet cutting, 3D printing,
+      and robotic system integration.
+    </p>
+  </section>
 
-  <h3>AeroDesign</h3>
-  <p>Worked on aircraft design, CFD-based airfoil selection, composite structures, and mechanical integration for SAE AeroDesign competitions.</p>
+  <section id="projects" class="projects">
+    <h2>Selected Projects</h2>
 
-  <h3>TRASH-E Aquatic Robot</h3>
-  <p>Designed mechanical assemblies for flotation, structural support, propulsion mounting, and water-ready operation.</p>
+    <div class="project-grid">
 
-  <h2>Resume</h2>
-  <p><a href="resume.pdf">View my resume</a></p>
+      <a class="project-card" href="projects/drug-analysis.html">
+        <img src="images/drug-robot.jpg" alt="Robotic drug-analysis platform">
+        <div class="project-info">
+          <h3>Robotic Drug-Analysis Platform</h3>
+          <p>Automated gravimetric analysis, liquid transfer, centrifugation, and downstream analysis.</p>
+        </div>
+      </a>
 
-  <h2>Contact</h2>
-  <p>Email: your.email@example.com</p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/">LinkedIn profile</a></p>
+      <a class="project-card" href="projects/chemistry-lab.html">
+        <img src="images/chemistry-lab.jpg" alt="Self-driving chemistry lab platform">
+        <div class="project-info">
+          <h3>Self-Driving Chemistry Lab Platforms</h3>
+          <p>Integrated UR and Kuka robotic arms across deployed autonomous chemistry systems.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/aerodesign.html">
+        <img src="images/aerodesign.jpg" alt="UBC AeroDesign aircraft">
+        <div class="project-info">
+          <h3>UBC AeroDesign Aircraft</h3>
+          <p>Designed and manufactured wing systems, control surfaces, and composite aircraft structures.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/tool-vending.html">
+        <img src="images/tool-vending.jpg" alt="Robotic tool vending machine">
+        <div class="project-info">
+          <h3>Robotic Tool Vending Machine</h3>
+          <p>Led design of a vertical Cartesian gantry and rotary storage system for automated tool dispensing.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/trash-robot.html">
+        <img src="images/trash-robot.jpg" alt="Aquatic trash removal robot">
+        <div class="project-info">
+          <h3>Semi-Autonomous Aquatic Trash-Removal Robot</h3>
+          <p>Designed flotation chassis, structural supports, and propulsion mounts for saltwater operation.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Clark Zhang</p>
+  </footer>
 </body>
 </html>
