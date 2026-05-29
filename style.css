@@ -47,9 +47,9 @@ nav a:hover {
 }
 
 .hero h1 {
-  font-size: 3.2rem;
-  line-height: 1.15;
-  margin-bottom: 24px;
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
 .hero p {
