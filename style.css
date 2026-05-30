@@ -279,3 +279,26 @@ footer {
     font-size: 0.82rem;
   }
 }
+
+.hero-about {
+  border: none !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  max-width: 620px !important;
+  justify-self: end;
+}
+
+.hero-about p {
+  color: #cbd5e1 !important;
+  font-size: 1.22rem !important;
+  line-height: 1.8 !important;
+  margin: 0 !important;
+  max-width: 620px !important;
+}
+
+.hero-side-label {
+  display: none !important;
+}
