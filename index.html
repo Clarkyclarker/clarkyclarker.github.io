@@ -14,8 +14,609 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y proximity;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      background: #111827;
+      color: white;
+    }
+
+    .hero,
+    .expertise-section {
+      min-height: 100vh;
+      scroll-snap-align: start;
+    }
+
+    .projects {
+      scroll-snap-align: start;
+    }
+
+    .hero {
+      padding: 28px 8% 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #111827;
+      color: white;
+    }
+
+    nav {
+      margin-bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-left: 24px;
+    }
+
+    .nav-brand {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .nav-brand span {
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .hero-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 80px;
+      align-items: center;
+      flex: 1;
+    }
+
+    .hero-content {
+      max-width: 820px;
+    }
+
+    .hero h1 {
+      font-size: 5.2rem;
+      font-weight: 650;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin: 0 0 28px;
+    }
+
+    .hero-line {
+      width: 90px;
+      height: 4px;
+      background: white;
+      border-radius: 999px;
+      margin-bottom: 34px;
+    }
+
+    .hero-headline {
+      font-size: 1.55rem;
+      font-weight: 600;
+      line-height: 1.45;
+      max-width: 850px;
+      margin-bottom: 16px;
+      color: white;
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      max-width: 800px;
+      color: #d1d5db;
+      margin-bottom: 36px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 8px;
+      background: white;
+      color: #111827;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid white;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: white;
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .icon-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-button i {
+      font-size: 1.15rem;
+    }
+
+    .hero-side {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 34px;
+      max-width: 480px;
+      justify-self: end;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero-side-label {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero-side h3 {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      color: white;
+      font-size: 1.7rem;
+      line-height: 1.15;
+      margin: 0 0 14px;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-side p {
+      color: #cbd5e1;
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    .scroll-hint {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 8px;
+      width: fit-content;
+      text-decoration: none;
+    }
+
+    .scroll-hint i {
+      font-size: 0.9rem;
+    }
+
+    .expertise-section {
+      background: #f8fafc;
+      color: #111827;
+      padding: 70px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .expertise-header {
+      margin-bottom: 44px;
+    }
+
+    .expertise-kicker,
+    .projects-kicker {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    .expertise-header h2,
+    .projects-header h2 {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: 3.2rem;
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 850px;
+      margin: 0 0 18px;
+    }
+
+    .expertise-header p,
+    .projects-header p {
+      max-width: 760px;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      min-height: 285px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12);
+    }
+
+    .skill-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.25rem;
+      margin: 0 0 12px;
+      color: #111827;
+    }
+
+    .skill-card p {
+      font-size: 0.94rem;
+      line-height: 1.6;
+      color: #4b5563;
+      margin: 0 0 20px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tags span {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #374151;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .projects {
+      background: #f8fafc;
+      color: #111827;
+      padding: 110px 8% 120px;
+    }
+
+    .projects-header {
+      margin-bottom: 48px;
+    }
+
+    .featured-projects {
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+    }
+
+    .featured-project {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+      gap: 42px;
+      align-items: stretch;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 30px;
+      padding: 28px;
+      min-height: 360px;
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .featured-project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 75px rgba(15, 23, 42, 0.13);
+      border-color: #cbd5e1;
+    }
+
+    .project-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14px 0 10px 8px;
+    }
+
+    .project-topline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .project-pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #374151;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 8px 11px;
+      border-radius: 999px;
+    }
+
+    .project-company {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4b5563;
+      margin: 0 0 12px;
+    }
+
+    .featured-project h3 {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: 2.45rem;
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin: 0 0 14px;
+    }
+
+    .project-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 16px;
+    }
+
+    .project-description {
+      max-width: 680px;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    .project-bottom {
+      margin-top: 28px;
+    }
+
+    .project-skills {
+      display: block;
+      max-width: 760px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.7;
+      color: #4b5563;
+    }
+
+    .project-skills span {
+      display: inline;
+      color: #4b5563;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .project-skills span:not(:last-child)::after {
+      content: " // ";
+      color: #9ca3af;
+      margin: 0 5px;
+    }
+
+    .project-image-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      min-height: 300px;
+      background: #111827;
+    }
+
+    .project-image-wrap img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .featured-project:hover .project-image-wrap img {
+      transform: scale(1.035);
+    }
+
+    .project-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(15, 23, 42, 0.16),
+        rgba(15, 23, 42, 0.02)
+      );
+      pointer-events: none;
+    }
+
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 32px 8%;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 1200px) {
+      html {
+        scroll-snap-type: none;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .expertise-section {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 950px) {
+      nav {
+        align-items: flex-start;
+      }
+
+      nav div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 14px;
+      }
+
+      nav a {
+        margin-left: 0;
+      }
+
+      .hero-main {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .hero-side {
+        justify-self: start;
+        max-width: 100%;
+      }
+
+      .expertise-header h2,
+      .projects-header h2 {
+        font-size: 2.6rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .featured-project {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .project-image-wrap {
+        order: -1;
+      }
+
+      .featured-project h3 {
+        font-size: 2.1rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 24px 7% 30px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .nav-brand {
+        font-size: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 3.3rem;
+      }
+
+      .hero-headline {
+        font-size: 1.3rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .expertise-section {
+        padding: 80px 7%;
+      }
+
+      .expertise-header h2,
+      .projects-header h2 {
+        font-size: 2.25rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-card {
+        min-height: auto;
+      }
+
+      .projects {
+        padding: 85px 7% 95px;
+      }
+
+      .featured-project {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .project-copy {
+        padding: 4px 0 4px;
+      }
+
+      .featured-project h3 {
+        font-size: 1.85rem;
+      }
+
+      .project-description {
+        font-size: 0.96rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -91,14 +692,11 @@
         <div class="skill-icon">
           <i class="fa-solid fa-cube"></i>
         </div>
-
         <h3>Mechanical Design</h3>
-
         <p>
           Designing custom mechanisms, fixtures, assemblies, and moving systems with manufacturability,
           tolerances, and real-world integration in mind.
         </p>
-
         <div class="skill-tags">
           <span>SolidWorks</span>
           <span>Fusion 360</span>
@@ -111,14 +709,11 @@
         <div class="skill-icon">
           <i class="fa-solid fa-industry"></i>
         </div>
-
         <h3>Manufacturing</h3>
-
         <p>
           Building physical prototypes through rapid iteration, machine-shop tools, additive manufacturing,
           sheet fabrication, and composite processes.
         </p>
-
         <div class="skill-tags">
           <span>3D Printing</span>
           <span>CNC</span>
@@ -131,14 +726,11 @@
         <div class="skill-icon">
           <i class="fa-solid fa-robot"></i>
         </div>
-
         <h3>Robotics Integration</h3>
-
         <p>
           Integrating robotic arms, custom end-effectors, motion systems, sensors, and lab modules into
           complete automated workflows.
         </p>
-
         <div class="skill-tags">
           <span>UR</span>
           <span>Kuka</span>
@@ -151,14 +743,11 @@
         <div class="skill-icon">
           <i class="fa-solid fa-code"></i>
         </div>
-
         <h3>Controls & Software</h3>
-
         <p>
           Programming system-level workflows, hardware modules, robotic motion, and automation interfaces
           that connect mechanical systems to reliable control.
         </p>
-
         <div class="skill-tags">
           <span>Python</span>
           <span>C++</span>
@@ -171,14 +760,11 @@
         <div class="skill-icon">
           <i class="fa-solid fa-microchip"></i>
         </div>
-
         <h3>Electronics & PCBs</h3>
-
         <p>
           Designing and integrating control electronics for motors, sensors, feedback systems, and custom
           automation hardware.
         </p>
-
         <div class="skill-tags">
           <span>KiCAD</span>
           <span>Stepper Motors</span>
@@ -191,6 +777,7 @@
 
   <section id="projects" class="projects">
     <div class="projects-header">
+
       <h2>Selected Work</h2>
 
       <p>
@@ -259,8 +846,7 @@
             <p class="project-role">Mechatronics Engineering Intern</p>
 
             <p class="project-description">
-              Built and integrated robotic workflows for experimental chemistry platforms,
-              supporting automated sample handling, robotic motion, and laboratory hardware integration.
+              Built robots for chemistry
             </p>
 
             <span class="project-view-button">
@@ -299,7 +885,7 @@
 
             <h3>SAE AeroDesign Aircraft</h3>
 
-            <p class="project-role">Airfoils Team Lead</p>
+            <p class="project-role">Airfoils team Lead</p>
 
             <p class="project-description">
               Led aerodynamic and mechanical development for fixed-wing competition aircraft,
@@ -307,7 +893,6 @@
               and manufacturable aircraft assemblies. Supported design iteration, onboarding,
               fabrication, and integration across a large multidisciplinary team.
             </p>
-
             <span class="project-view-button">
               View more
               <i class="fa-solid fa-arrow-right"></i>
