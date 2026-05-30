@@ -412,23 +412,33 @@
     }
 
     .project-bottom {
-      margin-top: 34px;
+      margin-top: 28px;
     }
 
     .project-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
+      display: block;
+      max-width: 760px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.7;
+      color: #4b5563;
     }
 
     .project-skills span {
-      font-size: 0.78rem;
-      font-weight: 650;
-      color: #374151;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      padding: 8px 11px;
-      border-radius: 999px;
+      display: inline;
+      color: #4b5563;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .project-skills span:not(:last-child)::after {
+      content: " // ";
+      color: #9ca3af;
+      margin: 0 5px;
     }
 
     .project-image-wrap {
