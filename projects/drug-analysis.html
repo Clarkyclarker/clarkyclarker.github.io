@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
   <link rel="stylesheet" href="../style.css" />
 </head>
 
-<body>
+<body class="project-page-body">
   <header class="project-page-header">
     <nav>
       <h2><a href="../index.html">Clark Zhang</a></h2>
@@ -20,35 +19,50 @@
   </header>
 
   <main class="project-detail">
-    <h1>Calibra: Robotic Platform for Automated Drug Checking and Quantification</h1>
+    <section class="project-detail-hero">
+      <img class="project-hero-image" src="../images/drug-robot.jpg" alt="Robotic drug-analysis platform">
+      <div class="project-hero-overlay"></div>
+      <div class="project-hero-content">
+        <h1>Calibra: Robotic Drug-Analysis and Quantification Platform</h1>
+      </div>
+    </section>
 
-    <img class="project-hero-image" src="../images/drug-robot.jpg" alt="Robotic drug-analysis platform">
+    <div class="project-detail-content">
+      <section class="project-detail-section">
+        <p class="project-meta">Hein Lab</p>
+        <h2>Why Calibra?</h2>
+        <p>
+          Each year, thousands of people in British Columbia experience overdoses, many linked to an increasingly unpredictable and contaminated drug supply. 
+          Drug-checking services can help reduce this risk by identifying what is actually in a submitted sample, but higher-quality analysis is often limited by the need for time-consuming manual preparation, specialized equipment, and trained personnel.<br>
 
-    <h2>Why Calibra?</h2>
-    <p>
-      Each year, thousands of people in British Columbia experience overdoses, many linked to an increasingly unpredictable and contaminated drug supply. 
-      Drug-checking services can help reduce this risk by identifying what is actually in a submitted sample, but higher-quality analysis is often limited by the need for time-consuming manual preparation, specialized equipment, and trained personnel.<br>
+          Developed with support from University of British Columbia and BC provincial health authorities, Calibra addresses this bottleneck by automating sample preparation using a robotic arm, 
+          custom electromechanical modules, smart sample tracking, and plug-and-play Python-based control.
+        </p>
+      </section>
 
-      Developed with support from University of British Columbia and BC provincial health authorities, Calibra addresses this bottleneck by automating sample preparation using a robotic arm, 
-      custom electromechanical modules, smart sample tracking, and plug-and-play Python-based control.
-    </p>
+      <section class="project-detail-section">
+        <h2>My Contributions</h2>
+        <ul>
+          <li>Led a 6-person engineering team developing automation hardware and controls.</li>
+          <li>Designed custom lab automation modules in SolidWorks and Fusion 360.</li>
+          <li>Built modules including a BLDC centrifuge, syringe-pump liquid handler, decapper, vial gripper, and transfer fixtures.</li>
+          <li>Integrated Python workflow control with C++/ROS2 hardware automation and computer-vision error detection.</li>
+        </ul>
+      </section>
 
-    <h2>My Contributions</h2>
-    <ul>
-      <li>Led a 6-person engineering team developing automation hardware and controls.</li>
-      <li>Designed custom lab automation modules in SolidWorks and Fusion 360.</li>
-      <li>Built modules including a BLDC centrifuge, syringe-pump liquid handler, decapper, vial gripper, and transfer fixtures.</li>
-      <li>Integrated Python workflow control with C++/ROS2 hardware automation and computer-vision error detection.</li>
-    </ul>
+      <section class="project-detail-section">
+        <h2>Tools Used</h2>
+        <p>SolidWorks, Fusion 360, GD&amp;T, ROS2, C++, Python, KiCAD, 3D printing, PCB design</p>
+      </section>
 
-    <h2>Tools Used</h2>
-    <p>SolidWorks, Fusion 360, GD&T, ROS2, C++, Python, KiCAD, 3D printing, PCB design</p>
-
-    <h2>Impact</h2>
-    <p>
-      Reduced automation module costs from approximately $1,500–$5,000 to under $100
-      while achieving reliable robotic sample-handling workflows.
-    </p>
+      <section class="project-detail-section">
+        <h2>Impact</h2>
+        <p>
+          Reduced automation module costs from approximately $1,500-$5,000 to under $100
+          while achieving reliable robotic sample-handling workflows.
+        </p>
+      </section>
+    </div>
   </main>
 </body>
 </html>
