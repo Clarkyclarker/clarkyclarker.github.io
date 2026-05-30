@@ -19,6 +19,7 @@
   <style>
     html {
       scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
     }
 
     body {
@@ -26,8 +27,18 @@
       overflow-x: hidden;
     }
 
-    .hero {
+    .hero,
+    .expertise-section {
       min-height: 100vh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .projects {
+      scroll-snap-align: start;
+    }
+
+    .hero {
       padding: 28px 8% 36px;
       display: flex;
       flex-direction: column;
@@ -165,17 +176,16 @@
     }
 
     .expertise-section {
-      min-height: 100vh;
       background: #f8fafc;
       color: #111827;
-      padding: 110px 8%;
+      padding: 70px 8%;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
     .expertise-header {
-      margin-bottom: 56px;
+      margin-bottom: 44px;
     }
 
     .expertise-kicker {
@@ -189,7 +199,7 @@
 
     .expertise-header h2 {
       font-family: "Space Grotesk", "Inter", sans-serif;
-      font-size: 3.4rem;
+      font-size: 3.2rem;
       line-height: 1.05;
       letter-spacing: -0.05em;
       max-width: 850px;
@@ -198,7 +208,7 @@
 
     .expertise-header p {
       max-width: 760px;
-      font-size: 1.12rem;
+      font-size: 1.08rem;
       line-height: 1.7;
       color: #4b5563;
     }
@@ -206,15 +216,15 @@
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .skill-card {
-      min-height: 300px;
+      min-height: 285px;
       background: white;
       border: 1px solid #e5e7eb;
       border-radius: 24px;
-      padding: 28px;
+      padding: 26px;
       box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -225,29 +235,29 @@
     }
 
     .skill-icon {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       border-radius: 16px;
       background: #111827;
       color: white;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
-      margin-bottom: 26px;
+      font-size: 1.3rem;
+      margin-bottom: 24px;
     }
 
     .skill-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 14px;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
       color: #111827;
     }
 
     .skill-card p {
-      font-size: 0.97rem;
-      line-height: 1.65;
+      font-size: 0.94rem;
+      line-height: 1.6;
       color: #4b5563;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .skill-tags {
@@ -257,7 +267,7 @@
     }
 
     .skill-tags span {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: #374151;
       background: #f3f4f6;
@@ -271,8 +281,16 @@
     }
 
     @media (max-width: 1200px) {
+      html {
+        scroll-snap-type: none;
+      }
+
       .skills-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      .expertise-section {
+        min-height: auto;
       }
     }
 
