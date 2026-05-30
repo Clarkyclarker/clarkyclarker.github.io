@@ -340,10 +340,16 @@ nav a:hover {
 }
 
 .project-copy {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100%;
+  padding: 14px 0 10px 8px;
+}
+
+.project-main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 14px 0 10px 8px;
+  justify-content: center;
 }
 
 .project-topline {
