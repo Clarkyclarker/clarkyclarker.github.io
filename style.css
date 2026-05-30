@@ -147,29 +147,6 @@ footer {
   color: #d1d5db;
 }
 
-@media (max-width: 700px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 80px;
-  }
-
-  nav a {
-    margin-left: 0;
-    margin-right: 16px;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
 .project-page-header {
   background: #111827;
   color: white;
@@ -212,6 +189,7 @@ footer {
   margin-bottom: 24px;
 }
 
+/* View more button */
 .project-view-button {
   display: inline-flex;
   align-items: center;
@@ -240,35 +218,64 @@ footer {
   font-size: 0.82rem;
 }
 
+/* Clean project skills line */
+.project-bottom {
+  margin-top: 28px;
+}
+
 .project-skills {
   display: block;
+  max-width: 760px;
   font-size: 0.86rem;
-  font-weight: 650;
-  color: #6b7280;
+  font-weight: 700;
   line-height: 1.7;
-  max-width: 720px;
+  color: #4b5563;
 }
 
 .project-skills::before {
-  content: "Skills: ";
-  color: #111827;
-  font-weight: 800;
+  content: none;
 }
 
 .project-skills span {
+  display: inline;
   color: #4b5563;
-  background: none;
+  background: transparent;
   border: none;
   padding: 0;
+  margin: 0;
   border-radius: 0;
+  box-shadow: none;
 }
 
 .project-skills span:not(:last-child)::after {
   content: " // ";
   color: #9ca3af;
-  margin: 0 4px;
+  margin: 0 5px;
 }
 
-.project-bottom {
-  margin-top: 26px;
+@media (max-width: 700px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 80px;
+  }
+
+  nav a {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-skills {
+    font-size: 0.82rem;
+  }
 }
