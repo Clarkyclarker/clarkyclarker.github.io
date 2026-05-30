@@ -165,14 +165,16 @@
     }
 
     .expertise-section {
+      min-height: 100vh;
       background: #f8fafc;
       color: #111827;
-      padding: 110px 0;
-      overflow: hidden;
+      padding: 110px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .expertise-header {
-      padding: 0 8%;
       margin-bottom: 56px;
     }
 
@@ -201,28 +203,25 @@
       color: #4b5563;
     }
 
-    .skills-track-wrapper {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .skills-track {
-      display: flex;
-      gap: 28px;
-      padding: 0 8%;
-      transform: translateX(0);
-      transition: transform 0.08s linear;
-      will-change: transform;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
     }
 
     .skill-card {
-      flex: 0 0 390px;
-      min-height: 310px;
+      min-height: 300px;
       background: white;
       border: 1px solid #e5e7eb;
       border-radius: 24px;
-      padding: 30px;
+      padding: 28px;
       box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12);
     }
 
     .skill-icon {
@@ -239,13 +238,13 @@
     }
 
     .skill-card h3 {
-      font-size: 1.45rem;
+      font-size: 1.3rem;
       margin-bottom: 14px;
       color: #111827;
     }
 
     .skill-card p {
-      font-size: 1rem;
+      font-size: 0.97rem;
       line-height: 1.65;
       color: #4b5563;
       margin-bottom: 22px;
@@ -258,7 +257,7 @@
     }
 
     .skill-tags span {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: #374151;
       background: #f3f4f6;
@@ -269,6 +268,12 @@
 
     .projects {
       padding-top: 100px;
+    }
+
+    @media (max-width: 1200px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     @media (max-width: 950px) {
@@ -286,8 +291,8 @@
         font-size: 2.6rem;
       }
 
-      .skill-card {
-        flex-basis: 330px;
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -326,24 +331,19 @@
       }
 
       .expertise-section {
-        padding: 80px 0;
-      }
-
-      .expertise-header {
-        padding: 0 7%;
+        padding: 80px 7%;
       }
 
       .expertise-header h2 {
         font-size: 2.25rem;
       }
 
-      .skills-track {
-        padding: 0 7%;
-        gap: 18px;
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
 
       .skill-card {
-        flex-basis: 82vw;
+        min-height: auto;
       }
     }
   </style>
@@ -355,6 +355,7 @@
       <h2 class="nav-brand">Clark Zhang <span>| Engineering Portfolio</span></h2>
 
       <div>
+        <a href="#expertise">Expertise</a>
         <a href="#projects">Projects</a>
         <a href="resume.pdf?v=2" target="_blank">Resume</a>
         <a href="mailto:your.email@example.com">Contact</a>
@@ -438,95 +439,93 @@
 
       <p>
         I work across mechanical design, manufacturing, controls, and software to turn early concepts
-        into reliable electromechanical systems. Scroll to explore the main areas I build in.
+        into reliable electromechanical systems.
       </p>
     </div>
 
-    <div class="skills-track-wrapper">
-      <div class="skills-track" id="skillsTrack">
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fa-solid fa-cube"></i>
-          </div>
-          <h3>Mechanical Design</h3>
-          <p>
-            Designing custom mechanisms, fixtures, assemblies, and moving systems with manufacturability,
-            tolerances, and real-world integration in mind.
-          </p>
-          <div class="skill-tags">
-            <span>SolidWorks</span>
-            <span>Fusion 360</span>
-            <span>CATIA</span>
-            <span>GD&T</span>
-          </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fa-solid fa-cube"></i>
         </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fa-solid fa-industry"></i>
-          </div>
-          <h3>Manufacturing</h3>
-          <p>
-            Building physical prototypes through rapid iteration, machine-shop tools, additive manufacturing,
-            sheet fabrication, and composite processes.
-          </p>
-          <div class="skill-tags">
-            <span>3D Printing</span>
-            <span>CNC</span>
-            <span>Waterjet</span>
-            <span>Composites</span>
-          </div>
+        <h3>Mechanical Design</h3>
+        <p>
+          Designing custom mechanisms, fixtures, assemblies, and moving systems with manufacturability,
+          tolerances, and real-world integration in mind.
+        </p>
+        <div class="skill-tags">
+          <span>SolidWorks</span>
+          <span>Fusion 360</span>
+          <span>CATIA</span>
+          <span>GD&T</span>
         </div>
+      </div>
 
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fa-solid fa-robot"></i>
-          </div>
-          <h3>Robotics Integration</h3>
-          <p>
-            Integrating robotic arms, custom end-effectors, motion systems, sensors, and lab modules into
-            complete automated workflows.
-          </p>
-          <div class="skill-tags">
-            <span>UR</span>
-            <span>Kuka</span>
-            <span>RoboDK</span>
-            <span>Fixtures</span>
-          </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fa-solid fa-industry"></i>
         </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fa-solid fa-code"></i>
-          </div>
-          <h3>Controls & Software</h3>
-          <p>
-            Programming system-level workflows, hardware modules, robotic motion, and automation interfaces
-            that connect mechanical systems to reliable control.
-          </p>
-          <div class="skill-tags">
-            <span>Python</span>
-            <span>C++</span>
-            <span>ROS2</span>
-            <span>PLC</span>
-          </div>
+        <h3>Manufacturing</h3>
+        <p>
+          Building physical prototypes through rapid iteration, machine-shop tools, additive manufacturing,
+          sheet fabrication, and composite processes.
+        </p>
+        <div class="skill-tags">
+          <span>3D Printing</span>
+          <span>CNC</span>
+          <span>Waterjet</span>
+          <span>Composites</span>
         </div>
+      </div>
 
-        <div class="skill-card">
-          <div class="skill-icon">
-            <i class="fa-solid fa-microchip"></i>
-          </div>
-          <h3>Electronics & PCBs</h3>
-          <p>
-            Designing and integrating control electronics for motors, sensors, feedback systems, and custom
-            automation hardware.
-          </p>
-          <div class="skill-tags">
-            <span>KiCAD</span>
-            <span>Stepper Motors</span>
-            <span>BLDC</span>
-            <span>I/O Wiring</span>
-          </div>
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <h3>Robotics Integration</h3>
+        <p>
+          Integrating robotic arms, custom end-effectors, motion systems, sensors, and lab modules into
+          complete automated workflows.
+        </p>
+        <div class="skill-tags">
+          <span>UR</span>
+          <span>Kuka</span>
+          <span>RoboDK</span>
+          <span>Fixtures</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <h3>Controls & Software</h3>
+        <p>
+          Programming system-level workflows, hardware modules, robotic motion, and automation interfaces
+          that connect mechanical systems to reliable control.
+        </p>
+        <div class="skill-tags">
+          <span>Python</span>
+          <span>C++</span>
+          <span>ROS2</span>
+          <span>PLC</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">
+          <i class="fa-solid fa-microchip"></i>
+        </div>
+        <h3>Electronics & PCBs</h3>
+        <p>
+          Designing and integrating control electronics for motors, sensors, feedback systems, and custom
+          automation hardware.
+        </p>
+        <div class="skill-tags">
+          <span>KiCAD</span>
+          <span>Stepper Motors</span>
+          <span>BLDC</span>
+          <span>I/O Wiring</span>
         </div>
       </div>
     </div>
@@ -597,34 +596,5 @@
   <footer>
     <p>© 2026 Clark Zhang</p>
   </footer>
-
-  <script>
-    const skillsTrack = document.getElementById("skillsTrack");
-    const expertiseSection = document.getElementById("expertise");
-
-    function updateSkillsPan() {
-      if (!skillsTrack || !expertiseSection) return;
-
-      const sectionRect = expertiseSection.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      const start = windowHeight;
-      const end = -sectionRect.height + windowHeight * 0.35;
-
-      const progress = (start - sectionRect.top) / (start - end);
-      const clampedProgress = Math.min(Math.max(progress, 0), 1);
-
-      const maxTranslate = Math.max(
-        skillsTrack.scrollWidth - window.innerWidth + window.innerWidth * 0.16,
-        0
-      );
-
-      skillsTrack.style.transform = `translateX(${-clampedProgress * maxTranslate}px)`;
-    }
-
-    window.addEventListener("scroll", updateSkillsPan);
-    window.addEventListener("resize", updateSkillsPan);
-    updateSkillsPan();
-  </script>
 </body>
 </html>
