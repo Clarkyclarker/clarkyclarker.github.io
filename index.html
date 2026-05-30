@@ -6,10 +6,10 @@
 
   <title>Clark Zhang | Engineering Portfolio</title>
 
-  <!-- Google Font: Inter -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,12 +21,42 @@
       font-family: "Inter", Arial, Helvetica, sans-serif;
     }
 
+    .hero {
+      min-height: 100vh;
+      padding: 28px 8% 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    nav {
+      margin-bottom: 0;
+    }
+
+    .nav-brand {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-brand span {
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .hero-content {
+      max-width: 860px;
+      padding-top: 70px;
+      padding-bottom: 60px;
+    }
+
     .hero h1 {
-      font-size: 5rem;
+      font-size: 5.2rem;
       font-weight: 650;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.05em;
       line-height: 1;
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
 
     .hero-line {
@@ -42,16 +72,16 @@
       font-weight: 600;
       line-height: 1.45;
       max-width: 850px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       color: white;
     }
 
     .hero-description {
       font-size: 1.15rem;
-      line-height: 1.7;
-      max-width: 780px;
+      line-height: 1.75;
+      max-width: 800px;
       color: #d1d5db;
-      margin-bottom: 34px;
+      margin-bottom: 36px;
     }
 
     .icon-button {
@@ -64,9 +94,38 @@
       font-size: 1.15rem;
     }
 
+    .scroll-hint {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 8px;
+    }
+
+    .scroll-hint i {
+      font-size: 0.9rem;
+    }
+
     @media (max-width: 700px) {
+      .hero {
+        padding: 24px 7% 30px;
+      }
+
+      nav {
+        align-items: flex-start;
+      }
+
+      .nav-brand {
+        font-size: 1rem;
+      }
+
+      .hero-content {
+        padding-top: 60px;
+      }
+
       .hero h1 {
-        font-size: 3.2rem;
+        font-size: 3.3rem;
       }
 
       .hero-headline {
@@ -76,6 +135,11 @@
       .hero-description {
         font-size: 1rem;
       }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -83,7 +147,7 @@
 <body>
   <header class="hero">
     <nav>
-      <h2>Clark Zhang</h2>
+      <h2 class="nav-brand">Clark Zhang <span>| Engineering Portfolio</span></h2>
 
       <div>
         <a href="#projects">Projects</a>
@@ -104,7 +168,7 @@
         I am an Integrated Engineering graduate from UBC specializing in mechatronics.
         I enjoy building multidisciplinary systems from the ground up, connecting mechanical design,
         manufacturing, controls, and software. My work has included precision lab automation,
-        industrial robotic platforms, and heavy-lift aerospace prototypes.
+        robotic platforms, and aerospace prototypes.
       </p>
 
       <div class="hero-buttons">
@@ -124,6 +188,11 @@
         </a>
       </div>
     </div>
+
+    <a class="scroll-hint" href="#projects">
+      Scroll to projects
+      <i class="fa-solid fa-arrow-down"></i>
+    </a>
   </header>
 
   <section class="about">
