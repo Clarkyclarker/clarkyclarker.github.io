@@ -17,8 +17,13 @@
   <link rel="stylesheet" href="style.css" />
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: "Inter", Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }
 
     .hero {
@@ -45,10 +50,16 @@
       font-weight: 500;
     }
 
+    .hero-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 80px;
+      align-items: center;
+      flex: 1;
+    }
+
     .hero-content {
-      max-width: 860px;
-      padding-top: 70px;
-      padding-bottom: 60px;
+      max-width: 820px;
     }
 
     .hero h1 {
@@ -94,6 +105,51 @@
       font-size: 1.15rem;
     }
 
+    .feature-panel {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 34px;
+      max-width: 480px;
+      justify-self: end;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+    }
+
+    .feature-label {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 24px;
+    }
+
+    .feature-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 18px;
+      padding: 22px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .feature-number {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      color: #9ca3af;
+      font-weight: 600;
+    }
+
+    .feature-item h3 {
+      color: white;
+      font-size: 1.12rem;
+      margin-bottom: 6px;
+    }
+
+    .feature-item p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
     .scroll-hint {
       font-size: 0.95rem;
       color: #9ca3af;
@@ -101,10 +157,138 @@
       align-items: center;
       gap: 10px;
       padding-bottom: 8px;
+      width: fit-content;
     }
 
     .scroll-hint i {
       font-size: 0.9rem;
+    }
+
+    .expertise-section {
+      background: #f8fafc;
+      color: #111827;
+      padding: 110px 0;
+      overflow: hidden;
+    }
+
+    .expertise-header {
+      padding: 0 8%;
+      margin-bottom: 56px;
+    }
+
+    .expertise-kicker {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    .expertise-header h2 {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: 3.4rem;
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 850px;
+      margin-bottom: 18px;
+    }
+
+    .expertise-header p {
+      max-width: 760px;
+      font-size: 1.12rem;
+      line-height: 1.7;
+      color: #4b5563;
+    }
+
+    .skills-track-wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .skills-track {
+      display: flex;
+      gap: 28px;
+      padding: 0 8%;
+      transform: translateX(0);
+      transition: transform 0.08s linear;
+      will-change: transform;
+    }
+
+    .skill-card {
+      flex: 0 0 390px;
+      min-height: 310px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    .skill-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 26px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 14px;
+      color: #111827;
+    }
+
+    .skill-card p {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #4b5563;
+      margin-bottom: 22px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tags span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #374151;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .projects {
+      padding-top: 100px;
+    }
+
+    @media (max-width: 950px) {
+      .hero-main {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .feature-panel {
+        justify-self: start;
+        max-width: 100%;
+      }
+
+      .expertise-header h2 {
+        font-size: 2.6rem;
+      }
+
+      .skill-card {
+        flex-basis: 330px;
+      }
     }
 
     @media (max-width: 700px) {
@@ -118,10 +302,6 @@
 
       .nav-brand {
         font-size: 1rem;
-      }
-
-      .hero-content {
-        padding-top: 60px;
       }
 
       .hero h1 {
@@ -140,6 +320,31 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .feature-panel {
+        padding: 26px;
+      }
+
+      .expertise-section {
+        padding: 80px 0;
+      }
+
+      .expertise-header {
+        padding: 0 7%;
+      }
+
+      .expertise-header h2 {
+        font-size: 2.25rem;
+      }
+
+      .skills-track {
+        padding: 0 7%;
+        gap: 18px;
+      }
+
+      .skill-card {
+        flex-basis: 82vw;
+      }
     }
   </style>
 </head>
@@ -156,54 +361,175 @@
       </div>
     </nav>
 
-    <div class="hero-content">
-      <h1>I'm Clark</h1>
-      <div class="hero-line"></div>
+    <div class="hero-main">
+      <div class="hero-content">
+        <h1>I'm Clark</h1>
+        <div class="hero-line"></div>
 
-      <h2 class="hero-headline">
-        Mechatronics Engineer Bridging Mechanical Design, Manufacturing, and Automated Control
-      </h2>
+        <h2 class="hero-headline">
+          Mechatronics Engineer Bridging Mechanical Design, Manufacturing, and Automated Control
+        </h2>
 
-      <p class="hero-description">
-        I am an Integrated Engineering graduate from UBC specializing in mechatronics.
-        I enjoy building multidisciplinary systems from the ground up, connecting mechanical design,
-        manufacturing, controls, and software. My work has included precision lab automation,
-        robotic platforms, and aerospace prototypes.
-      </p>
+        <p class="hero-description">
+          I am an Integrated Engineering graduate from UBC specializing in mechatronics.
+          I enjoy building multidisciplinary systems from the ground up, connecting mechanical design,
+          manufacturing, controls, and software. My work has included precision lab automation,
+          robotic platforms, and aerospace prototypes.
+        </p>
 
-      <div class="hero-buttons">
-        <a class="button icon-button" href="https://www.linkedin.com/in/zhang-clark/" target="_blank">
-          <i class="fa-brands fa-linkedin"></i>
-          LinkedIn
-        </a>
+        <div class="hero-buttons">
+          <a class="button icon-button" href="https://www.linkedin.com/in/zhang-clark/" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+            LinkedIn
+          </a>
 
-        <a class="button icon-button secondary" href="https://gitlab.com/clarkzhang20031108" target="_blank">
-          <i class="fa-brands fa-gitlab"></i>
-          GitLab
-        </a>
+          <a class="button icon-button secondary" href="https://gitlab.com/clarkzhang20031108" target="_blank">
+            <i class="fa-brands fa-gitlab"></i>
+            GitLab
+          </a>
 
-        <a class="button icon-button secondary" href="resume.pdf?v=2" target="_blank">
-          <i class="fa-solid fa-file-lines"></i>
-          Resume
-        </a>
+          <a class="button icon-button secondary" href="resume.pdf?v=2" target="_blank">
+            <i class="fa-solid fa-file-lines"></i>
+            Resume
+          </a>
+        </div>
+      </div>
+
+      <div class="feature-panel">
+        <p class="feature-label">Featured Work</p>
+
+        <div class="feature-item">
+          <span class="feature-number">01</span>
+          <div>
+            <h3>Precision Lab Automation</h3>
+            <p>Low-cost robotic modules for sample preparation, liquid handling, and chemical analysis workflows.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">02</span>
+          <div>
+            <h3>Robotic Platforms</h3>
+            <p>Integrated motion systems, control software, robotic arms, custom fixtures, and sensing hardware.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-number">03</span>
+          <div>
+            <h3>Aerospace Prototypes</h3>
+            <p>Manufactured aircraft structures, wing systems, control surfaces, and composite components.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <a class="scroll-hint" href="#projects">
-      Scroll to projects
+    <a class="scroll-hint" href="#expertise">
+      Scroll to expertise
       <i class="fa-solid fa-arrow-down"></i>
     </a>
   </header>
 
-  <section class="about">
-    <h2>About Me</h2>
+  <section id="expertise" class="expertise-section">
+    <div class="expertise-header">
+      <p class="expertise-kicker">Expertise</p>
 
-    <p>
-      I enjoy building electromechanical systems from concept to working prototype.
-      My experience includes SolidWorks, Fusion 360, CATIA, Python, C++, ROS2,
-      PCB design, PLC control, CNC machining, waterjet cutting, 3D printing,
-      and robotic system integration.
-    </p>
+      <h2>Engineering systems from concept to working hardware.</h2>
+
+      <p>
+        I work across mechanical design, manufacturing, controls, and software to turn early concepts
+        into reliable electromechanical systems. Scroll to explore the main areas I build in.
+      </p>
+    </div>
+
+    <div class="skills-track-wrapper">
+      <div class="skills-track" id="skillsTrack">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fa-solid fa-cube"></i>
+          </div>
+          <h3>Mechanical Design</h3>
+          <p>
+            Designing custom mechanisms, fixtures, assemblies, and moving systems with manufacturability,
+            tolerances, and real-world integration in mind.
+          </p>
+          <div class="skill-tags">
+            <span>SolidWorks</span>
+            <span>Fusion 360</span>
+            <span>CATIA</span>
+            <span>GD&T</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fa-solid fa-industry"></i>
+          </div>
+          <h3>Manufacturing</h3>
+          <p>
+            Building physical prototypes through rapid iteration, machine-shop tools, additive manufacturing,
+            sheet fabrication, and composite processes.
+          </p>
+          <div class="skill-tags">
+            <span>3D Printing</span>
+            <span>CNC</span>
+            <span>Waterjet</span>
+            <span>Composites</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <h3>Robotics Integration</h3>
+          <p>
+            Integrating robotic arms, custom end-effectors, motion systems, sensors, and lab modules into
+            complete automated workflows.
+          </p>
+          <div class="skill-tags">
+            <span>UR</span>
+            <span>Kuka</span>
+            <span>RoboDK</span>
+            <span>Fixtures</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <h3>Controls & Software</h3>
+          <p>
+            Programming system-level workflows, hardware modules, robotic motion, and automation interfaces
+            that connect mechanical systems to reliable control.
+          </p>
+          <div class="skill-tags">
+            <span>Python</span>
+            <span>C++</span>
+            <span>ROS2</span>
+            <span>PLC</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <h3>Electronics & PCBs</h3>
+          <p>
+            Designing and integrating control electronics for motors, sensors, feedback systems, and custom
+            automation hardware.
+          </p>
+          <div class="skill-tags">
+            <span>KiCAD</span>
+            <span>Stepper Motors</span>
+            <span>BLDC</span>
+            <span>I/O Wiring</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="projects" class="projects">
@@ -271,5 +597,34 @@
   <footer>
     <p>© 2026 Clark Zhang</p>
   </footer>
+
+  <script>
+    const skillsTrack = document.getElementById("skillsTrack");
+    const expertiseSection = document.getElementById("expertise");
+
+    function updateSkillsPan() {
+      if (!skillsTrack || !expertiseSection) return;
+
+      const sectionRect = expertiseSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      const start = windowHeight;
+      const end = -sectionRect.height + windowHeight * 0.35;
+
+      const progress = (start - sectionRect.top) / (start - end);
+      const clampedProgress = Math.min(Math.max(progress, 0), 1);
+
+      const maxTranslate = Math.max(
+        skillsTrack.scrollWidth - window.innerWidth + window.innerWidth * 0.16,
+        0
+      );
+
+      skillsTrack.style.transform = `translateX(${-clampedProgress * maxTranslate}px)`;
+    }
+
+    window.addEventListener("scroll", updateSkillsPan);
+    window.addEventListener("resize", updateSkillsPan);
+    updateSkillsPan();
+  </script>
 </body>
 </html>
