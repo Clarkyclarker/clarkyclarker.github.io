@@ -15,6 +15,70 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Small overrides for the hero section -->
+  <style>
+    body {
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 26px;
+    }
+
+    .hero-line {
+      width: 90px;
+      height: 4px;
+      background: white;
+      border-radius: 999px;
+      margin-bottom: 34px;
+    }
+
+    .hero-headline {
+      font-size: 1.55rem;
+      font-weight: 650;
+      line-height: 1.45;
+      max-width: 850px;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      max-width: 760px;
+      color: #d1d5db;
+      margin-bottom: 34px;
+    }
+
+    .icon-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-button i {
+      font-size: 1.15rem;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+
+      .hero-headline {
+        font-size: 1.3rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -30,7 +94,6 @@
     </nav>
 
     <div class="hero-content">
-      <p class="hero-hi">Hi!</p>
       <h1>I'm Clark</h1>
       <div class="hero-line"></div>
 
@@ -39,18 +102,19 @@
       </h2>
 
       <p class="hero-description">
-        Integrated Engineering graduate from the University of British Columbia with a 4.0 CGPA.
-        I specialize in leading teams to build reliable lab automation systems, aerospace prototypes,
-        and robotics platforms.
+       I am an Integrated Mechatronics Engineering graduate from UBC.
+        
+       I enjoy building multidisciplinary systems that connect mechanical design, manufacturing, controls, and software. My work has included precision lab automation, robotics, and aerospace prototypes.
+
       </p>
 
       <div class="hero-buttons">
-        <a class="button icon-button" href="https://www.linkedin.com/in/zhang-clark/" target="_blank">
+        <a class="button icon-button" href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank">
           <i class="fa-brands fa-linkedin"></i>
           LinkedIn
         </a>
 
-        <a class="button icon-button secondary" href="https://gitlab.com/clarkzhang20031108" target="_blank">
+        <a class="button icon-button secondary" href="https://gitlab.com/YOUR-GITLAB" target="_blank">
           <i class="fa-brands fa-gitlab"></i>
           GitLab
         </a>
