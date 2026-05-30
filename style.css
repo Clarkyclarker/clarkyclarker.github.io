@@ -351,7 +351,6 @@ nav a:hover {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 28px;
-  align-self: start;
 }
 
 .project-main {
@@ -401,12 +400,19 @@ nav a:hover {
   color: #4b5563;
 }
 
+.project-bottom {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
 .project-view-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
-  margin-top: 24px;
   padding: 11px 18px;
   border-radius: 999px;
   background: #2563eb;
@@ -426,10 +432,6 @@ nav a:hover {
 .project-view-button i {
   margin-left: 9px;
   font-size: 0.82rem;
-}
-
-.project-bottom {
-  margin-top: 28px;
 }
 
 .project-skills {
