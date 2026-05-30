@@ -22,9 +22,16 @@
       scroll-snap-type: y proximity;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: "Inter", Arial, Helvetica, sans-serif;
       overflow-x: hidden;
+      margin: 0;
+      background: #111827;
+      color: white;
     }
 
     .hero,
@@ -42,10 +49,24 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      background: #111827;
+      color: white;
     }
 
     nav {
       margin-bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-left: 24px;
     }
 
     .nav-brand {
@@ -53,6 +74,7 @@
       font-size: 1.15rem;
       font-weight: 600;
       letter-spacing: -0.02em;
+      margin: 0;
     }
 
     .nav-brand span {
@@ -77,7 +99,7 @@
       font-weight: 650;
       letter-spacing: -0.05em;
       line-height: 1;
-      margin-bottom: 28px;
+      margin: 0 0 28px;
     }
 
     .hero-line {
@@ -105,6 +127,31 @@
       margin-bottom: 36px;
     }
 
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 8px;
+      background: white;
+      color: #111827;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid white;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: white;
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
     .icon-button {
       display: inline-flex;
       align-items: center;
@@ -115,7 +162,7 @@
       font-size: 1.15rem;
     }
 
-    .feature-panel {
+    .hero-side {
       border: 1px solid rgba(255, 255, 255, 0.14);
       background: rgba(255, 255, 255, 0.035);
       backdrop-filter: blur(8px);
@@ -126,38 +173,28 @@
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
     }
 
-    .feature-label {
+    .hero-side-label {
       font-size: 0.85rem;
       color: #9ca3af;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      font-weight: 700;
     }
 
-    .feature-item {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 18px;
-      padding: 22px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .feature-number {
+    .hero-side h3 {
       font-family: "Space Grotesk", "Inter", sans-serif;
-      color: #9ca3af;
-      font-weight: 600;
-    }
-
-    .feature-item h3 {
       color: white;
-      font-size: 1.12rem;
-      margin-bottom: 6px;
+      font-size: 1.7rem;
+      line-height: 1.15;
+      margin: 0 0 14px;
+      letter-spacing: -0.035em;
     }
 
-    .feature-item p {
+    .hero-side p {
       color: #cbd5e1;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.65;
+      margin-bottom: 0;
     }
 
     .scroll-hint {
@@ -168,6 +205,7 @@
       gap: 10px;
       padding-bottom: 8px;
       width: fit-content;
+      text-decoration: none;
     }
 
     .scroll-hint i {
@@ -187,7 +225,8 @@
       margin-bottom: 44px;
     }
 
-    .expertise-kicker {
+    .expertise-kicker,
+    .projects-kicker {
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.14em;
@@ -196,20 +235,23 @@
       margin-bottom: 14px;
     }
 
-    .expertise-header h2 {
+    .expertise-header h2,
+    .projects-header h2 {
       font-family: "Space Grotesk", "Inter", sans-serif;
       font-size: 3.2rem;
       line-height: 1.05;
       letter-spacing: -0.05em;
       max-width: 850px;
-      margin-bottom: 18px;
+      margin: 0 0 18px;
     }
 
-    .expertise-header p {
+    .expertise-header p,
+    .projects-header p {
       max-width: 760px;
       font-size: 1.08rem;
       line-height: 1.7;
       color: #4b5563;
+      margin: 0;
     }
 
     .skills-grid {
@@ -248,7 +290,7 @@
 
     .skill-card h3 {
       font-size: 1.25rem;
-      margin-bottom: 12px;
+      margin: 0 0 12px;
       color: #111827;
     }
 
@@ -256,7 +298,7 @@
       font-size: 0.94rem;
       line-height: 1.6;
       color: #4b5563;
-      margin-bottom: 20px;
+      margin: 0 0 20px;
     }
 
     .skill-tags {
@@ -276,7 +318,160 @@
     }
 
     .projects {
-      padding-top: 100px;
+      background: #f8fafc;
+      color: #111827;
+      padding: 110px 8% 120px;
+    }
+
+    .projects-header {
+      margin-bottom: 48px;
+    }
+
+    .featured-projects {
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+    }
+
+    .featured-project {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+      gap: 42px;
+      align-items: stretch;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 30px;
+      padding: 28px;
+      min-height: 360px;
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .featured-project:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 75px rgba(15, 23, 42, 0.13);
+      border-color: #cbd5e1;
+    }
+
+    .project-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14px 0 10px 8px;
+    }
+
+    .project-topline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .project-pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #374151;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 8px 11px;
+      border-radius: 999px;
+    }
+
+    .project-company {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4b5563;
+      margin: 0 0 12px;
+    }
+
+    .featured-project h3 {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: 2.45rem;
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin: 0 0 14px;
+    }
+
+    .project-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 16px;
+    }
+
+    .project-description {
+      max-width: 680px;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    .project-bottom {
+      margin-top: 34px;
+    }
+
+    .project-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .project-skills span {
+      font-size: 0.78rem;
+      font-weight: 650;
+      color: #374151;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 8px 11px;
+      border-radius: 999px;
+    }
+
+    .project-image-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      min-height: 300px;
+      background: #111827;
+    }
+
+    .project-image-wrap img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .featured-project:hover .project-image-wrap img {
+      transform: scale(1.035);
+    }
+
+    .project-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(15, 23, 42, 0.16),
+        rgba(15, 23, 42, 0.02)
+      );
+      pointer-events: none;
+    }
+
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      text-align: center;
+      padding: 32px 8%;
+    }
+
+    footer p {
+      margin: 0;
     }
 
     @media (max-width: 1200px) {
@@ -294,22 +489,51 @@
     }
 
     @media (max-width: 950px) {
+      nav {
+        align-items: flex-start;
+      }
+
+      nav div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 14px;
+      }
+
+      nav a {
+        margin-left: 0;
+      }
+
       .hero-main {
         grid-template-columns: 1fr;
         gap: 44px;
       }
 
-      .feature-panel {
+      .hero-side {
         justify-self: start;
         max-width: 100%;
       }
 
-      .expertise-header h2 {
+      .expertise-header h2,
+      .projects-header h2 {
         font-size: 2.6rem;
       }
 
       .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .featured-project {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .project-image-wrap {
+        order: -1;
+      }
+
+      .featured-project h3 {
+        font-size: 2.1rem;
       }
     }
 
@@ -319,7 +543,8 @@
       }
 
       nav {
-        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
       }
 
       .nav-brand {
@@ -343,15 +568,12 @@
         align-items: flex-start;
       }
 
-      .feature-panel {
-        padding: 26px;
-      }
-
       .expertise-section {
         padding: 80px 7%;
       }
 
-      .expertise-header h2 {
+      .expertise-header h2,
+      .projects-header h2 {
         font-size: 2.25rem;
       }
 
@@ -361,6 +583,27 @@
 
       .skill-card {
         min-height: auto;
+      }
+
+      .projects {
+        padding: 85px 7% 95px;
+      }
+
+      .featured-project {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .project-copy {
+        padding: 4px 0 4px;
+      }
+
+      .featured-project h3 {
+        font-size: 1.85rem;
+      }
+
+      .project-description {
+        font-size: 0.96rem;
       }
     }
   </style>
@@ -413,6 +656,21 @@
         </div>
       </div>
 
+      <div class="hero-side">
+        <p class="hero-side-label">Portfolio Focus</p>
+        <h3>Mechanical systems, robotics, and software-driven automation.</h3>
+        <p>
+          I build across the full stack of physical systems: CAD, fabrication, electronics,
+          control software, robotic integration, and testing.
+        </p>
+      </div>
+    </div>
+
+    <a class="scroll-hint" href="#expertise">
+      Scroll to expertise
+      <i class="fa-solid fa-arrow-down"></i>
+    </a>
+  </header>
 
   <section id="expertise" class="expertise-section">
     <div class="expertise-header">
@@ -515,64 +773,138 @@
   </section>
 
   <section id="projects" class="projects">
-    <h2>Selected Projects</h2>
+    <div class="projects-header">
+      <p class="projects-kicker">Featured Projects</p>
 
-    <div class="project-grid">
+      <h2>Selected work across robotics, software, and aerospace systems.</h2>
 
-      <a class="project-card" href="projects/drug-analysis.html">
-        <img src="images/drug-robot.jpg" alt="Robotic drug-analysis platform">
-        <div class="project-info">
-          <h3>Robotic Drug-Analysis Platform</h3>
-          <p>
-            Automated gravimetric analysis, liquid transfer, centrifugation,
-            and downstream analysis for drug-checking workflows.
-          </p>
+      <p>
+        A few representative projects where I worked across mechanical design, automation,
+        software, manufacturing, and system integration.
+      </p>
+    </div>
+
+    <div class="featured-projects">
+      <a class="featured-project" href="projects/drug-analysis.html">
+        <div class="project-copy">
+          <div>
+            <div class="project-topline">
+              <span class="project-pill">06.2024 - 06.2025</span>
+              <span class="project-pill">Lead Project</span>
+            </div>
+
+            <p class="project-company">Hein Lab / UBC</p>
+
+            <h3>Robotic Drug-Checking Platform</h3>
+
+            <p class="project-role">Engineering Project Lead</p>
+
+            <p class="project-description">
+              Led a six-person engineering team developing a robotic drug-analysis platform
+              for automated gravimetric analysis, liquid transfer, centrifugation, vial handling,
+              and downstream HPLC workflows. Designed low-cost automation modules and integrated
+              mechanical systems, robotics, controls, and software into a working laboratory platform.
+            </p>
+          </div>
+
+          <div class="project-bottom">
+            <div class="project-skills">
+              <span>SolidWorks</span>
+              <span>Fusion 360</span>
+              <span>Python</span>
+              <span>ROS2</span>
+              <span>Robotics</span>
+              <span>BLDC Motors</span>
+              <span>KiCAD</span>
+              <span>HPLC</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-image-wrap">
+          <img src="images/drug-robot.jpg" alt="Robotic drug-checking platform">
+          <div class="project-image-overlay"></div>
         </div>
       </a>
 
-      <a class="project-card" href="projects/chemistry-lab.html">
-        <img src="images/chemistry-lab.jpg" alt="Self-driving chemistry lab platform">
-        <div class="project-info">
-          <h3>Self-Driving Chemistry Lab Platforms</h3>
-          <p>
-            Integrated UR and Kuka robotic arms across deployed autonomous chemistry systems.
-          </p>
+      <a class="featured-project" href="projects/moment-energy.html">
+        <div class="project-copy">
+          <div>
+            <div class="project-topline">
+              <span class="project-pill">01.2025 - 08.2025</span>
+              <span class="project-pill">Internship</span>
+            </div>
+
+            <p class="project-company">Moment Energy</p>
+
+            <h3>Battery Repurposing Software Platform</h3>
+
+            <p class="project-role">Fullstack Software Engineer Co-op</p>
+
+            <p class="project-description">
+              Built and improved software tools supporting second-life EV battery systems,
+              contributing to internal workflows, cloud-connected interfaces, and application
+              features used to monitor, manage, and scale repurposed energy storage products.
+            </p>
+          </div>
+
+          <div class="project-bottom">
+            <div class="project-skills">
+              <span>React</span>
+              <span>Next.js</span>
+              <span>AWS</span>
+              <span>TypeScript</span>
+              <span>Fullstack</span>
+              <span>Energy Storage</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-image-wrap">
+          <img src="images/moment-energy.jpg" alt="Moment Energy software project">
+          <div class="project-image-overlay"></div>
         </div>
       </a>
 
-      <a class="project-card" href="projects/aerodesign.html">
-        <img src="images/aerodesign.jpg" alt="UBC AeroDesign aircraft">
-        <div class="project-info">
-          <h3>UBC AeroDesign Aircraft</h3>
-          <p>
-            Designed and manufactured wing systems, control surfaces,
-            and composite aircraft structures.
-          </p>
+      <a class="featured-project" href="projects/aerodesign.html">
+        <div class="project-copy">
+          <div>
+            <div class="project-topline">
+              <span class="project-pill">08.2021 - 06.2025</span>
+              <span class="project-pill">Design Team</span>
+            </div>
+
+            <p class="project-company">UBC AeroDesign</p>
+
+            <h3>SAE AeroDesign Aircraft</h3>
+
+            <p class="project-role">Advanced Airfoils Subteam Lead</p>
+
+            <p class="project-description">
+              Led aerodynamic and mechanical development for fixed-wing competition aircraft,
+              including airfoil selection, wing structure, composite components, servo linkages,
+              and manufacturable aircraft assemblies. Supported design iteration, onboarding,
+              fabrication, and integration across a large multidisciplinary team.
+            </p>
+          </div>
+
+          <div class="project-bottom">
+            <div class="project-skills">
+              <span>SolidWorks</span>
+              <span>CFD</span>
+              <span>Composites</span>
+              <span>Manufacturing</span>
+              <span>Control Surfaces</span>
+              <span>Leadership</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-image-wrap">
+          <img src="images/aerodesign.jpg" alt="UBC AeroDesign aircraft">
+          <div class="project-image-overlay"></div>
         </div>
       </a>
-
-      <a class="project-card" href="projects/tool-vending.html">
-        <img src="images/tool-vending.jpg" alt="Robotic tool vending machine">
-        <div class="project-info">
-          <h3>Robotic Tool Vending Machine</h3>
-          <p>
-            Led design of a vertical Cartesian gantry and rotary storage system
-            for automated tool dispensing.
-          </p>
-        </div>
-      </a>
-
-      <a class="project-card" href="projects/trash-robot.html">
-        <img src="images/trash-robot.jpg" alt="Aquatic trash removal robot">
-        <div class="project-info">
-          <h3>Semi-Autonomous Aquatic Trash-Removal Robot</h3>
-          <p>
-            Designed flotation chassis, structural supports, and propulsion mounts
-            for saltwater operation.
-          </p>
-        </div>
-      </a>
-
     </div>
   </section>
 
