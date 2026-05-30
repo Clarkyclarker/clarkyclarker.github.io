@@ -239,3 +239,36 @@ footer {
   margin-left: 9px;
   font-size: 0.82rem;
 }
+
+.project-skills {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 650;
+  color: #6b7280;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.project-skills::before {
+  content: "Skills: ";
+  color: #111827;
+  font-weight: 800;
+}
+
+.project-skills span {
+  color: #4b5563;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.project-skills span:not(:last-child)::after {
+  content: " // ";
+  color: #9ca3af;
+  margin: 0 4px;
+}
+
+.project-bottom {
+  margin-top: 26px;
+}
