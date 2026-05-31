@@ -123,7 +123,7 @@
 
     .vortexer-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.48fr);
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.42fr);
       gap: 48px;
       align-items: start;
       margin-top: 18px;
@@ -134,11 +134,8 @@
     }
 
     .vortexer-media {
-      width: min(380px, 100%);
+      width: min(360px, 100%);
       justify-self: center;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
     }
 
     .vortexer-short {
@@ -151,8 +148,9 @@
       box-shadow: 0 22px 55px rgba(2, 6, 23, 0.3);
     }
 
-    .vortexer-media .project-inline-image {
-      margin: 0;
+    .vortexer-image-centered {
+      width: min(760px, 100%);
+      margin: 40px auto 0;
     }
 
     @media (max-width: 1100px) {
@@ -294,6 +292,10 @@
                 vortexing module by modifying a commercial vortexer with a 3D-printed vial mount and linear actuator. After the robot delivers a vial and retracts, 
                 the actuator lightly secures the vial, then presses it into the vortexer’s pressure switch to initiate mixing. The actuator is driven by a custom stepper motor driver discussed later.
               </p>
+
+              <figure class="project-inline-image vortexer-image-centered">
+                <img src="../images/vortexer.png" alt="Automated vortexer module concept">
+              </figure>
             </div>
 
             <div class="vortexer-media">
@@ -305,10 +307,6 @@
                   allowfullscreen>
                 </iframe>
               </div>
-
-              <figure class="project-inline-image vortexer-image">
-                <img src="../images/vortexer.png" alt="Automated vortexer module concept">
-              </figure>
             </div>
           </div>
         </div>
