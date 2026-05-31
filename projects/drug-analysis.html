@@ -6,6 +6,14 @@
   <title>Calibra | Clark Zhang</title>
   <link rel="stylesheet" href="../style.css" />
   <style>
+    .project-detail {
+      width: min(1700px, 96vw);
+    }
+
+    .project-detail-content {
+      width: min(1400px, 88vw);
+    }
+
     .project-title-block {
       padding-bottom: 56px;
       border-bottom: 1px solid rgba(148, 163, 184, 0.22);
@@ -26,7 +34,8 @@
       margin: 48px auto 0;
     }
 
-    .project-hero-video {
+    .project-hero-video,
+    .robot-platform-video iframe {
       width: 100%;
       height: 100%;
       border: 0;
@@ -35,7 +44,7 @@
 
     .project-detail-section {
       padding-bottom: 56px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.28);
     }
 
     .project-detail-section + .project-detail-section {
@@ -61,7 +70,43 @@
       display: block;
     }
 
+    .robot-platform-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.75fr);
+      gap: 44px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .robot-platform-media {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .robot-platform-media .project-inline-image {
+      margin: 0;
+    }
+
+    .robot-platform-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.5);
+      box-shadow: 0 22px 55px rgba(2, 6, 23, 0.3);
+    }
+
+    @media (max-width: 950px) {
+      .robot-platform-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 700px) {
+      .project-detail,
+      .project-detail-content,
       .project-video-hero {
         width: 100%;
       }
@@ -139,18 +184,37 @@
         <br>
 
         <h3>1. Robot + Platform</h3>
-        <p>
-          The first step in building Calibra was assembling the physical robot platform and mounting the UR3e arm. The system was built on a rigid 3/8-inch aluminum plate with machined M4 holes, supported by heavy duty aluminum extrusions from Vention,
-          which served as the main structural base for the robot and surrounding modules. The whole system is mounted on a cart, since stakeholders desired the whole system to be mobile as to be able to taken to various harm-reduction sites.<br><br>
-          
-          The robotic arm was equipped with custom-designed gripper fingers specifically made to handle small cylindrical vials.
-          The gripper geometry was designed so that the robot could reliably pick, transfer, and place samples without slippage or misalignment.<br><br>
+        <div class="robot-platform-layout">
+          <div class="robot-platform-copy">
+            <p>
+              The first step in building Calibra was assembling the physical robot platform and mounting the UR3e arm. The system was built on a rigid 3/8-inch aluminum plate with machined M4 holes, supported by heavy duty aluminum extrusions from Vention,
+              which served as the main structural base for the robot and surrounding modules. The whole system is mounted on a cart, since stakeholders desired the whole system to be mobile as to be able to taken to various harm-reduction sites.<br><br>
+              
+              The robotic arm was equipped with custom-designed gripper fingers specifically made to handle small cylindrical vials.
+              The gripper geometry was designed so that the robot could reliably pick, transfer, and place samples without slippage or misalignment.<br><br>
 
-          The UR3e acted as the central transfer mechanism, moving vials between the trays, camera, vortexer, centrifuge, liquid handler, and HPLC autosampler. Before installation, I modeled the system in simulation to ensure 
-          the robot was placed in the optimal position to maintain safe approach paths, reduce unnecessary travel, and most importantly, reach all required modules.<br><br>
+              The UR3e acted as the central transfer mechanism, moving vials between the trays, camera, vortexer, centrifuge, liquid handler, and HPLC autosampler. Before installation, I modeled the system in simulation to ensure 
+              the robot was placed in the optimal position to maintain safe approach paths, reduce unnecessary travel, and most importantly, reach all required modules.<br><br>
 
-          After installation, I programmed some basic PLC instructions to physically confirm reachability before moving onto designing modules (See video below).
-        </p>
+              After installation, I programmed some basic PLC instructions to physically confirm reachability before moving onto designing modules (see video on the right).
+            </p>
+          </div>
+
+          <div class="robot-platform-media">
+            <figure class="project-inline-image">
+              <img src="../images/waterjet.png" alt="Waterjet-cut robot platform plate">
+            </figure>
+
+            <div class="robot-platform-video">
+              <iframe
+                src="https://www.youtube.com/embed/4mMM-gy-S8I?rel=0"
+                title="Robot platform reachability video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </div>
 
       </section>
 
