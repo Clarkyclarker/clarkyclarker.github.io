@@ -35,9 +35,8 @@
     }
 
     .project-hero-video,
-    .robot-platform-video iframe,
-    .vortexer-short iframe,
-    .liquid-handler-short iframe {
+    .module-short iframe,
+    .robot-platform-video iframe {
       width: 100%;
       height: 100%;
       border: 0;
@@ -99,19 +98,32 @@
       margin-bottom: 24px;
     }
 
-    .robot-platform-layout,
-    .vortexer-layout,
-    .liquid-handler-layout {
+    .module-layout {
       display: grid;
-      grid-template-columns: minmax(0, 760px) minmax(300px, 360px);
+      grid-template-columns: minmax(0, 820px) minmax(320px, 380px);
       gap: 56px;
       align-items: start;
       justify-content: start;
       margin-top: 18px;
     }
 
-    .robot-platform-media .project-inline-image {
-      margin: 0;
+    .module-copy p {
+      max-width: 820px;
+    }
+
+    .module-media {
+      width: min(380px, 100%);
+      justify-self: start;
+    }
+
+    .module-short {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.5);
+      box-shadow: 0 22px 55px rgba(2, 6, 23, 0.3);
     }
 
     .robot-platform-video {
@@ -125,42 +137,21 @@
       box-shadow: 0 22px 55px rgba(2, 6, 23, 0.3);
     }
 
-    .vortexer-copy p,
-    .liquid-handler-copy p {
-      max-width: 760px;
+    .module-media .project-inline-image {
+      margin: 0;
     }
 
-    .vortexer-media,
-    .liquid-handler-media {
-      width: min(360px, 100%);
-      justify-self: start;
-    }
-
-    .vortexer-short,
-    .liquid-handler-short {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.16);
-      background: rgba(15, 23, 42, 0.5);
-      box-shadow: 0 22px 55px rgba(2, 6, 23, 0.3);
-    }
-
-    .vortexer-image-centered {
-      width: min(510px, 100%);
-      margin: 36px auto 0;
-    }
-
-    .liquid-handler-image-centered {
+    .module-image-centered {
       width: min(560px, 100%);
       margin: 36px auto 0;
     }
 
+    .module-image-small {
+      width: min(510px, 100%);
+    }
+
     @media (max-width: 1100px) {
-      .robot-platform-layout,
-      .vortexer-layout,
-      .liquid-handler-layout {
+      .module-layout {
         grid-template-columns: 1fr;
       }
     }
@@ -247,8 +238,8 @@
 
         <div class="module-entry">
           <h3>1-2. Robot and Platform</h3>
-          <div class="robot-platform-layout">
-            <div class="robot-platform-copy">
+          <div class="module-layout">
+            <div class="module-copy">
               <p>
                 The first step in building Calibra was integrating the <b>6-DOF</b> UR3e robotic arm onto a rigid, mobile chassis for deployment at harm-reduction sites. 
                 The platform was built from a machined 3/8-inch aluminum plate and heavy-duty Vention extrusions, creating a stable base for the robot and surrounding modules. 
@@ -266,12 +257,10 @@
               </div>
             </div>
 
-            <div class="robot-platform-media">
-              <figure class="project-inline-image robot-platform-figure">
+            <div class="module-media">
+              <figure class="project-inline-image">
                 <img src="../images/waterjet.png" alt="Waterjet-cut robot platform plate">
-                <figcaption>
-                  Waterjetting aluminum plate
-                </figcaption>
+                <figcaption>Waterjetting aluminum plate</figcaption>
               </figure>
             </div>
           </div>
@@ -279,8 +268,8 @@
 
         <div class="module-entry">
           <h3>3. Vortexer</h3>
-          <div class="vortexer-layout">
-            <div class="vortexer-copy">
+          <div class="module-layout">
+            <div class="module-copy">
               <p>
                 The system required an automated mixing module to ensure full dissolution and sample homogeneity. 
                 Commercial sonicator baths were considered, but testing showed that changing water levels from evaporation made them 
@@ -289,13 +278,13 @@
                 the actuator lightly secures the vial, then presses it into the vortexer’s pressure switch to initiate mixing. The actuator is driven by a custom stepper motor driver discussed later.
               </p>
 
-              <figure class="project-inline-image vortexer-image-centered">
+              <figure class="project-inline-image module-image-centered module-image-small">
                 <img src="../images/vortexer.png" alt="Automated vortexer module concept">
               </figure>
             </div>
 
-            <div class="vortexer-media">
-              <div class="vortexer-short">
+            <div class="module-media">
+              <div class="module-short">
                 <iframe
                   src="https://www.youtube.com/embed/LV56sz9C-0U?rel=0"
                   title="Automated vortexer prototype short"
@@ -309,24 +298,54 @@
 
         <div class="module-entry">
           <h3>4. Liquid Handler</h3>
-          <div class="liquid-handler-layout">
-            <div class="liquid-handler-copy">
+          <div class="module-layout">
+            <div class="module-copy">
               <p>
                 The liquid handler was designed to automate precise solvent transfer while avoiding interference with the robot gripper during vial handling. I developed a retractable two-axis mechanism with separate stepper-driven linear actuators for the vial support platform and dispensing needle. After the robot places a vial onto the platform and retracts, the platform extends into position and the needle lowers independently to pierce the septum without disturbing the vial.<br><br>
 
                 The needle is connected through 0.04-inch ID PTFE tubing to a Cavro Xcalibur syringe pump with a 1 mL syringe for controlled liquid dispensing. Both actuators are controlled by a custom ESP32-based stepper driver board using TMC2226 drivers, with firmware that converts Python serial commands into precise stepper movements.
               </p>
 
-              <figure class="project-inline-image liquid-handler-image-centered">
+              <figure class="project-inline-image module-image-centered">
                 <img src="../images/liquid-handler.png" alt="Retractable two-axis liquid handler module">
               </figure>
             </div>
 
-            <div class="liquid-handler-media">
-              <div class="liquid-handler-short">
+            <div class="module-media">
+              <div class="module-short">
                 <iframe
                   src="https://www.youtube.com/embed/LmHfpXdUkMI?rel=0"
                   title="Liquid handler prototype short"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-entry">
+          <h3>5. Centrifuge</h3>
+          <div class="module-layout">
+            <div class="module-copy">
+              <p>
+                The centrifuge was designed because commercial automation-ready centrifuges were either too expensive, too bulky, or unable to reliably return to a known position for robotic vial pickup. I developed a compact custom 3D-printable centrifuge using a SunnySky X2212 BLDC drone motor, capable of reaching 12,000 rpm and approximately 1610 g of force.<br><br>
+
+                A TLE5012 magnetic encoder provides angular position feedback, allowing the rotor to track speed and return to a defined home position after each run. The motor is controlled by an ODrive BLDC controller and powered by a 24 V supply, giving software-level control over speed, acceleration, rotation count, and PID tuning.<br><br>
+
+                For safety, I designed a 3D-printed enclosure around the high-speed rotor, with a robot-accessible opening for automated vial transfer while reducing risk during operation.
+              </p>
+
+              <figure class="project-inline-image module-image-centered">
+                <img src="../images/centrifuge.png" alt="Custom BLDC centrifuge module">
+              </figure>
+            </div>
+
+            <div class="module-media">
+              <div class="module-short">
+                <iframe
+                  src="https://www.youtube.com/embed/QuR82UasviU?rel=0"
+                  title="Centrifuge prototype short"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowfullscreen>
                 </iframe>
