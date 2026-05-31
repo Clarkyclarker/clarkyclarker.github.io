@@ -78,16 +78,10 @@
 
     .robot-platform-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.75fr);
-      gap: 44px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.62fr);
+      gap: 52px;
       align-items: start;
       margin-top: 18px;
-    }
-
-    .robot-platform-media {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
     }
 
     .robot-platform-media .project-inline-image {
@@ -95,8 +89,9 @@
     }
 
     .robot-platform-video {
-      width: 100%;
+      width: min(720px, 100%);
       aspect-ratio: 16 / 9;
+      margin-top: 34px;
       border-radius: 22px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.16);
@@ -203,14 +198,8 @@
               The UR3e acted as the central transfer mechanism, moving vials between the trays, camera, vortexer, centrifuge, liquid handler, and HPLC autosampler. Before installation, I modeled the system in simulation to ensure 
               the robot was placed in the optimal position to maintain safe approach paths, reduce unnecessary travel, and most importantly, reach all required modules.<br><br>
 
-              After installation, I programmed some basic PLC instructions to physically confirm reachability before moving onto designing modules (see video on the right).
+              After installation, I programmed some basic PLC instructions to physically confirm reachability before moving onto designing modules (see video below).
             </p>
-          </div>
-
-          <div class="robot-platform-media">
-            <figure class="project-inline-image">
-              <img src="../images/waterjet.png" alt="Waterjet-cut robot platform plate">
-            </figure>
 
             <div class="robot-platform-video">
               <iframe
@@ -220,6 +209,12 @@
                 allowfullscreen>
               </iframe>
             </div>
+          </div>
+
+          <div class="robot-platform-media">
+            <figure class="project-inline-image">
+              <img src="../images/waterjet.png" alt="Waterjet-cut robot platform plate">
+            </figure>
           </div>
         </div>
 
