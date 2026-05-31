@@ -70,6 +70,12 @@
       display: block;
     }
 
+    .architecture-image {
+      width: min(980px, 72vw);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .robot-platform-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.75fr);
@@ -107,7 +113,8 @@
     @media (max-width: 700px) {
       .project-detail,
       .project-detail-content,
-      .project-video-hero {
+      .project-video-hero,
+      .architecture-image {
         width: 100%;
       }
     }
@@ -176,7 +183,7 @@
 
         <p>The figure below shows the mechanical components that makes up Calibra</p>
 
-        <figure class="project-inline-image">
+        <figure class="project-inline-image architecture-image">
           <img src="../images/system-architecture.png" alt="Calibra architecture">
         </figure>
         <br>
