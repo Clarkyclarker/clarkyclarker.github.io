@@ -342,9 +342,6 @@
               <p>
                 The liquid handler was designed to automate precise solvent transfer while avoiding interference with the robot gripper during vial handling. I developed a retractable two-axis mechanism with separate stepper-driven linear actuators for the vial support platform and dispensing needle. After the robot places a vial onto the platform and retracts, the platform extends into position and the needle lowers independently to pierce the septum without disturbing the vial.<br><br>
 
-                The needle is connected through 0.04-inch ID PTFE tubing to a Cavro Xcalibur syringe pump with a 1 mL syringe for controlled liquid dispensing. Both actuators are controlled by a custom ESP32-based stepper driver board using TMC2226 drivers, with firmware that converts Python serial commands into precise stepper movements.
-              </p>
-
               <figure class="project-inline-image liquid-handler-image-centered">
                 <img src="../images/liquid-handler.png" alt="Retractable two-axis liquid handler module">
               </figure>
