@@ -185,7 +185,7 @@
         <p><i>Hidden: Syringe pump, electronics enclosure</i></p>
         <br>
 
-        <h3>1. Robot + 2. Platform</h3>
+        <h3>1-2. Robot and Platform</h3>
         <div class="robot-platform-layout">
           <div class="robot-platform-copy">
             <p>
@@ -194,10 +194,44 @@
               
               The robotic arm was equipped with custom-designed gripper fingers specifically made to handle small cylindrical vials.
               The gripper geometry was designed so that the robot could reliably pick, transfer, and place samples without slippage or misalignment.
-              Before installation, I modeled the system in simulation to ensure 
+              Before installation, I modeled the system in CAD and performed simulations to ensure 
               the robot was placed in the optimal position to maintain safe approach paths, reduce unnecessary travel, and most importantly, reach all required modules.<br><br>
 
               After installation, I programmed some basic PLC instructions to physically confirm reachability before moving onto designing modules (see video below).
+            </p>
+
+            <div class="robot-platform-video">
+              <iframe
+                src="https://www.youtube.com/embed/4mMM-gy-S8I?rel=0"
+                title="Robot platform reachability video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <div class="robot-platform-media">
+            <figure class="project-inline-image robot-platform-figure">
+              <img src="../images/waterjet.png" alt="Waterjet-cut robot platform plate">
+              <figcaption>
+                Waterjetting aluminum plate
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <h3>3. Vortexer</h3>
+        <div class="robot-platform-layout">
+          <div class="robot-platform-copy">
+            <p>
+              Our system required an automated module to ensure adequate dissolution and sample homogeneity. 
+              A common method for dissolution used in other automated systems include commercial sonicator baths, which used ultrasonic waves in a water bath to dissolve solids.
+              However, during testing, we found that the fluctuating water levels due to factors like evaporation led to loss of reliable sample mixing during periods of extensive autonomous operation. 
+              Furthermore, it is very expensive (laboratory-grade sonicators cost >$1500!). This prompted us to look for alternative solutions, and eventually we settled on a vortex mixer, which were ideal in mixing at small scales.
+
+              We modified a commercially available vortexer and installed a 3D-printed mount which uses a linear actuator to first lightly hold the sample vial in place after the vial is delivered by the robot arm. 
+              Following delivery of the vial and withdrawal of the robotic arm, the actuator then pushes the vial further to engage the vortexer’s pressure switch to initiate vortex mixing.  
+              The linear actuator is controlled by a custom-designed stepper motor driver which is discussed later
             </p>
 
             <div class="robot-platform-video">
