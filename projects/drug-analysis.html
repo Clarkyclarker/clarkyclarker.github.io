@@ -99,11 +99,14 @@
       margin-bottom: 24px;
     }
 
-    .robot-platform-layout {
+    .robot-platform-layout,
+    .vortexer-layout,
+    .liquid-handler-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.62fr);
-      gap: 52px;
+      grid-template-columns: minmax(0, 760px) minmax(300px, 360px);
+      gap: 56px;
       align-items: start;
+      justify-content: start;
       margin-top: 18px;
     }
 
@@ -122,24 +125,15 @@
       box-shadow: 0 22px 55px rgba(2, 6, 23, 0.3);
     }
 
-    .vortexer-layout,
-    .liquid-handler-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.42fr);
-      gap: 48px;
-      align-items: start;
-      margin-top: 18px;
-    }
-
     .vortexer-copy p,
     .liquid-handler-copy p {
-      max-width: 860px;
+      max-width: 760px;
     }
 
     .vortexer-media,
     .liquid-handler-media {
       width: min(360px, 100%);
-      justify-self: center;
+      justify-self: start;
     }
 
     .vortexer-short,
@@ -164,19 +158,9 @@
     }
 
     @media (max-width: 1100px) {
+      .robot-platform-layout,
       .vortexer-layout,
       .liquid-handler-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .vortexer-media,
-      .liquid-handler-media {
-        justify-self: start;
-      }
-    }
-
-    @media (max-width: 950px) {
-      .robot-platform-layout {
         grid-template-columns: 1fr;
       }
     }
@@ -261,15 +245,16 @@
         <p><i>Hidden: Syringe pump, electronics enclosure</i></p>
         <br>
 
-        <h3>1-2. Robot and Platform</h3>
-        <div class="robot-platform-layout">
-          <div class="robot-platform-copy">
-            <p>
-              The first step in building Calibra was integrating the <b>6-DOF</b> UR3e robotic arm onto a rigid, mobile chassis for deployment at harm-reduction sites. 
-              The platform was built from a machined 3/8-inch aluminum plate and heavy-duty Vention extrusions, creating a stable base for the robot and surrounding modules. 
-              I designed custom gripper fingers for slip-free vial handling and modeled the full workspace in CAD to optimize robot placement and simulate reachability. 
-              After assembly, I validated the robot’s spatial limits using a basic PLC program before finalizing the module layout.
-            </p>
+        <div class="module-entry">
+          <h3>1-2. Robot and Platform</h3>
+          <div class="robot-platform-layout">
+            <div class="robot-platform-copy">
+              <p>
+                The first step in building Calibra was integrating the <b>6-DOF</b> UR3e robotic arm onto a rigid, mobile chassis for deployment at harm-reduction sites. 
+                The platform was built from a machined 3/8-inch aluminum plate and heavy-duty Vention extrusions, creating a stable base for the robot and surrounding modules. 
+                I designed custom gripper fingers for slip-free vial handling and modeled the full workspace in CAD to optimize robot placement and simulate reachability. 
+                After assembly, I validated the robot’s spatial limits using a basic PLC program before finalizing the module layout.
+              </p>
 
               <div class="robot-platform-video">
                 <iframe
@@ -328,6 +313,9 @@
             <div class="liquid-handler-copy">
               <p>
                 The liquid handler was designed to automate precise solvent transfer while avoiding interference with the robot gripper during vial handling. I developed a retractable two-axis mechanism with separate stepper-driven linear actuators for the vial support platform and dispensing needle. After the robot places a vial onto the platform and retracts, the platform extends into position and the needle lowers independently to pierce the septum without disturbing the vial.<br><br>
+
+                The needle is connected through 0.04-inch ID PTFE tubing to a Cavro Xcalibur syringe pump with a 1 mL syringe for controlled liquid dispensing. Both actuators are controlled by a custom ESP32-based stepper driver board using TMC2226 drivers, with firmware that converts Python serial commands into precise stepper movements.
+              </p>
 
               <figure class="project-inline-image liquid-handler-image-centered">
                 <img src="../images/liquid-handler.png" alt="Retractable two-axis liquid handler module">
