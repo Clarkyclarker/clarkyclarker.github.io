@@ -150,6 +150,10 @@
       width: min(510px, 100%);
     }
 
+    .pcb-process-image {
+      width: min(760px, 100%);
+    }
+
     @media (max-width: 1100px) {
       .module-layout {
         grid-template-columns: 1fr;
@@ -391,6 +395,27 @@
             <div class="module-media">
               <figure class="project-inline-image">
                 <img src="../images/balance.png" alt="Mettler-Toledo balance mounted below the robot platform">
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-entry">
+          <h3>8. Custom Stepper PCB &amp; Enclosure</h3>
+          <div class="module-layout">
+            <div class="module-copy">
+              <p>
+                We designed a custom ESP32-based stepper control PCB and 3D-printed enclosure to drive Calibra’s actuated modules. The board uses TMC2226 stepper drivers and receives serial commands from Python, allowing the main workflow software to control motions such as needle retraction, vial positioning, and vortexer engagement. The enclosure protected the electronics, organized wiring, and provided secure mounting points for clean integration onto the robot platform.
+              </p>
+
+              <figure class="project-inline-image pcb-process-image">
+                <img src="../images/pcb.png" alt="Custom stepper PCB design process">
+              </figure>
+            </div>
+
+            <div class="module-media">
+              <figure class="project-inline-image">
+                <img src="../images/pcb-box.png" alt="3D-printed enclosure for custom stepper control PCB">
               </figure>
             </div>
           </div>
