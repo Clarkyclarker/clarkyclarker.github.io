@@ -512,7 +512,7 @@ nav a:hover {
   background: #111827;
   color: white;
   padding: 30px 8%;
-  border-bottom: 3px solid rgba(255, 255, 255, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .project-page-body {
