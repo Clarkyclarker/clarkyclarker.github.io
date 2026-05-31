@@ -18,6 +18,20 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    .project-inline-image {
+      margin: 34px 0 0;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.5);
+      box-shadow: 0 28px 70px rgba(2, 6, 23, 0.35);
+    }
+
+    .project-inline-image img {
+      width: 100%;
+      display: block;
+    }
   </style>
 </head>
 
@@ -65,8 +79,12 @@
           the software extracts the measurement data, calculates the sample composition, and links the result to the original vial ID.<br><br>
 
           The workflow below summarizes the full process from user loading to final result.
-        <p>
+        </p>
       </section>
+
+      <figure class="project-inline-image">
+        <img src="../images/calibra-steps.png" alt="Calibra automated workflow steps">
+      </figure>
 
       <section class="project-detail-section">
         <h2>Tools Used</h2>
