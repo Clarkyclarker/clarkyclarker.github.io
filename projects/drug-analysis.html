@@ -86,6 +86,18 @@
       margin-right: auto;
     }
 
+    .module-entry {
+      margin-top: 48px;
+    }
+
+    .module-entry + .module-entry {
+      margin-top: 112px;
+    }
+
+    .module-entry h3 {
+      margin-bottom: 24px;
+    }
+
     .robot-platform-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.62fr);
@@ -239,63 +251,65 @@
         <p><i>Hidden: Syringe pump, electronics enclosure</i></p>
         <br>
 
-        <h3>1-2. Robot and Platform</h3>
-        <div class="robot-platform-layout">
-          <div class="robot-platform-copy">
-            <p>
-              The first step in building Calibra was integrating the UR3e robotic arm onto a rigid, mobile chassis for deployment at harm-reduction sites. 
-              The platform was built from a machined 3/8-inch aluminum plate and heavy-duty Vention extrusions, creating a stable base for the robot and surrounding modules. 
-              I designed custom gripper fingers for slip-free vial handling and modeled the full workspace in CAD to optimize robot placement and simulate reachability. 
-              After assembly, I validated the robot’s spatial limits using a basic PLC program before finalizing the module layout.
-            </p>
+        <div class="module-entry">
+          <h3>1-2. Robot and Platform</h3>
+          <div class="robot-platform-layout">
+            <div class="robot-platform-copy">
+              <p>
+                The first step in building Calibra was integrating the UR3e robotic arm onto a rigid, mobile chassis for deployment at harm-reduction sites. 
+                The platform was built from a machined 3/8-inch aluminum plate and heavy-duty Vention extrusions, creating a stable base for the robot and surrounding modules. 
+                I designed custom gripper fingers for slip-free vial handling and modeled the full workspace in CAD to optimize robot placement and simulate reachability. 
+                After assembly, I validated the robot’s spatial limits using a basic PLC program before finalizing the module layout.
+              </p>
 
-            <div class="robot-platform-video">
-              <iframe
-                src="https://www.youtube.com/embed/4mMM-gy-S8I?rel=0"
-                title="Robot platform reachability video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
+              <div class="robot-platform-video">
+                <iframe
+                  src="https://www.youtube.com/embed/4mMM-gy-S8I?rel=0"
+                  title="Robot platform reachability video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
             </div>
-          </div>
 
-          <div class="robot-platform-media">
-            <figure class="project-inline-image robot-platform-figure">
-              <img src="../images/waterjet.png" alt="Waterjet-cut robot platform plate">
-              <figcaption>
-                Waterjetting aluminum plate
-              </figcaption>
-            </figure>
+            <div class="robot-platform-media">
+              <figure class="project-inline-image robot-platform-figure">
+                <img src="../images/waterjet.png" alt="Waterjet-cut robot platform plate">
+                <figcaption>
+                  Waterjetting aluminum plate
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
 
-        <br><br>
-
-        <h3>3. Vortexer</h3>
-        <div class="vortexer-layout">
-          <div class="vortexer-copy">
-            <p>
-              The system required an automated mixing module to ensure full dissolution and sample homogeneity. 
-              Commercial sonicator baths were considered, but testing showed that changing water levels from evaporation made them 
-              unreliable for extended autonomous operation, and lab-grade units cost over $1,500. Instead, I developed a lower-cost 
-              vortexing module by modifying a commercial vortexer with a 3D-printed vial mount and linear actuator. After the robot delivers a vial and retracts, 
-              the actuator lightly secures the vial, then presses it into the vortexer’s pressure switch to initiate mixing. The actuator is driven by a custom stepper motor driver discussed later.
-            </p>
-          </div>
-
-          <div class="vortexer-media">
-            <div class="vortexer-short">
-              <iframe
-                src="https://www.youtube.com/embed/LV56sz9C-0U?rel=0"
-                title="Automated vortexer prototype short"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
+        <div class="module-entry">
+          <h3>3. Vortexer</h3>
+          <div class="vortexer-layout">
+            <div class="vortexer-copy">
+              <p>
+                The system required an automated mixing module to ensure full dissolution and sample homogeneity. 
+                Commercial sonicator baths were considered, but testing showed that changing water levels from evaporation made them 
+                unreliable for extended autonomous operation, and lab-grade units cost over $1,500. Instead, I developed a lower-cost 
+                vortexing module by modifying a commercial vortexer with a 3D-printed vial mount and linear actuator. After the robot delivers a vial and retracts, 
+                the actuator lightly secures the vial, then presses it into the vortexer’s pressure switch to initiate mixing. The actuator is driven by a custom stepper motor driver discussed later.
+              </p>
             </div>
 
-            <figure class="project-inline-image vortexer-image">
-              <img src="../images/vortexer.png" alt="Automated vortexer module concept">
-            </figure>
+            <div class="vortexer-media">
+              <div class="vortexer-short">
+                <iframe
+                  src="https://www.youtube.com/embed/LV56sz9C-0U?rel=0"
+                  title="Automated vortexer prototype short"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+
+              <figure class="project-inline-image vortexer-image">
+                <img src="../images/vortexer.png" alt="Automated vortexer module concept">
+              </figure>
+            </div>
           </div>
         </div>
 
