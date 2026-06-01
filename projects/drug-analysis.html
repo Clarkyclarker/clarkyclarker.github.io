@@ -164,6 +164,30 @@
       background: #ffffff;
     }
 
+    .software-subsection {
+      margin-top: 56px;
+    }
+
+    .software-subsection h3 {
+      margin-bottom: 18px;
+    }
+
+    .software-wide-image {
+      width: 100%;
+      margin-top: 36px;
+      margin-bottom: 36px;
+    }
+
+    .project-detail-content a {
+      color: #93c5fd;
+      border-bottom: 1px solid rgba(147, 197, 253, 0.45);
+    }
+
+    .project-detail-content a:hover {
+      color: #bfdbfe;
+      border-bottom-color: rgba(191, 219, 254, 0.85);
+    }
+
     @media (max-width: 1100px) {
       .module-layout {
         grid-template-columns: 1fr;
@@ -436,11 +460,47 @@
       </section>
 
       <section class="project-detail-section">
-        <h2>Software and Firmware</h2>
+        <h2>Software &amp; Firmware</h2>
         <p>
-          Reduced automation module costs from approximately $1,500-$5,000 to under $100
-          while achieving reliable robotic sample-handling workflows.
+          Calibra’s software was structured as a modular Python control system, where each hardware component had its own lower-level control file for tasks such as robot motion, centrifuge operation, liquid handling, balance readings, barcode/RFID scanning, and HPLC interaction. The top-level workflow acted as the orchestrator: instead of directly managing every motion or device command, it called the appropriate module functions in sequence to carry out the full sample-preparation and analysis process shown above. This architecture kept the workflow readable, made each module easier to test independently, and allowed new hardware to be added without rewriting the entire system. The full code can be found at the <a href="https://gitlab.com/heingroup/calibra" target="_blank" rel="noopener noreferrer">Calibra GitLab</a>.
         </p>
+
+        <figure class="project-inline-image software-wide-image">
+          <img src="../images/workflow.png" alt="Calibra software workflow diagram">
+        </figure>
+
+        <div class="software-subsection">
+          <h3>1. Robot &amp; Module Control</h3>
+          <p>
+            The robotic arm was first controlled through PLC programs, but then I transitioned the robot control to Python since test engineers reported that PLC programs were not very intuitive. The custom actuated modules, such as the vortexer, liquid handler, and syringe pump, receive serial commands from Python. These commands are interpreted by embedded C++ firmware and converted into actuator movements for actions such as extending the liquid-handler platform, lowering the needle, and engaging the vortexer.
+          </p>
+        </div>
+
+        <div class="software-subsection">
+          <h3>2. Sample Tracking &amp; Data Processing</h3>
+
+          <figure class="project-inline-image software-wide-image">
+            <img src="../images/tracking.png" alt="Calibra sample tracking and data processing workflow">
+          </figure>
+
+          <p>
+            At the beginning of each run, each vial is assigned both a barcode and RFID tag, giving the system redundant identification in case one method fails. As the vial moves through the workflow, the software links each physical action and measurement to the correct sample ID. In simple terms, the system records what vial is being handled, what material was added, how much liquid was delivered, and what HPLC signal was measured, and these are stored in a central .json file. These values are then used to automatically generate calibration curves or estimate the concentration of unknown samples, and then uploaded onto a <a href="https://main.d1d0grz06qh4f1.amplifyapp.com" target="_blank" rel="noopener noreferrer">central website for users</a>. Full equations and data-processing details are provided in the paper at the end of this page.
+          </p>
+        </div>
+
+        <div class="software-subsection">
+          <h3>3. Analytical Hardware Interface</h3>
+          <p>
+            A major challenge was controlling analytical instruments that were originally designed for manual operation. Early HPLC automation used PyAutoGUI to click through the instrument software, but this was unreliable because it depended on the correct window position, screen state, and image detection. To improve robustness, our team developed <a href="https://gitlab.com/heingroup/device-api/pychemstation" target="_blank" rel="noopener noreferrer">pyChemStation</a>, a macro-based interface that communicates with the HPLC software more directly and reduced PyAutoGUI target-detection errors by 98%.
+          </p>
+        </div>
+
+        <div class="software-subsection">
+          <h3>4. ivoryOS GUI Integration</h3>
+          <p>
+            Calibra was integrated into ivoryOS, an open-source orchestrator for self-driving laboratories. ivoryOS automatically generates web interfaces from Python-based lab functions, allowing users to control modules, enter workflow parameters, and build workflows through a low-code interface. For Calibra, this made the system easier to operate without requiring users to directly edit or run Python scripts. For more information, see <a href="https://ivoryos.ai" target="_blank" rel="noopener noreferrer">ivoryOS</a>.
+          </p>
+        </div>
       </section>
     </div>
   </main>
