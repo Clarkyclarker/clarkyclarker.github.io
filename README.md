@@ -11,6 +11,7 @@ This website highlights my engineering projects, including Calibra, a robotic dr
 - `index.html` — main website page
 - `styles.css` — site styling
 - `images/` — project photos and media assets
+- `projects/` — project subpages
 
 ## Author
 
