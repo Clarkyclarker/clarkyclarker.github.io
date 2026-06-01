@@ -1,4 +1,3 @@
-# clarkyclarker.github.io
 # Clark Zhang Engineering Portfolio
 
 Personal engineering portfolio website showcasing selected projects in mechatronics, robotics, automation, and aerospace.
