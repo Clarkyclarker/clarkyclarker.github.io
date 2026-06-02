@@ -116,6 +116,22 @@
       gap: 28px;
     }
 
+    .rotated-image-wrap {
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .rotated-image-wrap img {
+      width: auto;
+      height: 100%;
+      max-width: none;
+      transform: rotate(-90deg) scale(1.05);
+    }
+
     .aero-short {
       width: min(300px, 100%);
       aspect-ratio: 9 / 16;
@@ -273,10 +289,14 @@
 
           <div class="image-stack">
             <figure class="project-inline-image">
-              <img src="../images/aerodesign/aero-manu.png" alt="AeroDesign manufacturing process">
+              <img src="../images/aerodesign/lasercut.png" alt="AutoCAD laser-cutting file">
+              <figcaption>AutoCAD laser-cutting file</figcaption>
             </figure>
-            <figure class="project-inline-image">
-              <img src="../images/aerodesign/lasercut.png" alt="Laser-cut aircraft components">
+            <figure class="project-inline-image rotated-ccw">
+              <div class="rotated-image-wrap">
+                <img src="../images/aerodesign/aero-manu.png" alt="Laser-cut balsa wood components">
+              </div>
+              <figcaption>Laser-cut balsa wood components</figcaption>
             </figure>
           </div>
         </div>
