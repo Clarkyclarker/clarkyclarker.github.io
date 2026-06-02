@@ -5,6 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SAE AeroDesign Aircraft | Clark Zhang</title>
   <link rel="stylesheet" href="../style.css" />
+  <style>
+    .project-detail {
+      width: min(1700px, 96vw);
+    }
+
+    .project-detail-content {
+      width: min(1400px, 88vw);
+    }
+
+    .project-title-block {
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .project-title-block h1 {
+      font-size: clamp(3rem, 5.6vw, 5.7rem);
+      line-height: 1.08;
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .project-detail-section {
+      padding-bottom: 64px;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.28);
+    }
+
+    .project-detail-section + .project-detail-section {
+      margin-top: 64px;
+    }
+
+    .project-detail-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .aero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+      gap: 64px;
+      align-items: start;
+    }
+
+    .aero-copy p + p {
+      margin-top: 22px;
+    }
+
+    .aero-list {
+      margin-top: 0;
+      padding-left: 1.2rem;
+    }
+
+    .aero-list li {
+      margin-bottom: 14px;
+      line-height: 1.7;
+      color: #dbeafe;
+    }
+
+    .project-inline-image {
+      margin: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.5);
+      box-shadow: 0 28px 70px rgba(2, 6, 23, 0.35);
+    }
+
+    .project-inline-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .project-inline-image figcaption {
+      padding: 14px 18px 16px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.72);
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .logo-card {
+      background: #ffffff;
+      padding: 28px;
+    }
+
+    .image-stack {
+      display: grid;
+      gap: 28px;
+    }
+
+    .wide-image {
+      margin-top: 36px;
+      width: min(980px, 100%);
+    }
+
+    @media (max-width: 1100px) {
+      .aero-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .project-detail,
+      .project-detail-content {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body class="project-page-body">
@@ -19,45 +128,117 @@
   </header>
 
   <main class="project-detail">
-    <section class="project-detail-hero">
-      <img class="project-hero-image" src="../images/aerodesign.jpg" alt="UBC AeroDesign aircraft">
-      <div class="project-hero-overlay"></div>
-      <div class="project-hero-content">
-        <h1>SAE AeroDesign Aircraft</h1>
-      </div>
+    <section class="project-title-block">
+      <p class="project-meta">UBC AeroDesign</p>
+      <h1>SAE AeroDesign Aircraft</h1>
     </section>
 
     <div class="project-detail-content">
       <section class="project-detail-section">
-        <p class="project-meta">UBC AeroDesign</p>
-        <h2>Overview</h2>
-        <p>
-          I supported the aerodynamic and mechanical development of fixed-wing competition aircraft,
-          helping translate design concepts into manufacturable, flyable systems.
-        </p>
+        <div class="aero-layout">
+          <div class="aero-copy">
+            <h2>Overview</h2>
+            <p>
+              UBC AeroDesign is a student engineering design team that designs, manufactures, and flies radio-controlled fixed-wing aircraft for the annual SAE Aero Design competition. The competition compresses a full aircraft development cycle into one academic year, requiring teams to work through conceptual design, manufacturing, system integration, testing, and flight demonstration.
+            </p>
+            <p>
+              From 2022-2024, the Advanced Class competition followed a firefighting mission profile involving a 120-inch-wingspan payload aircraft, a PADA aircraft, and a ground transport vehicle. In 2025, the Advanced Class rules changed to focus on autonomous payload delivery and retrieval, where teams are scored on mission segments such as conventional takeoff, payload release or delivery, payload capture, and return to base.
+            </p>
+            <p>
+              As Co-Lead of the Advanced Airfoils subteam, I helped oversee aerodynamic analysis, CAD design, manufacturing, testing, logistics, and team coordination for the aircraft’s wing and tail systems.
+            </p>
+          </div>
+
+          <figure class="project-inline-image logo-card">
+            <img src="../images/aerodesign/aerodesign-logo.png" alt="UBC AeroDesign logo">
+          </figure>
+        </div>
       </section>
 
       <section class="project-detail-section">
-        <h2>My Contributions</h2>
-        <ul>
-          <li>Led work on airfoil-related design and development for the aircraft team.</li>
-          <li>Contributed to wing structure, linkages, and manufacturable aircraft assemblies.</li>
-          <li>Supported composite fabrication, iteration, and design integration across the aircraft.</li>
-          <li>Helped onboard teammates and coordinate work inside a large multidisciplinary student team.</li>
+        <div class="aero-layout">
+          <div class="aero-copy">
+            <h2>Simulation</h2>
+            <ul class="aero-list">
+              <li>Conducted airfoil and planform analysis in XFLR5 to optimize lift, drag, and stability.</li>
+              <li>Compared airfoil options and selected geometry based on aerodynamic performance and aircraft requirements.</li>
+              <li>Cross-checked analysis results with Ansys simulation and numerical methods.</li>
+              <li>Tested prototype wings in a wind tunnel to validate aerodynamic performance.</li>
+            </ul>
+          </div>
+
+          <figure class="project-inline-image">
+            <img src="../images/aerodesign/xlfr.png" alt="XFLR5 aerodynamic simulation results">
+          </figure>
+        </div>
+      </section>
+
+      <section class="project-detail-section">
+        <div class="aero-layout">
+          <div class="aero-copy">
+            <h2>Design</h2>
+            <ul class="aero-list">
+              <li>Designed and modelled wing and tail components in CATIA and SolidWorks using DFM principles.</li>
+              <li>Created detailed 2D drawings and DXF files for laser cutting and waterjet manufacturing.</li>
+              <li>Integrated CAD from different team members into full aircraft assemblies.</li>
+              <li>Checked mates, tolerances, and alignment features between fuselage, wing, tail, landing gear, and control surfaces.</li>
+            </ul>
+          </div>
+
+          <figure class="project-inline-image">
+            <img src="../images/aerodesign/plane-solidworks.png" alt="Aircraft assembly CAD in SolidWorks">
+          </figure>
+        </div>
+      </section>
+
+      <section class="project-detail-section">
+        <div class="aero-layout">
+          <div class="aero-copy">
+            <h2>Manufacturing</h2>
+            <ul class="aero-list">
+              <li>Prepared DXF files in AutoCAD for laser cutting and waterjet cutting.</li>
+              <li>Manufactured wood, carbon-fibre, and aluminum components using laser cutters, waterjet, CNC routing, and 3D printing.</li>
+              <li>Used nesting, part labelling, and jig-based workflows to improve manufacturing efficiency and reduce assembly errors.</li>
+              <li>Applied carbon-fibre reinforcement using CNC-machined and routed moulds to improve structural strength.</li>
+            </ul>
+          </div>
+
+          <div class="image-stack">
+            <figure class="project-inline-image">
+              <img src="../images/aerodesign/aero-manu.png" alt="AeroDesign manufacturing process">
+            </figure>
+            <figure class="project-inline-image">
+              <img src="../images/aerodesign/lasercut.png" alt="Laser-cut aircraft components">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-detail-section">
+        <div class="aero-layout">
+          <div class="aero-copy">
+            <h2>Assembly</h2>
+            <ul class="aero-list">
+              <li>Assembled hundreds of lightweight aircraft components, including ribs, spars, straps, sheeting, and control surfaces.</li>
+              <li>Maintained careful alignment during bonding to ensure proper fit and aerodynamic surface quality.</li>
+              <li>Joined structural components using CA glue, clamps, and custom alignment fixtures.</li>
+              <li>Applied MonoKote covering to finish the aircraft surface.</li>
+            </ul>
+          </div>
+
+          <figure class="project-inline-image">
+            <img src="../images/aerodesign/aero-assembly.png" alt="AeroDesign aircraft assembly">
+          </figure>
+        </div>
+      </section>
+
+      <section class="project-detail-section">
+        <h2>Results</h2>
+        <ul class="aero-list">
+          <li>Contributed to the aircraft’s wing and tail design, manufacturing, and final assembly integration.</li>
+          <li>Helped the team achieve 2nd place overall out of 40+ teams at the SAE Aero Design competition in 2026.</li>
+          <li>Built hands-on experience in aerodynamic analysis, CAD integration, lightweight manufacturing, and large-team engineering collaboration.</li>
         </ul>
-      </section>
-
-      <section class="project-detail-section">
-        <h2>Tools Used</h2>
-        <p>SolidWorks, CFD, composites, manufacturing, control surfaces, leadership</p>
-      </section>
-
-      <section class="project-detail-section">
-        <h2>Impact</h2>
-        <p>
-          Helped develop aircraft components and processes that balanced performance, manufacturability,
-          and team execution in a competitive design environment.
-        </p>
       </section>
     </div>
   </main>
