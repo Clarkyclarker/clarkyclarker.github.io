@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SAE AeroDesign Aircraft | Clark Zhang</title>
+  <title>Electric Radio Controlled Aircraft | Clark Zhang</title>
   <link rel="stylesheet" href="../style.css" />
   <style>
     .project-detail {
@@ -48,6 +48,24 @@
       align-items: start;
     }
 
+    .overview-section {
+      position: relative;
+    }
+
+    .overview-copy {
+      padding-right: 230px;
+    }
+
+    .overview-logo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 160px;
+      border-radius: 20px;
+      background: #ffffff;
+      padding: 16px;
+    }
+
     .aero-copy p + p {
       margin-top: 22px;
     }
@@ -84,11 +102,6 @@
       color: #cbd5e1;
       background: rgba(15, 23, 42, 0.72);
       border-top: 1px solid rgba(148, 163, 184, 0.16);
-    }
-
-    .logo-card {
-      background: #ffffff;
-      padding: 28px;
     }
 
     .image-stack {
@@ -130,6 +143,16 @@
       .project-detail-content {
         width: 100%;
       }
+
+      .overview-copy {
+        padding-right: 0;
+      }
+
+      .overview-logo {
+        position: static;
+        width: 140px;
+        margin: 0 0 28px auto;
+      }
     }
   </style>
 </head>
@@ -148,28 +171,26 @@
   <main class="project-detail">
     <section class="project-title-block">
       <p class="project-meta">UBC AeroDesign</p>
-      <h1>SAE AeroDesign Aircraft</h1>
+      <h1>Electric Radio Controlled Aircraft</h1>
     </section>
 
     <div class="project-detail-content">
-      <section class="project-detail-section">
-        <div class="aero-layout">
-          <div class="aero-copy">
-            <h2>Overview</h2>
-            <p>
-              UBC AeroDesign is a student engineering design team that designs, manufactures, and flies radio-controlled fixed-wing aircraft for the annual SAE Aero Design competition. The competition compresses a full aircraft development cycle into one academic year, requiring teams to work through conceptual design, manufacturing, system integration, testing, and flight demonstration.
-            </p>
-            <p>
-              From 2022-2024, the Advanced Class competition followed a firefighting mission profile involving a 120-inch-wingspan payload aircraft, a PADA aircraft, and a ground transport vehicle. In 2025, the Advanced Class rules changed to focus on autonomous payload delivery and retrieval, where teams are scored on mission segments such as conventional takeoff, payload release or delivery, payload capture, and return to base.
-            </p>
-            <p>
-              As Co-Lead of the Advanced Airfoils subteam, I helped oversee aerodynamic analysis, CAD design, manufacturing, testing, logistics, and team coordination for the aircraft’s wing and tail systems.
-            </p>
-          </div>
+      <section class="project-detail-section overview-section">
+        <figure class="project-inline-image overview-logo">
+          <img src="../images/aerodesign/aerodesign-logo.png" alt="UBC AeroDesign logo">
+        </figure>
 
-          <figure class="project-inline-image logo-card">
-            <img src="../images/aerodesign/aerodesign-logo.png" alt="UBC AeroDesign logo">
-          </figure>
+        <div class="aero-copy overview-copy">
+          <h2>Overview</h2>
+          <p>
+            UBC AeroDesign is a student engineering design team that designs, manufactures, and flies radio-controlled fixed-wing aircraft for the annual SAE Aero Design competition. The competition compresses a full aircraft development cycle into one academic year, requiring teams to work through conceptual design, manufacturing, system integration, testing, and flight demonstration.
+          </p>
+          <p>
+            From 2022-2024, the Advanced Class competition followed a firefighting mission profile involving a 120-inch-wingspan payload aircraft, a PADA aircraft, and a ground transport vehicle. In 2025, the Advanced Class rules changed to focus on autonomous payload delivery and retrieval, where teams are scored on mission segments such as conventional takeoff, payload release or delivery, payload capture, and return to base.
+          </p>
+          <p>
+            As Co-Lead of the Advanced Airfoils subteam, I helped oversee aerodynamic analysis, CAD design, manufacturing, testing, logistics, and team coordination for the aircraft’s wing and tail systems.
+          </p>
         </div>
       </section>
 
