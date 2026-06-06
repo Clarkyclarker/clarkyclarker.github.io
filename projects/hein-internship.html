@@ -14,6 +14,34 @@
       width: min(1400px, 88vw);
     }
 
+    .project-title-block {
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .project-title-block h1 {
+      font-size: clamp(3rem, 5.6vw, 5.7rem);
+      line-height: 1.08;
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .project-hero-clean {
+      width: min(1120px, 86vw);
+      margin: 48px auto 0;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.5);
+      box-shadow: 0 28px 70px rgba(2, 6, 23, 0.35);
+    }
+
+    .project-hero-clean img {
+      width: 100%;
+      display: block;
+    }
+
     .internship-subsection {
       margin-top: 42px;
     }
@@ -87,6 +115,14 @@
         max-width: 100%;
       }
     }
+
+    @media (max-width: 700px) {
+      .project-detail,
+      .project-detail-content,
+      .project-hero-clean {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -102,17 +138,17 @@
   </header>
 
   <main class="project-detail">
-    <section class="project-detail-hero">
-      <img class="project-hero-image" src="../images/hein-internship.png" alt="Robotic chemistry automation platform">
-      <div class="project-hero-overlay"></div>
-      <div class="project-hero-content">
-        <h1>Automation for Experimental Chemistry</h1>
-      </div>
+    <section class="project-title-block">
+      <p class="project-meta">Hein Lab</p>
+      <h1>Automation for Experimental Chemistry</h1>
     </section>
+
+    <figure class="project-hero-clean">
+      <img src="../images/hein-internship.png" alt="Robotic chemistry automation platform">
+    </figure>
 
     <div class="project-detail-content">
       <section class="project-detail-section">
-        <p class="project-meta">Hein Lab</p>
         <h2>Overview</h2>
         <p>
           At Hein Lab, my internship focused on building automation systems that connected industrial robot arms, lab instruments, and Python software into working self-driving chemistry platforms.
