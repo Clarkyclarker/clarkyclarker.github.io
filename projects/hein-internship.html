@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robotic Drug-Analysis Platform | Clark Zhang</title>
+  <title>Automation for Experimental Chemistry | Clark Zhang</title>
   <link rel="stylesheet" href="../style.css" />
+  <style>
+    .internship-subsection {
+      margin-top: 42px;
+    }
+
+    .internship-subsection h3 {
+      margin-bottom: 16px;
+    }
+
+    .role-list {
+      padding-left: 1.2rem;
+      margin-top: 18px;
+    }
+
+    .role-list li {
+      margin-bottom: 14px;
+      line-height: 1.7;
+      color: #dbeafe;
+    }
+  </style>
 </head>
 
 <body class="project-page-body">
@@ -20,10 +40,10 @@
 
   <main class="project-detail">
     <section class="project-detail-hero">
-      <img class="project-hero-image" src="../images/hein-internship.png" alt="Robotic drug-analysis platform">
+      <img class="project-hero-image" src="../images/hein-internship.png" alt="Robotic chemistry automation platform">
       <div class="project-hero-overlay"></div>
       <div class="project-hero-content">
-        <h1>Automation for Chemistry (Under construction!)</h1>
+        <h1>Automation for Experimental Chemistry</h1>
       </div>
     </section>
 
@@ -33,27 +53,54 @@
         <h2>Overview</h2>
         <p>
           At Hein Lab, my internship focused on building automation systems that connected industrial robot arms, lab instruments, and Python software into working self-driving chemistry platforms.
-
-          I worked on robotic platform commissioning, where I helped set up and program robot workcells for solid dosing, high-performance liquid chromatography (HPLC) method development, and crystallization workflows. 
-          This involved platform assembly, robot mounting, module placement, I/O wiring, networking, workspace calibration, motion programming, collision checking, and end-to-end workflow testing. I also developed Python software 
-          to save large amounts of time for scientists operating high-performance liquid chromatography (HPLC) equipment.
+          <br><br>
+          I worked on robotic platform commissioning, where I helped set up and program robot workcells for solid dosing, high-performance liquid chromatography (HPLC) method development, and crystallization workflows. This involved platform assembly, robot mounting, module placement, I/O wiring, networking, workspace calibration, motion programming, collision checking, and end-to-end workflow testing. I also developed Python software to save large amounts of time for scientists operating high-performance liquid chromatography (HPLC) equipment.
         </p>
       </section>
 
       <section class="project-detail-section">
         <h2>Solid Dosing Robotic Platform</h2>
-      
+
+        <div class="internship-subsection">
+          <h3>Overview</h3>
+          <p>
+            The solid dosing platform was a robotic workcell designed to automate solid sample preparation. In a manual workflow, a researcher would select a vial, remove the cap, place it on a precision powder-dispensing instrument, choose the correct dosing head, dispense the target mass of solid material, and return the vial for the next step.
+            <br><br>
+            This system was built to automate that sequence using a UR robotic arm. The robot moved vials between a tray, an automated decapper, a Quantos powder dispenser, and an 8-position dosing-head rack. The goal was for the platform to support up to 8 interchangeable dosing heads, allowing different solid materials or dispensing setups to be stored in the system and selected automatically during a run.
+          </p>
+        </div>
+
+        <div class="internship-subsection">
+          <h3>System Workflow</h3>
+          <p>
+            The robot first picks a vial from the tray and places it into the decapper, where the cap is removed automatically. The open vial is then transferred to the Quantos station, which dispenses a precise target mass of solid powder.
+            <br><br>
+            Before dispensing, the robot selects the required dosing head from the 8-position storage rack. It removes the current head from the Quantos, retrieves the requested head from the rack, installs it onto the Quantos, and allows the instrument to dispense the correct mass into the vial. After dosing, the robot returns the vial to its original tray location or transfers it to the next station.
+          </p>
+        </div>
+
+        <div class="internship-subsection">
+          <h3>My Role</h3>
+          <ul class="role-list">
+            <li>Commissioned a UR robotic workcell for automated solid sample preparation.</li>
+            <li>Integrated the robot with a vial tray, automated decapper, Quantos powder dispenser, and 8-position dosing-head rack.</li>
+            <li>Programmed Python motion routines for vial pickup, decapper loading, Quantos transfer, dosing-head exchange, and vial return.</li>
+            <li>Programmed and refined robot waypoints for accurate pickup, placement, tool exchange, and collision-free motion, achieving error-free operation over 99% of the time.</li>
+            <li>Created CAD layouts of the platform to support RoboDK simulation, reachability checks, collision review, and module placement before physical testing.</li>
+            <li>Debugged gripper alignment, module positioning, reachability, timing, and handoff reliability.</li>
+          </ul>
+        </div>
       </section>
 
       <section class="project-detail-section">
         <h2>Tools Used</h2>
-        <p>SolidWorks, Fusion 360, GD&amp;T, ROS2, C++, Python, KiCAD, 3D printing, PCB design</p>
+        <p>SolidWorks, Fusion 360, RoboDK, Python, PLC programming, UR robots, I/O wiring, networking, workspace calibration, robot commissioning</p>
       </section>
 
       <section class="project-detail-section">
         <h2>Impact</h2>
         <p>
-          placeholder
+          Commissioned and tested robotic chemistry workcells that reduced repetitive manual sample-preparation steps and helped make automated experimental workflows more reliable and easier for researchers to operate.
         </p>
       </section>
     </div>
