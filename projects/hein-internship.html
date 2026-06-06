@@ -14,6 +14,32 @@
       margin-bottom: 16px;
     }
 
+    .solid-doser-overview {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(260px, 360px);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .project-inline-image {
+      margin: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.5);
+      box-shadow: 0 28px 70px rgba(2, 6, 23, 0.35);
+    }
+
+    .project-inline-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .solid-doser-image {
+      max-width: 360px;
+      justify-self: end;
+    }
+
     .role-list {
       padding-left: 1.2rem;
       margin-top: 18px;
@@ -25,11 +51,31 @@
       color: #dbeafe;
     }
 
+    .role-media-stack {
+      display: grid;
+      gap: 32px;
+      margin-top: 36px;
+      width: min(980px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .section-separator {
       height: 1.5px;
       width: 100%;
       margin: 56px 0;
       background: rgba(255, 255, 255, 0.32);
+    }
+
+    @media (max-width: 900px) {
+      .solid-doser-overview {
+        grid-template-columns: 1fr;
+      }
+
+      .solid-doser-image {
+        justify-self: start;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -70,13 +116,19 @@
       <section class="project-detail-section">
         <h2>Solid Dosing Robotic Platform</h2>
 
-        <div class="internship-subsection">
-          <h3>Overview</h3>
-          <p>
-            The solid dosing platform was a robotic workcell designed to automate solid sample preparation. In a manual workflow, a researcher would select a vial, remove the cap, place it on a precision powder-dispensing instrument, choose the correct dosing head, dispense the target mass of solid material, and return the vial for the next step.
-            <br><br>
-            This system was built to automate that sequence using a UR robotic arm. The robot moved vials between a tray, an automated decapper, a Quantos powder dispenser, and an 8-position dosing-head rack. The goal was for the platform to support up to 8 interchangeable dosing heads, allowing different solid materials or dispensing setups to be stored in the system and selected automatically during a run.
-          </p>
+        <div class="internship-subsection solid-doser-overview">
+          <div>
+            <h3>Overview</h3>
+            <p>
+              The solid dosing platform was a robotic workcell designed to automate solid sample preparation. In a manual workflow, a researcher would select a vial, remove the cap, place it on a precision powder-dispensing instrument, choose the correct dosing head, dispense the target mass of solid material, and return the vial for the next step.
+              <br><br>
+              This system was built to automate that sequence using a UR robotic arm. The robot moved vials between a tray, an automated decapper, a Quantos powder dispenser, and an 8-position dosing-head rack. The goal was for the platform to support up to 8 interchangeable dosing heads, allowing different solid materials or dispensing setups to be stored in the system and selected automatically during a run.
+            </p>
+          </div>
+
+          <figure class="project-inline-image solid-doser-image">
+            <img src="../images/hein-internship/solid-doser.png" alt="Solid dosing robotic platform">
+          </figure>
         </div>
 
         <div class="internship-subsection">
@@ -98,6 +150,15 @@
             <li>Created CAD layouts of the platform to support RoboDK simulation, reachability checks, collision review, and module placement before physical testing.</li>
             <li>Debugged gripper alignment, module positioning, reachability, timing, and handoff reliability.</li>
           </ul>
+
+          <div class="role-media-stack">
+            <figure class="project-inline-image">
+              <img src="../images/hein-internship/solid-doser-cad.png" alt="CAD layout of the solid dosing platform">
+            </figure>
+            <figure class="project-inline-image">
+              <img src="../images/hein-internship/robodk.gif" alt="RoboDK simulation of the solid dosing platform">
+            </figure>
+          </div>
         </div>
       </section>
 
