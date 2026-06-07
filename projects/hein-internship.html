@@ -77,6 +77,11 @@
       justify-self: end;
     }
 
+    .lle-image {
+      width: min(1120px, 100%);
+      margin: 32px auto 0;
+    }
+
     .role-list {
       padding-left: 1.2rem;
       margin-top: 18px;
@@ -203,6 +208,37 @@
               <img src="../images/hein-internship/robodk.gif" alt="RoboDK simulation of the solid dosing platform">
             </figure>
           </div>
+        </div>
+      </section>
+
+      <div class="section-separator"></div>
+
+      <section class="project-detail-section">
+        <h2>Liquid-Liquid Extraction &amp; Crystallization Robotic Platform</h2>
+
+        <figure class="project-inline-image lle-image">
+          <img src="../images/hein-internship/lle.png" alt="Liquid-liquid extraction and crystallization robotic platform">
+        </figure>
+
+        <div class="internship-subsection">
+          <h3>Overview</h3>
+          <p>
+            This platform combined two chemistry workflows into one shared robotic workcell. The left side was used for liquid-liquid extraction, where samples are transferred between liquid phases for separation. The right side was used for crystallization, where prepared solutions are handled to grow and process solid crystals.
+            <br><br>
+            The chemistry behind the workflows is fairly involved, but my role was focused on the mechatronics side: commissioning robots, programming robot motion, integrating lab modules, troubleshooting hardware communication, and manufacturing the trays and interfaces that allowed the robots to interact with the platform reliably.
+          </p>
+        </div>
+
+        <div class="internship-subsection">
+          <h3>My Role</h3>
+          <ul class="role-list">
+            <li>Helped set up 3 robots on the platform, including PLC programming, Python control, I/O setup, networking, and robot-to-module communication.</li>
+            <li>Worked on the original KUKA + UR robot configuration before the platform was later standardized to use two UR robots.</li>
+            <li>Troubleshot robot communication, module-triggering, collision, and handoff issues during development, contributing to approximately 98% reliable operation across 1000+ workflow runs.</li>
+            <li>Helped transition the platform from one KUKA robot and one UR robot to two UR robots to standardize robotic equipment across the lab.</li>
+            <li>Programmed and refined UR robot waypoints for sample transfer, tray access, module handoffs, and collision-free motion across both the liquid-liquid extraction and crystallization sides of the platform.</li>
+            <li>Designed and manufactured 3 custom 3D-printed trays, along with robot-accessible interfaces and a centrifuge-related fixture for reliable sample handling.</li>
+          </ul>
         </div>
       </section>
 
