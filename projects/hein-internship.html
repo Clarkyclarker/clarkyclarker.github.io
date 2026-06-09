@@ -78,20 +78,10 @@
     }
 
     .lle-image,
-    .hplc-image {
+    .hplc-image,
+    .optimization-workflow-image {
       width: min(1120px, 100%);
       margin: 32px auto 0;
-    }
-
-    .hplc-loop {
-      margin-top: 30px;
-      padding: 18px 22px;
-      border-left: 3px solid rgba(147, 197, 253, 0.7);
-      background: rgba(15, 23, 42, 0.45);
-      border-radius: 16px;
-      color: #dbeafe;
-      line-height: 1.8;
-      font-weight: 600;
     }
 
     .role-list {
@@ -285,19 +275,26 @@
         <figure class="project-inline-image hplc-image">
           <img src="../images/hein-internship/bad_peaks.png" alt="HPLC chromatogram with overlapping peaks">
         </figure>
+      </section>
+
+      <div class="section-separator"></div>
+
+      <section class="project-detail-section">
+        <h2>Automated Optimization Workflow</h2>
 
         <div class="internship-subsection">
           <p>
-            I worked on a Python Bayesian optimization workflow to automate this process. A robotic platform prepared and queued samples, the HPLC ran each generated method, and Python analyzed the resulting chromatogram. The code then used PyTorch-based Bayesian optimization through BoTorch to adjust the next method based on previous results.
+            To reduce this manual trial-and-error, I worked on a Python-based Bayesian optimization workflow for HPLC method development. A robotic platform prepared and queued samples, the HPLC ran each generated method, and Python analyzed the resulting chromatogram. The optimizer then used previous results to propose the next method, gradually improving separation quality over repeated runs.
           </p>
+        </div>
 
-          <div class="hplc-loop">
-            robot prepares sample → HPLC runs method → Python analyzes chromatogram → optimizer proposes next method → repeat until separation improves
-          </div>
+        <figure class="project-inline-image optimization-workflow-image">
+          <img src="../images/hein-internship/optimization-workflow.png" alt="Automated HPLC optimization workflow">
+        </figure>
 
+        <div class="internship-subsection">
           <p>
-            <br>
-            The goal was to autonomously find HPLC conditions that produced clearer peak separation, detected the correct number of compounds, and avoided unnecessary runtime. The workflow used Python to control ChemStation, Sobol trials for initial exploration, BoTorch Bayesian optimization for method improvement, and automated reporting to track results.
+            The goal was to autonomously find HPLC conditions that produced clearer peak separation, detected the correct number of compounds, and avoided unnecessary runtime. The workflow used an in-house Python library to control ChemStation through macros, Sobol pseudo-random trials for initial exploration, PyTorch Bayesian optimization for method improvement, and automated reporting to track results across experiments.
           </p>
         </div>
       </section>
