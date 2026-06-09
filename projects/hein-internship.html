@@ -88,10 +88,14 @@
 
     .lle-image,
     .hplc-image,
-    .optimization-workflow-image,
-    .slack-output-image {
+    .optimization-workflow-image {
       width: min(1120px, 100%);
       margin: 32px auto 0;
+    }
+
+    .slack-output-image {
+      width: min(520px, 100%);
+      margin: 0 auto 28px;
     }
 
     .role-list {
@@ -343,14 +347,13 @@
         </div>
 
         <div class="internship-subsection">
-          <h3>Results</h3>
           <figure class="project-inline-image slack-output-image">
             <img src="../images/hein-internship/trogdor.png" alt="Slack bot output from HPLC optimization run">
             <figcaption>Slack bot output used for remote monitoring during long HPLC optimization runs.</figcaption>
           </figure>
 
+          <h3>Results</h3>
           <p>
-            <br>
             After these fixes, the workflow could run full optimization campaigns end-to-end. The system repeatedly generated HPLC methods, ran experiments, analyzed chromatograms, updated the optimizer, and selected the next method without needing constant manual adjustment.
             <br><br>
             The final workflow demonstrated a complete closed-loop system: robot prepares sample → HPLC runs method → Python analyzes chromatogram → optimizer proposes next method → repeat.
