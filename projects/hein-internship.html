@@ -283,18 +283,18 @@
         <div class="internship-subsection">
           <h3>Automated Optimization Workflow</h3>
           <p>
-            To reduce this manual trial-and-error, I worked on a Python-based Bayesian optimization workflow for HPLC method development. As seen in the picture below, the robotic platform prepared and queued samples, the HPLC ran each generated method, and Python analyzed the resulting chromatogram. The optimizer then used previous results to propose the next method, gradually improving separation quality over repeated runs.
+            To reduce this manual trial-and-error, I worked on a Python-based Bayesian optimization workflow (see image below) for HPLC method development. The robotic platform prepared and queued samples, 
+            the HPLC ran each generated method, and Python analyzed the resulting chromatogram. 
+            The optimizer then used previous results to propose the next method, gradually improving separation quality over repeated runs. 
+            The goal was to autonomously find HPLC conditions that produced clearer peak separation, detected the correct number of compounds, and avoided unnecessary runtime. 
+            The workflow used an in-house Python library to control ChemStation through macros, Sobol pseudo-random trials for initial exploration, PyTorch Bayesian optimization for method improvement, 
+            and automated reporting to track results across experiments.
           </p>
         </div>
 
         <figure class="project-inline-image optimization-workflow-image">
           <img src="../images/hein-internship/optimization-workflow.png" alt="Automated HPLC optimization workflow">
         </figure>
-
-        <div class="internship-subsection">
-          <p>
-            The goal was to autonomously find HPLC conditions that produced clearer peak separation, detected the correct number of compounds, and avoided unnecessary runtime. The workflow used an in-house Python library to control ChemStation through macros, Sobol pseudo-random trials for initial exploration, PyTorch Bayesian optimization for method improvement, and automated reporting to track results across experiments.
-          </p>
         </div>
       </section>
 
