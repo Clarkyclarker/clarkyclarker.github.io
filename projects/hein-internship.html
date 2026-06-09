@@ -325,6 +325,12 @@
 
         <div class="internship-subsection">
           <h3>My Contribution</h3>
+
+          <figure class="project-inline-image slack-output-image">
+            <img src="../images/hein-internship/trogdor.png" alt="Slack bot output from HPLC optimization run">
+            <figcaption>Slack bot output used for remote monitoring during long HPLC optimization runs.</figcaption>
+          </figure>
+
           <p>
             My work focused on turning the HPLC optimization code from a fragile prototype into a workflow that could run continuously. When I started, the system could generate new method parameters, but it often broke when trying to reuse previous runs or when the method became more complex.
             <br><br>
@@ -339,11 +345,6 @@
             <li>Ensured previous experimental results could still be reused after the method became more complex.</li>
             <li>Redesigned the reward function so the optimizer favored correct peak count, clearer separation, and shorter runtime instead of false peaks.</li>
           </ul>
-
-          <figure class="project-inline-image slack-output-image">
-            <img src="../images/hein-internship/trogdor.png" alt="Slack bot output from HPLC optimization run">
-            <figcaption>Slack bot output used for remote monitoring during long HPLC optimization runs.</figcaption>
-          </figure>
 
           <p>
             A major lesson from this project was that optimization is only useful if the scoring system matches the real experimental goal. The original reward function could accidentally reward bad chromatograms with extra false peaks. I corrected the scoring logic so the optimizer was pushed toward cleaner, more reliable separations.
