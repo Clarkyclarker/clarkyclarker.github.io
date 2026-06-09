@@ -77,9 +77,21 @@
       justify-self: end;
     }
 
-    .lle-image {
+    .lle-image,
+    .hplc-image {
       width: min(1120px, 100%);
       margin: 32px auto 0;
+    }
+
+    .hplc-loop {
+      margin-top: 30px;
+      padding: 18px 22px;
+      border-left: 3px solid rgba(147, 197, 253, 0.7);
+      background: rgba(15, 23, 42, 0.45);
+      border-radius: 16px;
+      color: #dbeafe;
+      line-height: 1.8;
+      font-weight: 600;
     }
 
     .role-list {
@@ -239,6 +251,54 @@
             <li>Programmed and refined UR robot waypoints for sample transfer, tray access, module handoffs, and collision-free motion across both the liquid-liquid extraction and crystallization sides of the platform.</li>
             <li>Designed and manufactured 3 custom 3D-printed trays, along with robot-accessible interfaces and a centrifuge-related fixture for reliable sample handling.</li>
           </ul>
+        </div>
+      </section>
+
+      <div class="section-separator"></div>
+
+      <section class="project-detail-section">
+        <h2>HPLC Method Optimization Code</h2>
+
+        <div class="internship-subsection">
+          <h3>Overview</h3>
+          <p>
+            Another project that I was involved in at Hein Lab was developing an algorithm to optimize analytical methods for high-performance liquid chromatography (HPLC). Please forgive me as I will have to go into some background on chemistry here for context :)
+            <br><br>
+            HPLC is an analytical instrument used to separate and measure compounds in a mixture. A sample is pushed through a column, and different compounds exit at different times. The output is a chromatogram, where each peak represents a detected compound.
+            <br><br>
+            The retention time of a peak helps identify what the compound is, while the peak area indicates how much of that compound is present. A good HPLC method produces clean, separated peaks so each compound can be identified and measured reliably.
+          </p>
+        </div>
+
+        <figure class="project-inline-image hplc-image">
+          <img src="../images/hein-internship/hplc_peaks.png" alt="HPLC chromatogram with separated peaks">
+        </figure>
+
+        <div class="internship-subsection">
+          <p>
+            An HPLC method is the set of instructions that controls how the instrument runs the separation. It defines parameters such as solvent composition, gradient changes, hold times, flow rate, and total runtime. Changing the method changes when compounds leave the column and how well their peaks separate.
+            <br><br>
+            For complex mixtures, method optimization is slow because overlapping peaks often require extensive trial-and-error. A researcher may need to manually adjust the method, run the sample, inspect the chromatogram, and repeat the process many times. This consumes time and solvent, and can still result in poor separation.
+          </p>
+        </div>
+
+        <figure class="project-inline-image hplc-image">
+          <img src="../images/hein-internship/bad_peaks.png" alt="HPLC chromatogram with overlapping peaks">
+        </figure>
+
+        <div class="internship-subsection">
+          <p>
+            I worked on a Python Bayesian optimization workflow to automate this process. A robotic platform prepared and queued samples, the HPLC ran each generated method, and Python analyzed the resulting chromatogram. The code then used PyTorch-based Bayesian optimization through BoTorch to adjust the next method based on previous results.
+          </p>
+
+          <div class="hplc-loop">
+            robot prepares sample → HPLC runs method → Python analyzes chromatogram → optimizer proposes next method → repeat until separation improves
+          </div>
+
+          <p>
+            <br>
+            The goal was to autonomously find HPLC conditions that produced clearer peak separation, detected the correct number of compounds, and avoided unnecessary runtime. The workflow used Python to control ChemStation, Sobol trials for initial exploration, BoTorch Bayesian optimization for method improvement, and automated reporting to track results.
+          </p>
         </div>
       </section>
 
