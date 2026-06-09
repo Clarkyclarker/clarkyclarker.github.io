@@ -43,6 +43,69 @@
       display: block;
     }
 
+    .calibra-toc {
+      position: fixed;
+      top: 180px;
+      left: max(24px, calc((100vw - 1700px) / 2 + 24px));
+      z-index: 10;
+      width: 210px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-left: 18px;
+      border-left: 1px solid rgba(148, 163, 184, 0.34);
+    }
+
+    .calibra-toc-title {
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      font-weight: 800;
+    }
+
+    .calibra-toc a {
+      position: relative;
+      display: block;
+      padding: 8px 0;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      border-bottom: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .calibra-toc a::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.45);
+      transform: translateY(-50%);
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .calibra-toc a:hover,
+    .calibra-toc a.active {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .calibra-toc a:hover::before,
+    .calibra-toc a.active::before {
+      background: #93c5fd;
+      box-shadow: 0 0 16px rgba(147, 197, 253, 0.75);
+      transform: translateY(-50%) scale(1.35);
+    }
+
+    .toc-target {
+      scroll-margin-top: 110px;
+    }
+
     .project-detail-section {
       padding-bottom: 56px;
       border-bottom: 1.5px solid rgba(255, 255, 255, 0.28);
@@ -198,6 +261,12 @@
       border-bottom-color: rgba(191, 219, 254, 0.85);
     }
 
+    @media (max-width: 1500px) {
+      .calibra-toc {
+        display: none;
+      }
+    }
+
     @media (max-width: 1100px) {
       .module-layout {
         grid-template-columns: 1fr;
@@ -230,6 +299,17 @@
     </nav>
   </header>
 
+  <nav class="calibra-toc" aria-label="Calibra page contents">
+    <div class="calibra-toc-title">Contents</div>
+    <a class="toc-link" href="#why-calibra">Why Calibra?</a>
+    <a class="toc-link" href="#what-calibra-does">What Calibra Does</a>
+    <a class="toc-link" href="#electromechanical-architecture">Electromechanical Architecture</a>
+    <a class="toc-link" href="#software-firmware">Software &amp; Firmware</a>
+    <a class="toc-link" href="#team-management">Team Management</a>
+    <a class="toc-link" href="#results">Results</a>
+    <a class="toc-link" href="#other-stuff">Other Stuff</a>
+  </nav>
+
   <main class="project-detail">
 
     <section class="project-title-block">
@@ -248,7 +328,7 @@
     </section>
 
     <div class="project-detail-content">
-      <section class="project-detail-section">
+      <section id="why-calibra" class="project-detail-section toc-target">
         <h2>Why Calibra?</h2>
         <p>
           Each year, thousands of people in British Columbia experience overdoses, many linked to an increasingly unpredictable and contaminated drug supply. 
@@ -261,7 +341,7 @@
         </p>
       </section>
 
-      <section class="project-detail-section">
+      <section id="what-calibra-does" class="project-detail-section toc-target">
         <h2>What Calibra Does</h2>
         <p>
           Calibra turns a manual drug-analysis workflow into an automated robotic process. After the user labels a vial, adds a sample, and places it into the tray, 
@@ -278,7 +358,7 @@
         </figure>
       </section>
 
-      <section class="project-detail-section">
+      <section id="electromechanical-architecture" class="project-detail-section toc-target">
         <h2>Electromechanical Architecture</h2>
 
         <p> The figure below shows the components that make up Calibra</p>
@@ -355,11 +435,9 @@
           <div class="module-layout">
             <div class="module-copy">
               <p>
-                The liquid handler was designed to automate precise solvent transfer while avoiding interference with the robot gripper during vial handling. 
-                I developed a retractable two-axis mechanism with separate stepper-driven linear actuators for the vial support platform and dispensing needle. 
-                After the robot places a vial onto the platform and retracts, the platform extends into position and the needle lowers independently to pierce the septum without disturbing the vial.
-                Both actuators are controlled by a custom ESP32-based stepper driver board which can be found in a later section.
-      
+                The liquid handler was designed to automate precise solvent transfer while avoiding interference with the robot gripper during vial handling. I developed a retractable two-axis mechanism with separate stepper-driven linear actuators for the vial support platform and dispensing needle. After the robot places a vial onto the platform and retracts, the platform extends into position and the needle lowers independently to pierce the septum without disturbing the vial.<br><br>
+
+                The needle is connected through 0.04-inch ID PTFE tubing to a Cavro Xcalibur syringe pump with a 1 mL syringe for controlled liquid dispensing. Both actuators are controlled by a custom ESP32-based stepper driver board using TMC2226 drivers, with firmware that converts Python serial commands into precise stepper movements.
               </p>
 
               <figure class="project-inline-image module-image-centered">
@@ -385,14 +463,11 @@
           <div class="module-layout">
             <div class="module-copy">
               <p>
-                The centrifuge was designed because commercial automation-ready centrifuges were either too expensive, too bulky, or unable to reliably return to a known position for robotic vial pickup. 
-                I developed a compact custom 3D-printable centrifuge using a SunnySky X2212 BLDC drone motor, capable of reaching 12,000 rpm and approximately 1610 g of force.<br><br>
+                The centrifuge was designed because commercial automation-ready centrifuges were either too expensive, too bulky, or unable to reliably return to a known position for robotic vial pickup. I developed a compact custom 3D-printable centrifuge using a SunnySky X2212 BLDC drone motor, capable of reaching 12,000 rpm and approximately 1610 g of force.<br><br>
 
-                A TLE5012 magnetic encoder provides angular position feedback, allowing the rotor to track speed and return to a defined home position after each run. 
-                The motor is controlled by an ODrive BLDC controller and powered by a 24 V supply, giving software-level control over speed, acceleration, rotation count, and PID tuning.
+                A TLE5012 magnetic encoder provides angular position feedback, allowing the rotor to track speed and return to a defined home position after each run. The motor is controlled by an ODrive BLDC controller and powered by a 24 V supply, giving software-level control over speed, acceleration, rotation count, and PID tuning.<br><br>
+
                 For safety, I designed a 3D-printed enclosure around the high-speed rotor, with a robot-accessible opening for automated vial transfer while reducing risk during operation.
-
-                
               </p>
 
               <figure class="project-inline-image module-image-centered">
@@ -474,7 +549,7 @@
 
       </section>
 
-      <section class="project-detail-section">
+      <section id="software-firmware" class="project-detail-section toc-target">
         <h2>Software &amp; Firmware</h2>
         <p>
           Calibra’s software was structured as a modular Python control system, where each hardware component had its own lower-level control file for tasks such as robot motion, centrifuge operation, liquid handling, balance readings, barcode/RFID scanning, and HPLC interaction. The top-level workflow acted as the orchestrator: instead of directly managing every motion or device command, it called the appropriate module functions in sequence to carry out the full sample-preparation and analysis process shown below. This architecture kept the workflow readable, made each module easier to test independently, and allowed new hardware to be added without rewriting the entire system. The full code can be found at the <a href="https://gitlab.com/heingroup/calibra" target="_blank" rel="noopener noreferrer">Calibra GitLab</a>.
@@ -518,7 +593,7 @@
         </div>
       </section>
 
-      <section class="project-detail-section">
+      <section id="team-management" class="project-detail-section toc-target">
         <h2>Team Management</h2>
         <p>
           As project lead for Calibra, I coordinated a 6-person engineering team working across mechanical design, electronics, firmware, and software integration. I broke the platform into smaller modules, delegated tasks based on each member’s strengths, and tracked progress to keep design, fabrication, and testing milestones on schedule.
@@ -527,7 +602,7 @@
         </p>
       </section>
 
-      <section class="project-detail-section">
+      <section id="results" class="project-detail-section toc-target">
         <h2>Results</h2>
         <ul class="team-results">
           <li>Successfully completed the Calibra platform on schedule in January 2026.</li>
@@ -538,7 +613,7 @@
         </ul>
       </section>
 
-      <section class="project-detail-section">
+      <section id="other-stuff" class="project-detail-section toc-target">
         <h2>Other Stuff</h2>
         <p>
           For the full technical paper draft, see the <a href="Calibra.pdf" target="_blank" rel="noopener noreferrer">Calibra paper</a>.
@@ -548,5 +623,29 @@
       </section>
     </div>
   </main>
+
+  <script>
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocSections = document.querySelectorAll('.toc-target');
+
+    const setActiveTocLink = (id) => {
+      tocLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+    };
+
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTocLink(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: 0
+    });
+
+    tocSections.forEach((section) => tocObserver.observe(section));
+  </script>
 </body>
 </html>
