@@ -42,6 +42,77 @@
       display: block;
     }
 
+    .page-toc {
+      position: fixed;
+      top: 50%;
+      left: max(28px, calc((100vw - min(1400px, 88vw)) / 2 - 250px));
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 5px;
+      padding-left: 18px;
+      border-left: 1px solid rgba(148, 163, 184, 0.34);
+      text-align: left;
+    }
+
+    .page-toc-title {
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .page-toc a {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin-left: 0;
+      padding: 8px 0;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      border-bottom: none;
+      text-align: left;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .page-toc a::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.45);
+      transform: translateY(-50%);
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .page-toc a:hover,
+    .page-toc a.active {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .page-toc a:hover::before,
+    .page-toc a.active::before {
+      background: #93c5fd;
+      box-shadow: 0 0 16px rgba(147, 197, 253, 0.75);
+      transform: translateY(-50%) scale(1.35);
+    }
+
+    .toc-target {
+      scroll-margin-top: 110px;
+    }
+
     .internship-subsection {
       margin-top: 42px;
     }
@@ -136,6 +207,12 @@
       background: rgba(255, 255, 255, 0.32);
     }
 
+    @media (max-width: 1900px) {
+      .page-toc {
+        display: none;
+      }
+    }
+
     @media (max-width: 900px) {
       .solid-doser-overview,
       .role-media-stack {
@@ -175,6 +252,14 @@
     </nav>
   </header>
 
+  <nav class="page-toc" aria-label="Hein internship page contents">
+    <div class="page-toc-title">Contents</div>
+    <a class="toc-link" href="#about">About</a>
+    <a class="toc-link" href="#solid-dosing">Solid Dosing Robotic Platform</a>
+    <a class="toc-link" href="#lle-crystallization">Liquid-Liquid Extraction &amp; Crystallization</a>
+    <a class="toc-link" href="#hplc-optimization">HPLC Method Optimization</a>
+  </nav>
+
   <main class="project-detail">
     <section class="project-title-block">
       <p class="project-meta">Hein Lab</p>
@@ -186,7 +271,7 @@
     </figure>
 
     <div class="project-detail-content">
-      <section class="project-detail-section">
+      <section id="about" class="project-detail-section toc-target">
         <h2>About</h2>
         <p>
           At Hein Lab, my internship focused on building automation systems that connected industrial robot arms, lab instruments, and Python software into working self-driving chemistry platforms.
@@ -197,7 +282,7 @@
 
       <div class="section-separator"></div>
 
-      <section class="project-detail-section">
+      <section id="solid-dosing" class="project-detail-section toc-target">
         <h2>Solid Dosing Robotic Platform</h2>
 
         <div class="internship-subsection solid-doser-overview">
@@ -246,7 +331,7 @@
 
       <div class="section-separator"></div>
 
-      <section class="project-detail-section">
+      <section id="lle-crystallization" class="project-detail-section toc-target">
         <h2>Liquid-Liquid Extraction &amp; Crystallization Robotic Platform</h2>
 
         <figure class="project-inline-image lle-image">
@@ -277,7 +362,7 @@
 
       <div class="section-separator"></div>
 
-      <section class="project-detail-section">
+      <section id="hplc-optimization" class="project-detail-section toc-target">
         <h2>HPLC Method Optimization</h2>
 
         <div class="internship-subsection">
@@ -374,5 +459,29 @@
       </section>
     </div>
   </main>
+
+  <script>
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocSections = document.querySelectorAll('.toc-target');
+
+    const setActiveTocLink = (id) => {
+      tocLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+    };
+
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTocLink(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: 0
+    });
+
+    tocSections.forEach((section) => tocObserver.observe(section));
+  </script>
 </body>
 </html>
