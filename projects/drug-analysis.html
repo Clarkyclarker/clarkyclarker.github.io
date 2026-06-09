@@ -45,15 +45,19 @@
 
     .calibra-toc {
       position: fixed;
-      top: 180px;
-      left: max(24px, calc((100vw - 1700px) / 2 + 24px));
+      top: 50%;
+      left: max(28px, calc((100vw - min(1400px, 88vw)) / 2 - 250px));
+      transform: translateY(-50%);
       z-index: 10;
-      width: 210px;
+      width: 220px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 5px;
       padding-left: 18px;
       border-left: 1px solid rgba(148, 163, 184, 0.34);
+      text-align: left;
     }
 
     .calibra-toc-title {
@@ -63,16 +67,20 @@
       text-transform: uppercase;
       color: #93c5fd;
       font-weight: 800;
+      text-align: left;
     }
 
     .calibra-toc a {
       position: relative;
       display: block;
+      width: 100%;
+      margin-left: 0;
       padding: 8px 0;
       color: #94a3b8;
       font-size: 0.88rem;
       line-height: 1.35;
       border-bottom: none;
+      text-align: left;
       transition: color 0.2s ease, transform 0.2s ease;
     }
 
@@ -261,7 +269,7 @@
       border-bottom-color: rgba(191, 219, 254, 0.85);
     }
 
-    @media (max-width: 1500px) {
+    @media (max-width: 1900px) {
       .calibra-toc {
         display: none;
       }
