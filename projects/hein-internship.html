@@ -72,6 +72,15 @@
       display: block;
     }
 
+    .project-inline-image figcaption {
+      padding: 14px 18px 16px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.72);
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
     .solid-doser-image {
       width: min(380px, 100%);
       justify-self: end;
@@ -79,7 +88,8 @@
 
     .lle-image,
     .hplc-image,
-    .optimization-workflow-image {
+    .optimization-workflow-image,
+    .slack-output-image {
       width: min(1120px, 100%);
       margin: 32px auto 0;
     }
@@ -102,6 +112,16 @@
       margin-top: 36px;
       width: 100%;
       align-items: start;
+    }
+
+    .project-detail-content a {
+      color: #93c5fd;
+      border-bottom: 1px solid rgba(147, 197, 253, 0.45);
+    }
+
+    .project-detail-content a:hover {
+      color: #bfdbfe;
+      border-bottom-color: rgba(191, 219, 254, 0.85);
     }
 
     .section-separator {
@@ -256,7 +276,7 @@
             <br><br>
             HPLC is an analytical instrument used to separate and measure compounds in a mixture. A sample is pushed through a column, and different compounds exit at different times. The output is a chromatogram, where each peak represents a detected compound.
             <br><br>
-            The retention time of a peak helps identify what the compound is, while the peak area indicates how much of that compound is present. 
+            The retention time of a peak helps identify what the compound is, while the peak area indicates how much of that compound is present.
             A good HPLC method produces clean, separated peaks so each compound can be identified and measured reliably. As seen in the image below, the 8 peaks (various compounds) can be seen easily, which is ideal.
           </p>
         </div>
@@ -270,9 +290,8 @@
             An HPLC method is the set of instructions that controls how the instrument runs the separation. It defines parameters such as solvent composition, gradient changes, hold times, flow rate, and total runtime. Changing the method changes when compounds leave the column and how well their peaks separate.
             <br><br>
             For complex mixtures, peaks can overlap, making it very difficult for the instrument to resolve and quantify items, as seen in the chromatogram below.
-            This makes method optimization particularly slow because overlapping peaks often require extensive trial-and-error. 
+            This makes method optimization particularly slow because overlapping peaks often require extensive trial-and-error.
             A researcher may need to manually adjust the method, run the sample, inspect the chromatogram, and repeat the process many times. This consumes time and solvent, and can still result in poor separation, a huge pain for scientists in my lab. Therefore, I aimed to tackle this using my automation skills.
-
           </p>
         </div>
 
@@ -283,18 +302,63 @@
         <div class="internship-subsection">
           <h3>Automated Optimization Workflow</h3>
           <p>
-            To reduce this manual trial-and-error, I worked on a Python-based Bayesian optimization workflow (see image below) for HPLC method development. The robotic platform prepared and queued samples, 
-            the HPLC ran each generated method, and Python analyzed the resulting chromatogram. 
-            The optimizer then used previous results to propose the next method, gradually improving separation quality over repeated runs. 
-            The goal was to autonomously find HPLC conditions that produced clearer peak separation, detected the correct number of compounds, and avoided unnecessary runtime. 
-            The workflow used an in-house Python library to control ChemStation through macros, Sobol pseudo-random trials for initial exploration, PyTorch Bayesian optimization for method improvement, 
-            and automated reporting to track results across experiments.
+            To reduce this manual trial-and-error, I worked on a Python-based Bayesian optimization workflow for HPLC method development. The robotic platform prepared and queued samples, the HPLC ran each generated method, and Python analyzed the resulting chromatogram. The optimizer then used previous results to propose the next method, gradually improving separation quality over repeated runs.
+            <br><br>
+            The goal was to autonomously find HPLC conditions that produced clearer peak separation, detected the correct number of compounds, and avoided unnecessary runtime. The workflow used an in-house Python library to control ChemStation through macros, Sobol pseudo-random trials for initial exploration, PyTorch Bayesian optimization for method improvement, and automated reporting to track results across experiments.
           </p>
         </div>
 
         <figure class="project-inline-image optimization-workflow-image">
           <img src="../images/hein-internship/optimization-workflow.png" alt="Automated HPLC optimization workflow">
         </figure>
+
+        <div class="internship-subsection">
+          <h3>My Contribution</h3>
+          <p>
+            My work focused on turning the HPLC optimization code from a fragile prototype into a workflow that could run continuously. When I started, the system could generate new method parameters, but it often broke when trying to reuse previous runs or when the method became more complex.
+            <br><br>
+            In this context, method complexity refers to how detailed the HPLC “recipe” is. A simple method may only change the solvent conditions a few times during the run. A more complex method adds extra gradient or hold steps, giving the instrument more control over difficult regions where peaks overlap.
+          </p>
+
+          <p><br>I helped stabilize the workflow by fixing several key issues:</p>
+          <ul class="role-list">
+            <li>Improved complexity handling so the code could add new method steps without crashing.</li>
+            <li>Fixed errors caused by missing timing values, broken step IDs, and invalid method structures.</li>
+            <li>Added checks to keep generated solvent gradients physically valid.</li>
+            <li>Ensured previous experimental results could still be reused after the method became more complex.</li>
+            <li>Redesigned the reward function so the optimizer favored correct peak count, clearer separation, and shorter runtime instead of false peaks.</li>
+          </ul>
+
+          <p>
+            A major lesson from this project was that optimization is only useful if the scoring system matches the real experimental goal. The original reward function could accidentally reward bad chromatograms with extra false peaks. I corrected the scoring logic so the optimizer was pushed toward cleaner, more reliable separations.
+          </p>
+
+          <p><br>I also added practical tools to make the system easier to run during long experiments:</p>
+          <ul class="role-list">
+            <li>Automatic peak-count estimation.</li>
+            <li>Threshold-based stopping once the method was good enough.</li>
+            <li>Slack run updates for remote monitoring.</li>
+            <li>Auto-generated PDF chromatogram reports.</li>
+          </ul>
+        </div>
+
+        <div class="internship-subsection">
+          <h3>Results</h3>
+          <figure class="project-inline-image slack-output-image">
+            <img src="../images/hein-internship/trogdor.png" alt="Slack bot output from HPLC optimization run">
+            <figcaption>Slack bot output used for remote monitoring during long HPLC optimization runs.</figcaption>
+          </figure>
+
+          <p>
+            <br>
+            After these fixes, the workflow could run full optimization campaigns end-to-end. The system repeatedly generated HPLC methods, ran experiments, analyzed chromatograms, updated the optimizer, and selected the next method without needing constant manual adjustment.
+            <br><br>
+            The final workflow demonstrated a complete closed-loop system: robot prepares sample → HPLC runs method → Python analyzes chromatogram → optimizer proposes next method → repeat.
+            <br><br>
+            The system was validated through over 25 runs consisting of 50-run optimization experiments. It reliably identified methods with the target peak count and low reward scores around 0.03–0.04, showing that the workflow could automatically find improved separation conditions with less manual trial-and-error. In this optimization setup, a lower reward score means better peak separation and a more successful method.
+            <br><br>
+            One example 50-run campaign is summarized in this <a href="../images/hein-internship/HPLC_Method_Opt_50.pptx" target="_blank" rel="noopener noreferrer">HPLC method optimization slide deck</a>.
+          </p>
         </div>
       </section>
 
