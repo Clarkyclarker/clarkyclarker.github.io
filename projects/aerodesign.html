@@ -27,6 +27,77 @@
       margin-right: auto;
     }
 
+    .page-toc {
+      position: fixed;
+      top: 50%;
+      left: max(28px, calc((100vw - min(1400px, 88vw)) / 2 - 250px));
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 5px;
+      padding-left: 18px;
+      border-left: 1px solid rgba(148, 163, 184, 0.34);
+      text-align: left;
+    }
+
+    .page-toc-title {
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .page-toc a {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin-left: 0;
+      padding: 8px 0;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      border-bottom: none;
+      text-align: left;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .page-toc a::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.45);
+      transform: translateY(-50%);
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .page-toc a:hover,
+    .page-toc a.active {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .page-toc a:hover::before,
+    .page-toc a.active::before {
+      background: #93c5fd;
+      box-shadow: 0 0 16px rgba(147, 197, 253, 0.75);
+      transform: translateY(-50%) scale(1.35);
+    }
+
+    .toc-target {
+      scroll-margin-top: 110px;
+    }
+
     .project-detail-section {
       padding-bottom: 64px;
       border-bottom: 1.5px solid rgba(255, 255, 255, 0.28);
@@ -160,6 +231,12 @@
       width: min(980px, 100%);
     }
 
+    @media (max-width: 1900px) {
+      .page-toc {
+        display: none;
+      }
+    }
+
     @media (max-width: 1100px) {
       .aero-layout,
       .simulation-layout {
@@ -197,6 +274,16 @@
     </nav>
   </header>
 
+  <nav class="page-toc" aria-label="AeroDesign page contents">
+    <div class="page-toc-title">Contents</div>
+    <a class="toc-link" href="#overview">Overview</a>
+    <a class="toc-link" href="#simulation">Simulation</a>
+    <a class="toc-link" href="#design">Design</a>
+    <a class="toc-link" href="#manufacturing">Manufacturing</a>
+    <a class="toc-link" href="#assembly">Assembly</a>
+    <a class="toc-link" href="#results">Results</a>
+  </nav>
+
   <main class="project-detail">
     <section class="project-title-block">
       <p class="project-meta">UBC AeroDesign</p>
@@ -204,7 +291,7 @@
     </section>
 
     <div class="project-detail-content">
-      <section class="project-detail-section overview-section">
+      <section id="overview" class="project-detail-section overview-section toc-target">
         <figure class="project-inline-image overview-logo">
           <img src="../images/aerodesign/aerodesign-logo.png" alt="UBC AeroDesign logo">
         </figure>
@@ -223,7 +310,7 @@
         </div>
       </section>
 
-      <section class="project-detail-section">
+      <section id="simulation" class="project-detail-section toc-target">
         <div class="simulation-layout">
           <div class="aero-copy">
             <h2>Simulation</h2>
@@ -250,7 +337,7 @@
         </div>
       </section>
 
-      <section class="project-detail-section">
+      <section id="design" class="project-detail-section toc-target">
         <div class="aero-layout">
           <div class="aero-copy">
             <h2>Design</h2>
@@ -275,7 +362,7 @@
         </div>
       </section>
 
-      <section class="project-detail-section">
+      <section id="manufacturing" class="project-detail-section toc-target">
         <div class="aero-layout">
           <div class="aero-copy">
             <h2>Manufacturing</h2>
@@ -302,7 +389,7 @@
         </div>
       </section>
 
-      <section class="project-detail-section">
+      <section id="assembly" class="project-detail-section toc-target">
         <div class="aero-layout">
           <div class="aero-copy">
             <h2>Assembly</h2>
@@ -320,7 +407,7 @@
         </div>
       </section>
 
-      <section class="project-detail-section">
+      <section id="results" class="project-detail-section toc-target">
         <h2>Results</h2>
         <ul class="aero-list">
           <li>Contributed to the aircraft’s wing and tail design, manufacturing, and final assembly integration.</li>
@@ -330,5 +417,29 @@
       </section>
     </div>
   </main>
+
+  <script>
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocSections = document.querySelectorAll('.toc-target');
+
+    const setActiveTocLink = (id) => {
+      tocLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+    };
+
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTocLink(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: 0
+    });
+
+    tocSections.forEach((section) => tocObserver.observe(section));
+  </script>
 </body>
 </html>
