@@ -42,60 +42,6 @@
       display: block;
     }
 
-    .internship-toc {
-      position: sticky;
-      top: 84px;
-      z-index: 20;
-      width: min(1120px, 86vw);
-      margin: 42px auto 0;
-      padding: 16px 18px;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: 22px;
-      background: rgba(2, 6, 23, 0.82);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 18px 45px rgba(2, 6, 23, 0.28);
-    }
-
-    .internship-toc-title {
-      margin-bottom: 10px;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #93c5fd;
-      font-weight: 700;
-    }
-
-    .internship-toc-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .internship-toc a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: #cbd5e1;
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      font-size: 0.92rem;
-      line-height: 1.25;
-      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-    }
-
-    .internship-toc a:hover,
-    .internship-toc a.active {
-      color: #ffffff;
-      background: rgba(59, 130, 246, 0.24);
-      border-color: rgba(147, 197, 253, 0.58);
-    }
-
-    .toc-target {
-      scroll-margin-top: 170px;
-    }
-
     .internship-subsection {
       margin-top: 42px;
     }
@@ -206,17 +152,12 @@
         width: min(520px, 100%);
         margin: 0 auto 28px;
       }
-
-      .internship-toc {
-        position: static;
-      }
     }
 
     @media (max-width: 700px) {
       .project-detail,
       .project-detail-content,
-      .project-hero-clean,
-      .internship-toc {
+      .project-hero-clean {
         width: 100%;
       }
     }
@@ -244,18 +185,8 @@
       <img src="../images/hein-internship.png" alt="Robotic chemistry automation platform">
     </figure>
 
-    <nav class="internship-toc" aria-label="Project table of contents">
-      <div class="internship-toc-title">Contents</div>
-      <div class="internship-toc-links">
-        <a href="#about" class="toc-link">1. About</a>
-        <a href="#solid-dosing" class="toc-link">2. Solid Dosing Robotic Platform</a>
-        <a href="#lle-crystallization" class="toc-link">3. Liquid-Liquid Extraction &amp; Crystallization</a>
-        <a href="#hplc-optimization" class="toc-link">4. HPLC Method Optimization</a>
-      </div>
-    </nav>
-
     <div class="project-detail-content">
-      <section id="about" class="project-detail-section toc-target">
+      <section class="project-detail-section">
         <h2>About</h2>
         <p>
           At Hein Lab, my internship focused on building automation systems that connected industrial robot arms, lab instruments, and Python software into working self-driving chemistry platforms.
@@ -266,7 +197,7 @@
 
       <div class="section-separator"></div>
 
-      <section id="solid-dosing" class="project-detail-section toc-target">
+      <section class="project-detail-section">
         <h2>Solid Dosing Robotic Platform</h2>
 
         <div class="internship-subsection solid-doser-overview">
@@ -315,7 +246,7 @@
 
       <div class="section-separator"></div>
 
-      <section id="lle-crystallization" class="project-detail-section toc-target">
+      <section class="project-detail-section">
         <h2>Liquid-Liquid Extraction &amp; Crystallization Robotic Platform</h2>
 
         <figure class="project-inline-image lle-image">
@@ -346,7 +277,7 @@
 
       <div class="section-separator"></div>
 
-      <section id="hplc-optimization" class="project-detail-section toc-target">
+      <section class="project-detail-section">
         <h2>HPLC Method Optimization</h2>
 
         <div class="internship-subsection">
@@ -443,29 +374,5 @@
       </section>
     </div>
   </main>
-
-  <script>
-    const tocLinks = document.querySelectorAll('.toc-link');
-    const tocSections = document.querySelectorAll('.toc-target');
-
-    const setActiveTocLink = (id) => {
-      tocLinks.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-      });
-    };
-
-    const tocObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveTocLink(entry.target.id);
-        }
-      });
-    }, {
-      rootMargin: '-35% 0px -55% 0px',
-      threshold: 0
-    });
-
-    tocSections.forEach((section) => tocObserver.observe(section));
-  </script>
 </body>
 </html>
