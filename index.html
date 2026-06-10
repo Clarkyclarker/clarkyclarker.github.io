@@ -12,6 +12,90 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .other-projects {
+      scroll-snap-align: start;
+      background: #f8fafc;
+      color: #111827;
+      padding: 110px 8% 120px;
+    }
+
+    .portfolio-projects {
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+    }
+
+    .portfolio-project-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
+      gap: 42px;
+      align-items: center;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 30px;
+      padding: 28px;
+      min-height: 320px;
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
+    }
+
+    .portfolio-project-copy {
+      padding: 14px 0 10px 8px;
+    }
+
+    .portfolio-project-card h3 {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: 2.45rem;
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin-bottom: 14px;
+    }
+
+    .portfolio-project-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+      max-height: 300px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #111827;
+    }
+
+    .portfolio-project-image img {
+      width: 100%;
+      height: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      display: block;
+    }
+
+    @media (max-width: 950px) {
+      .portfolio-project-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .portfolio-project-image {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .other-projects {
+        padding: 85px 7% 95px;
+      }
+
+      .portfolio-project-card {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .portfolio-project-card h3 {
+        font-size: 1.85rem;
+      }
+    }
+  </style>
   <script type="text/javascript">
       (function(c,l,a,r,i,t,y){
           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
