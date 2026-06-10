@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haven Robotic Tool Vending Machine | Clark Zhang</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .project-detail {
+      width: min(1700px, 96vw);
+    }
+
+    .project-detail-content {
+      width: min(1400px, 88vw);
+    }
+
+    .project-title-block {
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .project-title-block h1 {
+      font-size: clamp(3rem, 5.6vw, 5.7rem);
+      line-height: 1.08;
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .page-toc {
+      position: fixed;
+      top: 50%;
+      left: max(28px, calc((100vw - min(1400px, 88vw)) / 2 - 250px));
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 5px;
+      padding-left: 18px;
+      border-left: 1px solid rgba(148, 163, 184, 0.34);
+      text-align: left;
+    }
+
+    .page-toc-title {
+      margin-bottom: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .page-toc a {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin-left: 0;
+      padding: 8px 0;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      border-bottom: none;
+      text-align: left;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .page-toc a::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.45);
+      transform: translateY(-50%);
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .page-toc a:hover,
+    .page-toc a.active {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .page-toc a:hover::before,
+    .page-toc a.active::before {
+      background: #93c5fd;
+      box-shadow: 0 0 16px rgba(147, 197, 253, 0.75);
+      transform: translateY(-50%) scale(1.35);
+    }
+
+    .toc-target {
+      scroll-margin-top: 110px;
+    }
+
+    .project-detail-section {
+      padding-bottom: 64px;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.28);
+    }
+
+    .project-detail-section + .project-detail-section {
+      margin-top: 64px;
+    }
+
+    .project-detail-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .haven-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+      gap: 64px;
+      align-items: start;
+    }
+
+    .haven-copy p + p {
+      margin-top: 22px;
+    }
+
+    .haven-list {
+      margin-top: 0;
+      padding-left: 1.2rem;
+    }
+
+    .haven-list li {
+      margin-bottom: 14px;
+      line-height: 1.7;
+      color: #dbeafe;
+    }
+
+    .project-inline-image {
+      margin: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.5);
+      box-shadow: 0 28px 70px rgba(2, 6, 23, 0.35);
+    }
+
+    .project-inline-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .project-inline-image figcaption {
+      padding: 14px 18px 16px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.72);
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .metric-card {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: 1.8rem;
+      color: #f8fafc;
+    }
+
+    .metric-card span {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1900px) {
+      .page-toc {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .haven-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .project-detail,
+      .project-detail-content {
+        width: 100%;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body class="project-page-body">
+  <header class="project-page-header">
+    <nav>
+      <h2><a href="../index.html">Clark Zhang</a></h2>
+      <div>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../resume.pdf">Resume</a>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="page-toc" aria-label="Haven page contents">
+    <div class="page-toc-title">Contents</div>
+    <a class="toc-link" href="#overview">Overview</a>
+    <a class="toc-link" href="#architecture">Architecture</a>
+    <a class="toc-link" href="#mechanical">Mechanical Design</a>
+    <a class="toc-link" href="#controls">Controls &amp; Electronics</a>
+    <a class="toc-link" href="#software">Software</a>
+    <a class="toc-link" href="#testing">Testing</a>
+    <a class="toc-link" href="#results">Results</a>
+  </nav>
+
+  <main class="project-detail">
+    <section class="project-title-block">
+      <p class="project-meta">September 2025 - April 2026 | Project Lead</p>
+      <h1>Haven: Robotic Tool Vending Machine</h1>
+    </section>
+
+    <div class="project-detail-content">
+      <section id="overview" class="project-detail-section toc-target">
+        <div class="haven-layout">
+          <div class="haven-copy">
+            <h2>Overview</h2>
+            <p>
+              Haven is a secure, automated tool checkout kiosk designed for student-run makerspaces. The system was built to reduce tool loss, track tool ownership, and let users dispense and return shared shop tools without requiring constant supervision from shop staff.
+            </p>
+            <p>
+              My role focused on the mechatronics side of the project: translating the storage concept into a manufacturable mechanical system, integrating the gantry and rotary storage modules, and supporting full-system assembly and testing.
+            </p>
+          </div>
+
+          <figure class="project-inline-image">
+            <img src="../images/haven/haven-cropped.png" alt="Haven robotic tool vending machine prototype">
+            <figcaption>Final Haven prototype, combining mechanical storage, motion control, electronics, and web-based tool checkout.</figcaption>
+          </figure>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card"><strong>30</strong><span>distinct tools supported by the final rotary storage design</span></div>
+          <div class="metric-card"><strong>30 s</strong><span>maximum dispense workflow from website request to user bay</span></div>
+          <div class="metric-card"><strong>152</strong><span>integrated dispense and return cycles completed during testing</span></div>
+          <div class="metric-card"><strong>&gt;96%</strong><span>success rate for moderate-size tool categories</span></div>
+        </div>
+      </section>
+
+      <section id="architecture" class="project-detail-section toc-target">
+        <h2>System Architecture</h2>
+        <ul class="haven-list">
+          <li><strong>Storage:</strong> Six rotary tool layers hold tools in circular “cake” modules, exposing only one requested tool location at a time.</li>
+          <li><strong>Delivery:</strong> A vertical Cartesian XY gantry moves between storage layers and the pickup window to handle dispense and return operations.</li>
+          <li><strong>Control:</strong> A Raspberry Pi coordinates backend logic, user interaction, and system commands, while a BTT Octopus Max EZ running Klipper handles stepper motor motion.</li>
+          <li><strong>Sensing:</strong> RFID identifies users and tools, while magnetic encoder feedback supports rotary position monitoring.</li>
+        </ul>
+      </section>
+
+      <section id="mechanical" class="project-detail-section toc-target">
+        <div class="haven-layout">
+          <div class="haven-copy">
+            <h2>Mechanical Design</h2>
+            <ul class="haven-list">
+              <li>Designed and assembled the vertical Cartesian XY gantry using lead screws, linear rails, flexible couplers, pillow blocks, and custom carriage plates.</li>
+              <li>Selected a lead-screw-driven architecture over belt-based CoreXY because the vertical axis had to safely hold load without relying on motor holding torque or belt tension.</li>
+              <li>Contributed to the rotary tool cake concept, where rotating inner walls push tools between storage positions and the gantry transfer slice.</li>
+              <li>Supported enclosure integration using aluminum extrusion and clear polycarbonate panels for modularity, visibility, and secure tool containment.</li>
+            </ul>
+          </div>
+
+          <figure class="project-inline-image">
+            <img src="../images/haven/haven.png" alt="Haven full system CAD and prototype view">
+            <figcaption>The mechanical system combines a lead-screw gantry with rotary storage layers for automated tool transfer.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="controls" class="project-detail-section toc-target">
+        <h2>Controls &amp; Electronics</h2>
+        <ul class="haven-list">
+          <li>Used a centralized control architecture to simplify wiring, synchronization, and debugging compared with earlier distributed PCB concepts.</li>
+          <li>Integrated stepper-driven motion for the gantry and rotary storage modules through Klipper on a BTT Octopus Max EZ control board.</li>
+          <li>Used a Raspberry Pi 4 as the edge compute layer for backend services, system logic, and communication with the motion controller.</li>
+          <li>Incorporated RFID authentication, magnetic angle sensing, limit switches, power distribution, and custom PCB routing into the full electromechanical system.</li>
+        </ul>
+      </section>
+
+      <section id="software" class="project-detail-section toc-target">
+        <h2>Software Interface</h2>
+        <ul class="haven-list">
+          <li>Users authenticate with an RFID card and select tools through a mobile web interface.</li>
+          <li>The backend tracks tool inventory, user checkout status, return validation, overdue tools, and administrative controls.</li>
+          <li>Admin workflows include manual gantry/cake adjustment, user and tool management, system alerts, and usage visibility.</li>
+          <li>The software stack was containerized on the Raspberry Pi to support easier deployment, remote debugging, and faster iteration.</li>
+        </ul>
+      </section>
+
+      <section id="testing" class="project-detail-section toc-target">
+        <h2>Testing</h2>
+        <ul class="haven-list">
+          <li>Validated the gantry through progressive subassembly tests before installing it into the full enclosure.</li>
+          <li>Tested the rotary tool cake with increasing tool loads to identify friction, alignment, and transfer issues.</li>
+          <li>Completed integrated dispense and return tests using tools with different sizes and geometries across multiple storage levels.</li>
+          <li>Iteratively improved reliability by addressing slice stiffness, belt/driver configuration, plate constraint, UI latency, and transfer-interface alignment.</li>
+        </ul>
+      </section>
+
+      <section id="results" class="project-detail-section toc-target">
+        <h2>Results &amp; Mechatronics Takeaways</h2>
+        <ul class="haven-list">
+          <li>Delivered a working end-to-end prototype that could authenticate users, retrieve tools from storage, dispense them to a user bay, and support returns.</li>
+          <li>Achieved strong performance for most intended tools, with over 96% reliability for moderate-size tools and approximately 93% reliability overall during integrated testing.</li>
+          <li>Demonstrated that low-cost, modular makerspace tool automation is feasible at a prototype cost under the project budget.</li>
+          <li>Key mechatronics lesson: reliable automation depended less on any single subsystem and more on the interface between mechanics, sensing, control logic, and real user workflows.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const tocSections = document.querySelectorAll('.toc-target');
+
+    const setActiveTocLink = (id) => {
+      tocLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+    };
+
+    const tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTocLink(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: 0
+    });
+
+    tocSections.forEach((section) => tocObserver.observe(section));
+  </script>
+</body>
+</html>
