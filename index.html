@@ -28,18 +28,21 @@
 
     .portfolio-project-card {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
+      grid-template-columns: minmax(0, 0.85fr) minmax(420px, 1.15fr);
       gap: 42px;
-      align-items: center;
+      align-items: stretch;
       background: white;
       border: 1px solid #e5e7eb;
       border-radius: 30px;
       padding: 28px;
-      min-height: 320px;
+      min-height: 430px;
       box-shadow: 0 22px 60px rgba(15, 23, 42, 0.08);
     }
 
     .portfolio-project-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       padding: 14px 0 10px 8px;
     }
 
@@ -52,11 +55,8 @@
     }
 
     .portfolio-project-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 260px;
-      max-height: 300px;
+      position: relative;
+      min-height: 380px;
       overflow: hidden;
       border-radius: 24px;
       background: #111827;
@@ -65,8 +65,9 @@
     .portfolio-project-image img {
       width: 100%;
       height: 100%;
-      max-height: 300px;
-      object-fit: contain;
+      min-height: 380px;
+      object-fit: cover;
+      object-position: top center;
       display: block;
     }
 
@@ -78,6 +79,11 @@
 
       .portfolio-project-image {
         order: -1;
+        min-height: 340px;
+      }
+
+      .portfolio-project-image img {
+        min-height: 340px;
       }
     }
 
@@ -89,10 +95,16 @@
       .portfolio-project-card {
         padding: 20px;
         border-radius: 24px;
+        min-height: auto;
       }
 
       .portfolio-project-card h3 {
         font-size: 1.85rem;
+      }
+
+      .portfolio-project-image,
+      .portfolio-project-image img {
+        min-height: 280px;
       }
     }
   </style>
@@ -385,11 +397,28 @@
     <div class="portfolio-projects">
       <article class="portfolio-project-card">
         <div class="portfolio-project-copy">
-          <p class="project-company">Capstone Design Project</p>
-          <h3>Haven: Robotic Tool Vending Machine</h3>
-          <p class="project-description">
-            RFID-secured tool checkout kiosk that uses rotary storage and a Cartesian XY gantry to dispense and return shared makerspace tools.
-          </p>
+          <div class="project-topline">
+            <span class="project-pill">September 2025 - April 2026</span>
+          </div>
+
+          <div class="project-main">
+            <p class="project-company">Capstone Design Project</p>
+            <h3>Haven: Robotic Tool Vending Machine</h3>
+            <p class="project-role">Project Lead</p>
+            <p class="project-description">
+              RFID-secured tool checkout kiosk that uses rotary storage and a Cartesian XY gantry to dispense and return shared makerspace tools.
+            </p>
+          </div>
+
+          <div class="project-bottom">
+            <div class="project-skills">
+              <span>SolidWorks</span>
+              <span>Raspberry Pi</span>
+              <span>Klipper</span>
+              <span>KiCAD</span>
+              <span>Manufacturing &amp; Prototyping</span>
+            </div>
+          </div>
         </div>
 
         <div class="portfolio-project-image">
