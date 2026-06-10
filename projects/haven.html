@@ -130,13 +130,13 @@
       margin-top: 22px;
     }
 
-    .report-note {
-      margin-bottom: 18px;
-      font-size: 0.86rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #93c5fd;
+    .haven-copy h3 {
+      margin-top: 42px;
+      margin-bottom: 16px;
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: clamp(1.45rem, 2vw, 1.9rem);
+      color: #f8fafc;
+      letter-spacing: -0.035em;
     }
 
     .haven-list {
@@ -192,7 +192,7 @@
     }
 
     .subsection-card h3 {
-      margin-bottom: 12px;
+      margin: 0 0 12px;
       font-family: "Space Grotesk", "Inter", sans-serif;
       font-size: 1.35rem;
       color: #f8fafc;
@@ -279,9 +279,8 @@
     <div class="page-toc-title">Contents</div>
     <a class="toc-link" href="#overview">Overview</a>
     <a class="toc-link" href="#mechanical-design">Mechanical Design</a>
-    <a class="toc-link" href="#gantry">Gantry Subassembly</a>
-    <a class="toc-link" href="#cake">Cake Subassembly</a>
-    <a class="toc-link" href="#testing">Mechanical Testing</a>
+    <a class="toc-link" href="#electrical">Electrical System</a>
+    <a class="toc-link" href="#software">Software</a>
     <a class="toc-link" href="#results">Results</a>
   </nav>
 
@@ -295,7 +294,6 @@
       <section id="overview" class="project-detail-section toc-target">
         <div class="haven-layout">
           <div class="haven-copy">
-            <p class="report-note">Based on Haven Final Report: Executive Summary, Sections 4-5, and Appendix S</p>
             <h2>Overview</h2>
             <p>
               Haven is a secure, automated tool checkout kiosk designed for student-run makerspaces. The system was built for the UBC Integrated Engineering shop, where over 250 users and 30+ capstone projects create heavy demand for shared tools. The final concept combines a rotary storage system, a vertical Cartesian XY gantry, RFID-based tool tracking, and a compact enclosure into one self-serve kiosk.
@@ -322,100 +320,115 @@
       <section id="mechanical-design" class="project-detail-section toc-target">
         <h2>Mechanical Design</h2>
         <p>
-          The mechanical system was split into two main moving subassemblies: the gantry delivery system and the rotary tool cake. The gantry handles vertical and horizontal tool transfer, while the cake stores tools in indexed rotary layers. This separation made the system modular, easier to prototype, and easier to debug during integration.
+          The final report divides Haven into a delivery system and a tool-storage system. Mechanically, this became two major subassemblies: the gantry, which moves the transfer slice between storage levels and the user window, and the cake, which stores and indexes tools around circular layers. This modular split made the system easier to manufacture, assemble, and debug during integration.
         </p>
 
         <div class="subsection-grid">
           <div class="subsection-card">
             <h3>Gantry Subassembly</h3>
-            <p>
-              The gantry acts as the delivery mechanism. It moves a transfer slice between storage levels and the pickup window, allowing Haven to retrieve or return tools without exposing the rest of the inventory.
-            </p>
+            <p>The delivery mechanism responsible for vertical and horizontal transfer between the rotary storage layers and the pickup window.</p>
           </div>
-
           <div class="subsection-card">
             <h3>Cake Subassembly</h3>
-            <p>
-              The cake acts as the storage mechanism. Each layer stores multiple tools around a circular track, while rotating inner walls push tools between storage positions and the gantry transfer opening.
-            </p>
+            <p>The rotary storage mechanism responsible for holding tools, indexing them, and presenting a selected tool to the transfer slice.</p>
           </div>
         </div>
-      </section>
 
-      <section id="gantry" class="project-detail-section toc-target">
-        <div class="haven-wide-layout">
+        <div class="haven-wide-layout" style="margin-top: 56px;">
           <div class="haven-copy">
-            <p class="report-note">Report reference: Section 4.1.4 Delivery System, Appendix I, Appendix J</p>
-            <h2>Gantry Subassembly</h2>
+            <h3>Gantry Subassembly</h3>
             <p>
-              The gantry was designed as a vertically mounted Cartesian XY system. CoreXY and cantilever architectures were considered, but the final design used lead screws and linear rails because the vertical axis needed to resist gravity loads reliably. A belt-driven vertical system would have depended on belt tension and motor holding torque, increasing the risk of drift, heating, and slippage under load.
+              The gantry was designed as a vertically mounted Cartesian XY system. CoreXY and cantilever concepts were considered, but the final report selected a lead-screw and linear-rail architecture because the vertical axis needed to safely support load without depending on belt tension or motor holding torque.
             </p>
             <ul class="haven-list">
-              <li>Used dual vertical lead screws and one horizontal lead screw to move the transfer slice between storage layers and the user bay.</li>
-              <li>Used linear rails to guide the carriage and prevent unwanted rotation or racking.</li>
-              <li>Selected MGN9H rails based on load capacity, cost, and a worst-case moving mass calculation with a safety factor.</li>
-              <li>Selected 8 mm lead screws to reach the required dispense speed while staying compatible with stepper motor performance.</li>
-              <li>Relocated motors and refined carriage plates after early prototypes revealed mounting, alignment, and axial-support issues.</li>
+              <li>Used dual vertical lead screws and a horizontal lead screw to move the transfer slice between tool layers and the user bay.</li>
+              <li>Used linear rails to guide the carriage, reduce racking, and keep the slice aligned during tool transfer.</li>
+              <li>Selected compact MGN9H rails based on load capacity, cost, and calculated moving mass with safety factor.</li>
+              <li>Selected 8 mm lead screws to balance speed, torque, and compatibility with available stepper motors.</li>
+              <li>Refined motor placement, carriage plates, and end-support details after prototype assembly revealed alignment and axial-support issues.</li>
             </ul>
           </div>
 
           <figure class="project-inline-image">
             <img src="../images/haven/gantry.png" alt="Haven vertical Cartesian XY gantry subassembly">
-            <figcaption>Gantry subassembly used for vertical and horizontal delivery between the rotary storage layers and the pickup window.</figcaption>
+            <figcaption>Gantry subassembly used to position the transfer slice between storage layers and the pickup window.</figcaption>
           </figure>
         </div>
-      </section>
 
-      <section id="cake" class="project-detail-section toc-target">
-        <div class="haven-layout">
+        <div class="haven-wide-layout" style="margin-top: 64px;">
           <div class="haven-copy">
-            <p class="report-note">Report reference: Section 4.1.1 Tool Cake, Section 4.1.2 Drivetrain, Appendix D-F</p>
-            <h2>Cake Subassembly</h2>
+            <h3>Cake Subassembly</h3>
             <p>
-              The rotary tool cake was the storage mechanism. Instead of using drawers or lockers, Haven stores tools around circular layers. The open sector of each layer acts as a transfer interface; when the gantry reaches the correct level, the cake indexes to present the requested tool to the transfer slice.
+              The cake subassembly was the rotary storage mechanism. Instead of storing each tool in an individual drawer, each tool cake uses indexed circular layers. Rotating inner walls move tools around the layer and present only the selected tool location to the gantry transfer slice.
             </p>
             <ul class="haven-list">
               <li><strong>Sprocket:</strong> 3D-printed ABS hub that interfaces with the drivetrain and rotates the inner walls.</li>
               <li><strong>Inner walls:</strong> ABS wall elements that push tools around the cake during indexing.</li>
-              <li><strong>Outer walls:</strong> Modular 3D-printed PLA walls that help retain tools on the plate.</li>
+              <li><strong>Outer walls:</strong> Modular 3D-printed PLA walls that retain tools on the plate and simplify replacement.</li>
               <li><strong>Cake plate:</strong> Waterjet ABS plate bonded to a 3D-printed rib structure for stiffness and manufacturability.</li>
-              <li><strong>Drivetrain:</strong> NEMA 17 stepper motor, 10:1 planetary gearbox, timing belt, pulleys, and tensioning mount for quiet indexed rotation.</li>
+              <li><strong>Drivetrain:</strong> NEMA 17 stepper motor, 10:1 planetary gearbox, timing belt, pulleys, and a tensioning mount for quiet indexed rotation.</li>
             </ul>
           </div>
 
           <figure class="project-inline-image">
-            <img src="../images/haven/haven.png" alt="Haven rotary tool cake and enclosure overview">
-            <figcaption>The rotary storage system was designed to hold multiple tool layers while only exposing the selected tool during dispense or return.</figcaption>
+            <img src="../images/haven/cake.png" alt="Haven rotary tool cake subassembly">
+            <figcaption>Rotary cake subassembly used to store tools in indexed circular layers.</figcaption>
           </figure>
         </div>
-      </section>
 
-      <section id="testing" class="project-detail-section toc-target">
-        <h2>Mechanical Testing</h2>
-        <p>
-          Testing followed the same split as the design: first validating the gantry and cake as individual subassemblies, then combining them during integrated dispense and return cycles. This made it easier to isolate mechanical issues before full system testing.
-        </p>
+        <div class="haven-copy" style="margin-top: 64px;">
+          <h3>Mechanical Testing</h3>
+          <p>
+            Mechanical testing followed the same split as the design: first validating the gantry and cake as individual subassemblies, then combining them in integrated dispense and return testing. This helped isolate whether failures came from motion, stiffness, indexing, or the transfer interface.
+          </p>
+        </div>
 
         <div class="subsection-grid">
           <div class="subsection-card">
             <h3>Gantry Testing</h3>
             <p>
-              The gantry was first tested as a single vertical leg, then as a full XY mechanism, and finally inside the enclosure. It supported 2.5 kg during early static/dynamic tests and later moved a 3.5 kg load during integrated dynamic testing without step skipping or overheating. The final gantry achieved the required storage-level coverage and reached speeds up to 80 mm/s.
+              The gantry was tested as a single vertical leg, then as a full XY mechanism, and finally inside the enclosure. It supported 2.5 kg during early tests and later moved a 3.5 kg load during integrated dynamic testing without skipped steps or overheating. The final gantry reached the required storage levels and achieved speeds up to 80 mm/s.
             </p>
           </div>
 
           <div class="subsection-card">
             <h3>Cake Testing</h3>
             <p>
-              The cake plate was checked with FEA for a 5 kg distributed load and a 1 kg edge load, with maximum deflections of 0.16 mm and 0.18 mm. Physical drivetrain tests validated 60-degree indexed rotation. When tool friction caused the cake plate to rotate unintentionally, a set screw and reduced-contact geometry were added to improve positional consistency.
+              The cake plate was checked with FEA for distributed and edge loads, then physically tested through indexed 60-degree rotations. When tool friction caused the cake plate to rotate unintentionally, the design was revised with a set screw and reduced-contact geometry to improve positional consistency.
             </p>
           </div>
         </div>
 
         <ul class="haven-list" style="margin-top: 28px;">
-          <li>Integrated testing completed 152 dispense and return cycles using tools with different geometries across multiple storage levels.</li>
-          <li>Most mechanical failures were concentrated in the return workflow, especially for longer and heavier tools, showing that the transfer interface was the key area for refinement.</li>
-          <li>Design refinements included stiffening the transfer slice, constraining the cake plate, quieting motor motion through driver configuration, and improving local clearances at the cake-slice interface.</li>
+          <li>Completed 152 integrated dispense and return cycles using tools with different geometries across multiple storage levels.</li>
+          <li>Most failures were concentrated in the return workflow, especially for longer and heavier tools, showing that the transfer interface was the key mechanical refinement area.</li>
+          <li>Mechanical refinements included stiffening the transfer slice, constraining the cake plate, quieting motor motion through driver configuration, and improving local clearances at the cake-slice interface.</li>
+        </ul>
+      </section>
+
+      <section id="electrical" class="project-detail-section toc-target">
+        <h2>Electrical System</h2>
+        <p>
+          The electrical system tied the mechanical modules into a controlled mechatronic platform. A Raspberry Pi handled the higher-level system logic, while a BTT Octopus Max EZ running Klipper controlled the stepper-driven gantry and cake motion.
+        </p>
+        <ul class="haven-list">
+          <li>Integrated stepper control for the gantry axes and rotary tool cake drivetrain.</li>
+          <li>Used RFID for user and tool identification so the system could associate each checkout or return with a specific user.</li>
+          <li>Included limit switches, magnetic angle sensing, power distribution, and wiring management to support repeatable motion and safer operation.</li>
+          <li>Moved toward a centralized control architecture to reduce wiring complexity and simplify debugging during full-system integration.</li>
+        </ul>
+      </section>
+
+      <section id="software" class="project-detail-section toc-target">
+        <h2>Software Interface</h2>
+        <p>
+          The software layer connected the user workflow to the physical machine. Users could authenticate, select a tool, and trigger a dispense workflow, while the backend tracked inventory state and tool ownership.
+        </p>
+        <ul class="haven-list">
+          <li>Built around a mobile web interface for tool selection and checkout.</li>
+          <li>Tracked tool inventory, user checkout status, return validation, overdue tools, and administrative controls.</li>
+          <li>Included admin workflows for user management, tool management, alerts, and manual gantry/cake adjustment.</li>
+          <li>Containerized the software stack on the Raspberry Pi for easier deployment, debugging, and iteration.</li>
         </ul>
       </section>
 
