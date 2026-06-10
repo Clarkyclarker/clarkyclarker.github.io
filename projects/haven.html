@@ -157,6 +157,11 @@
       border-top: 1px solid rgba(148, 163, 184, 0.16);
     }
 
+    .overview-full-image {
+      margin-top: 34px;
+      width: 100%;
+    }
+
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -244,22 +249,20 @@
 
     <div class="project-detail-content">
       <section id="overview" class="project-detail-section toc-target">
-        <div class="haven-layout">
-          <div class="haven-copy">
-            <h2>Overview</h2>
-            <p>
-              Haven is a secure, automated tool checkout kiosk designed for student-run makerspaces. The system was built to reduce tool loss, track tool ownership, and let users dispense and return shared shop tools without requiring constant supervision from shop staff.
-            </p>
-            <p>
-              My role focused on the mechatronics side of the project: translating the storage concept into a manufacturable mechanical system, integrating the gantry and rotary storage modules, and supporting full-system assembly and testing.
-            </p>
-          </div>
-
-          <figure class="project-inline-image">
-            <img src="../images/haven/haven-cropped.png" alt="Haven robotic tool vending machine prototype">
-            <figcaption>Final Haven prototype, combining mechanical storage, motion control, electronics, and web-based tool checkout.</figcaption>
-          </figure>
+        <div class="haven-copy">
+          <h2>Overview</h2>
+          <p>
+            Haven is a secure, automated tool checkout kiosk designed for student-run makerspaces. The system was built to reduce tool loss, track tool ownership, and let users dispense and return shared shop tools without requiring constant supervision from shop staff.
+          </p>
+          <p>
+            My role focused on the mechatronics side of the project: translating the storage concept into a manufacturable mechanical system, integrating the gantry and rotary storage modules, and supporting full-system assembly and testing.
+          </p>
         </div>
+
+        <figure class="project-inline-image overview-full-image">
+          <img src="../images/haven/haven.png" alt="Haven robotic tool vending machine prototype">
+          <figcaption>Final Haven prototype, combining mechanical storage, motion control, electronics, and web-based tool checkout.</figcaption>
+        </figure>
 
         <div class="metrics-grid">
           <div class="metric-card"><strong>30</strong><span>distinct tools supported by the final rotary storage design</span></div>
