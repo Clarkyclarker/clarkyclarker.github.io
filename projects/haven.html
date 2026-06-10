@@ -204,6 +204,10 @@
       color: #cbd5e1;
     }
 
+    .full-system-image {
+      margin-top: 36px;
+    }
+
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -320,7 +324,10 @@
       <section id="mechanical-design" class="project-detail-section toc-target">
         <h2>Mechanical Design</h2>
         <p>
-          The final report divides Haven into a delivery system and a tool-storage system. Mechanically, this became two major subassemblies: the gantry, which moves the transfer slice between storage levels and the user window, and the cake, which stores and indexes tools around circular layers. This modular split made the system easier to manufacture, assemble, and debug during integration.
+          The mechanical design began with concept ideation around how to store many tools compactly while still allowing one tool to be dispensed at a time. Early ideas included locker-style storage, drawer-based retrieval, and belt-driven handling systems. The final report selected the rotary “tool cake” and Cartesian gantry approach because it separated the problem into two clear functions: indexed storage and controlled delivery.
+        </p>
+        <p>
+          From there, the mechanical work flowed from architecture selection to subassembly design. The cake became the storage module, the gantry became the delivery module, and the enclosure tied them together into a safe, enclosed machine that could be fabricated and tested within the capstone timeline.
         </p>
 
         <div class="subsection-grid">
@@ -338,7 +345,7 @@
           <div class="haven-copy">
             <h3>Gantry Subassembly</h3>
             <p>
-              The gantry was designed as a vertically mounted Cartesian XY system. CoreXY and cantilever concepts were considered, but the final report selected a lead-screw and linear-rail architecture because the vertical axis needed to safely support load without depending on belt tension or motor holding torque.
+              The gantry was designed as a vertically mounted Cartesian XY system. CoreXY and cantilever concepts were considered, but a lead-screw and linear-rail architecture was selected because the vertical axis needed to safely support load without depending on belt tension or motor holding torque.
             </p>
             <ul class="haven-list">
               <li>Used dual vertical lead screws and a horizontal lead screw to move the transfer slice between tool layers and the user bay.</li>
@@ -377,9 +384,21 @@
         </div>
 
         <div class="haven-copy" style="margin-top: 64px;">
+          <h3>Final Integrated Design</h3>
+          <p>
+            The final CAD brought the gantry, tool cakes, drivetrain, user access window, electronics bay, and polycarbonate enclosure into one integrated machine. This full-system model was important because the critical design problem was not just making each subassembly work independently; it was making the transfer slice, cake opening, tool path, and enclosure clearances line up consistently.
+          </p>
+        </div>
+
+        <figure class="project-inline-image full-system-image">
+          <img src="../images/haven/full_system.png" alt="Annotated CAD of the full Haven robotic tool vending machine system">
+          <figcaption>Annotated full-system CAD showing how the gantry, rotary tool cakes, enclosure, electronics, and user access features fit together.</figcaption>
+        </figure>
+
+        <div class="haven-copy" style="margin-top: 64px;">
           <h3>Mechanical Testing</h3>
           <p>
-            Mechanical testing followed the same split as the design: first validating the gantry and cake as individual subassemblies, then combining them in integrated dispense and return testing. This helped isolate whether failures came from motion, stiffness, indexing, or the transfer interface.
+            Mechanical testing followed the same flow as the design: first validating the gantry and cake as individual subassemblies, then combining them in integrated dispense and return testing. This helped isolate whether failures came from motion, stiffness, indexing, or the transfer interface.
           </p>
         </div>
 
