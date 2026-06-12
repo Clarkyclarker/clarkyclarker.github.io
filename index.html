@@ -55,42 +55,36 @@
     }
 
     .scroll-hint {
-      animation: scroll-jump 1.05s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+      animation: scroll-bounce-gentle 2.4s ease-in-out infinite;
     }
 
     .scroll-hint i {
-      animation: arrow-jump 1.05s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+      animation: arrow-bounce-gentle 2.4s ease-in-out infinite;
     }
 
-    @keyframes scroll-jump {
+    @keyframes scroll-bounce-gentle {
       0%, 100% {
         transform: translateY(0);
         color: #9ca3af;
       }
-      35% {
-        transform: translateY(-14px);
-        color: #ffffff;
+      45% {
+        transform: translateY(-7px);
+        color: #f8fafc;
       }
-      55% {
+      60% {
         transform: translateY(0);
-      }
-      70% {
-        transform: translateY(-6px);
       }
     }
 
-    @keyframes arrow-jump {
+    @keyframes arrow-bounce-gentle {
       0%, 100% {
         transform: translateY(0);
       }
-      35% {
-        transform: translateY(10px);
-      }
-      55% {
-        transform: translateY(0);
-      }
-      70% {
+      45% {
         transform: translateY(5px);
+      }
+      60% {
+        transform: translateY(0);
       }
     }
 
@@ -237,14 +231,14 @@
         </p>
 
         <div class="hero-buttons">
-          <a class="button icon-button" href="https://www.linkedin.com/in/zhang-clark/" target="_blank" rel="noreferrer">
-            <i class="fa-brands fa-linkedin"></i>
-            LinkedIn
+          <a class="button icon-button" href="#selected-work">
+            <i class="fa-solid fa-arrow-right"></i>
+            View My Work
           </a>
 
-          <a class="button icon-button secondary" href="https://gitlab.com/clarkzhang20031108" target="_blank" rel="noreferrer">
-            <i class="fa-brands fa-gitlab"></i>
-            GitLab
+          <a class="button icon-button secondary" href="https://www.linkedin.com/in/zhang-clark/" target="_blank" rel="noreferrer">
+            <i class="fa-brands fa-linkedin"></i>
+            LinkedIn
           </a>
 
           <a class="button icon-button secondary" href="resume.pdf?v=2" target="_blank">
