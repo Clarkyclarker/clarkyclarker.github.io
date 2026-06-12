@@ -13,6 +13,82 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
   <style>
+    .hero-main {
+      grid-template-columns: minmax(0, 0.95fr) minmax(420px, 0.72fr);
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .hero-intro {
+      max-width: 640px;
+      margin-top: 28px;
+      font-size: 1.08rem;
+      line-height: 1.72;
+      color: #cbd5e1;
+    }
+
+    .hero-showcase {
+      width: min(560px, 100%);
+      aspect-ratio: 5 / 4;
+      justify-self: end;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.62);
+      box-shadow: 0 32px 80px rgba(2, 6, 23, 0.42);
+    }
+
+    .hero-showcase video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .scroll-hint {
+      animation: scroll-jump 1.05s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+    }
+
+    .scroll-hint i {
+      animation: arrow-jump 1.05s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+    }
+
+    @keyframes scroll-jump {
+      0%, 100% {
+        transform: translateY(0);
+        color: #9ca3af;
+      }
+      35% {
+        transform: translateY(-14px);
+        color: #ffffff;
+      }
+      55% {
+        transform: translateY(0);
+      }
+      70% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes arrow-jump {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      35% {
+        transform: translateY(10px);
+      }
+      55% {
+        transform: translateY(0);
+      }
+      70% {
+        transform: translateY(5px);
+      }
+    }
+
     .other-projects {
       scroll-snap-align: start;
       background: #f8fafc;
@@ -75,6 +151,16 @@
     }
 
     @media (max-width: 950px) {
+      .hero-main {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .hero-showcase {
+        justify-self: start;
+        width: min(560px, 100%);
+      }
+
       .portfolio-project-card {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -86,6 +172,14 @@
     }
 
     @media (max-width: 700px) {
+      .hero-showcase {
+        border-radius: 22px;
+      }
+
+      .hero-intro {
+        font-size: 1rem;
+      }
+
       .other-projects {
         padding: 85px 7% 95px;
       }
@@ -133,6 +227,10 @@
           Mechatronics Engineer Bridging Mechanical Design, Manufacturing, and Automated Control
         </h2>
 
+        <p class="hero-intro">
+          Integrated Engineering graduate from UBC specializing in mechatronics. I build electromechanical systems from concept to working hardware, combining hands-on prototyping with software-driven automation.
+        </p>
+
         <div class="hero-buttons">
           <a class="button icon-button" href="https://www.linkedin.com/in/zhang-clark/" target="_blank" rel="noreferrer">
             <i class="fa-brands fa-linkedin"></i>
@@ -151,13 +249,11 @@
         </div>
       </div>
 
-      <div class="hero-side">
-        <p>
-          I am an Integrated Engineering graduate from UBC specializing in mechatronics. I build electromechanical 
-          systems from concept to working hardware, combining hands-on prototyping with software-driven automation. 
-          My work spans precision lab automation, robotic platforms, and aerospace prototypes.
-        </p>
-      </div>
+      <figure class="hero-showcase" aria-label="Portfolio showcase video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="portfolio-showcase.mp4" type="video/mp4">
+        </video>
+      </figure>
     </div>
 
     <a class="scroll-hint" href="#expertise">
