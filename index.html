@@ -13,6 +13,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
   <style>
+    html {
+      scroll-snap-type: none !important;
+    }
+
+    .hero,
+    .expertise-section,
+    .projects,
+    .other-projects,
+    .contact-section {
+      scroll-snap-align: none !important;
+    }
+
     .hero-main {
       grid-template-columns: minmax(0, 1.08fr) minmax(500px, 0.82fr);
       gap: 56px;
@@ -109,7 +121,6 @@
     }
 
     .other-projects {
-      scroll-snap-align: start;
       background: #f8fafc;
       color: #111827;
       padding: 110px 8% 120px;
@@ -170,7 +181,6 @@
     }
 
     .contact-section {
-      scroll-snap-align: start;
       background: #111827;
       color: #f8fafc;
       padding: 105px 8% 115px;
