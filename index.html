@@ -169,6 +169,104 @@
       display: block;
     }
 
+    .contact-section {
+      scroll-snap-align: start;
+      background: #111827;
+      color: #f8fafc;
+      padding: 105px 8% 115px;
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .contact-inner {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .contact-kicker {
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-section h2 {
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: clamp(2.4rem, 4vw, 4.3rem);
+      line-height: 1.03;
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .contact-section p {
+      color: #cbd5e1;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      max-width: 620px;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 18px;
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.75);
+      box-shadow: 0 28px 70px rgba(2, 6, 23, 0.36);
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      color: #f8fafc;
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.13);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(147, 197, 253, 0.6);
+      background: rgba(37, 99, 235, 0.14);
+    }
+
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #2563eb;
+      color: #ffffff;
+      flex: 0 0 auto;
+    }
+
+    .contact-label {
+      display: block;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+
+    .contact-value {
+      display: block;
+      color: #ffffff;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
     @media (max-width: 950px) {
       .hero-main {
         grid-template-columns: 1fr;
@@ -180,7 +278,8 @@
         width: min(640px, 100%);
       }
 
-      .portfolio-project-card {
+      .portfolio-project-card,
+      .contact-inner {
         grid-template-columns: 1fr;
         gap: 24px;
       }
@@ -199,7 +298,8 @@
         font-size: 1rem;
       }
 
-      .other-projects {
+      .other-projects,
+      .contact-section {
         padding: 85px 7% 95px;
       }
 
@@ -211,6 +311,19 @@
 
       .portfolio-project-card h3 {
         font-size: 1.85rem;
+      }
+
+      .contact-card {
+        padding: 20px;
+      }
+
+      .contact-item {
+        align-items: flex-start;
+      }
+
+      .contact-value {
+        font-size: 0.98rem;
+        overflow-wrap: anywhere;
       }
     }
   </style>
@@ -233,7 +346,7 @@
         <a href="#selected-work">Selected Work</a>
         <a href="#projects">Projects</a>
         <a href="resume.pdf?v=2" target="_blank">Resume</a>
-        <a href="https://www.linkedin.com/in/zhang-clark/" target="_blank" rel="noreferrer">Contact</a>
+        <a href="#contact">Contact</a>
       </div>
     </nav>
 
@@ -541,6 +654,36 @@
           <img src="images/haven/haven-cropped.png" alt="Haven robotic tool vending machine">
         </div>
       </article>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="contact-inner">
+      <div>
+        <p class="contact-kicker">Contact</p>
+        <h2>Let’s connect.</h2>
+        <p>
+          Feel free to reach out about engineering roles, robotics projects, prototyping work, or anything related to mechatronics and automation.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <a class="contact-item" href="mailto:clarkzhang20031108@gmail.com">
+          <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+          <span>
+            <span class="contact-label">Email</span>
+            <span class="contact-value">clarkzhang20031108@gmail.com</span>
+          </span>
+        </a>
+
+        <a class="contact-item" href="tel:+16044990251">
+          <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+          <span>
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+1 (604) 499-0251</span>
+          </span>
+        </a>
+      </div>
     </div>
   </section>
 
