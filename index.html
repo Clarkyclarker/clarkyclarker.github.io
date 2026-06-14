@@ -68,6 +68,7 @@
     }
 
     .hero-showcase {
+      position: relative;
       width: min(640px, 100%);
       aspect-ratio: 4 / 5;
       justify-self: end;
@@ -76,6 +77,16 @@
       border: 1px solid rgba(148, 163, 184, 0.2);
       background: rgba(2, 6, 23, 0.88);
       box-shadow: 0 32px 80px rgba(2, 6, 23, 0.42);
+      cursor: pointer;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .hero-showcase:hover,
+    .hero-showcase:focus-visible {
+      transform: translateY(-4px);
+      border-color: rgba(147, 197, 253, 0.72);
+      box-shadow: 0 38px 92px rgba(2, 6, 23, 0.5), 0 0 0 4px rgba(37, 99, 235, 0.16);
+      outline: none;
     }
 
     .hero-showcase video {
@@ -84,6 +95,35 @@
       object-fit: contain;
       display: block;
       background: rgba(2, 6, 23, 0.88);
+    }
+
+    .hero-showcase-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      background: rgba(2, 6, 23, 0.72);
+      color: #f8fafc;
+      backdrop-filter: blur(12px);
+      font-size: 0.9rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .hero-showcase-caption span {
+      color: #93c5fd;
+    }
+
+    .hero-showcase-caption i {
+      font-size: 0.85rem;
+      opacity: 0.9;
     }
 
     .scroll-hint {
@@ -308,6 +348,14 @@
         font-size: 1rem;
       }
 
+      .hero-showcase-caption {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 10px 12px;
+        font-size: 0.82rem;
+      }
+
       .other-projects,
       .contact-section {
         padding: 85px 7% 95px;
@@ -391,11 +439,15 @@
         </div>
       </div>
 
-      <figure class="hero-showcase" aria-label="Portfolio showcase video">
+      <figure class="hero-showcase" tabindex="0" role="link" aria-label="Open current project showcase">
         <video class="hero-showcase-video" autoplay muted loop playsinline preload="auto">
           <source src="./Portfolio-showcase.mp4?v=4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <figcaption class="hero-showcase-caption">
+          <span>View <strong class="hero-current-project">Calibra</strong></span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </figcaption>
       </figure>
     </div>
 
@@ -704,7 +756,43 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const video = document.querySelector('.hero-showcase-video');
-      if (!video) return;
+      const showcase = document.querySelector('.hero-showcase');
+      const currentProjectLabel = document.querySelector('.hero-current-project');
+      if (!video || !showcase) return;
+
+      const showcaseSegments = [
+        { name: 'Calibra', duration: 8.03, href: 'projects/drug-analysis.html' },
+        { name: 'Mechatronics Internship', duration: 4.26, href: 'projects/hein-internship.html' },
+        { name: 'AeroDesign', duration: 5.13, href: 'projects/aerodesign.html' },
+        { name: 'Haven', duration: 7.8, href: 'projects/haven.html' }
+      ];
+
+      const totalShowcaseDuration = showcaseSegments.reduce((sum, segment) => sum + segment.duration, 0);
+
+      const getCurrentSegment = () => {
+        const rawTime = Number.isFinite(video.currentTime) ? video.currentTime : 0;
+        let time = rawTime % totalShowcaseDuration;
+
+        for (const segment of showcaseSegments) {
+          if (time < segment.duration) return segment;
+          time -= segment.duration;
+        }
+
+        return showcaseSegments[0];
+      };
+
+      const updateCurrentProject = () => {
+        const segment = getCurrentSegment();
+        showcase.dataset.currentHref = segment.href;
+        showcase.setAttribute('aria-label', `Open ${segment.name} project page`);
+        if (currentProjectLabel) currentProjectLabel.textContent = segment.name;
+      };
+
+      const openCurrentProject = () => {
+        updateCurrentProject();
+        const href = showcase.dataset.currentHref || showcaseSegments[0].href;
+        window.location.href = href;
+      };
 
       video.muted = true;
       video.defaultMuted = true;
@@ -716,6 +804,17 @@
           playAttempt.catch(() => {});
         }
       };
+
+      updateCurrentProject();
+      video.addEventListener('timeupdate', updateCurrentProject);
+      video.addEventListener('loadedmetadata', updateCurrentProject);
+      showcase.addEventListener('click', openCurrentProject);
+      showcase.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openCurrentProject();
+        }
+      });
 
       tryPlay();
       window.addEventListener('load', tryPlay);
