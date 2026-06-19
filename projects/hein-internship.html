@@ -42,6 +42,16 @@
       display: block;
     }
 
+    .media-disclaimer {
+      width: min(1120px, 86vw);
+      margin: 14px auto 0;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: rgba(203, 213, 225, 0.72);
+      font-style: italic;
+      text-align: center;
+    }
+
     .page-toc {
       position: fixed;
       top: 50%;
@@ -234,7 +244,8 @@
     @media (max-width: 700px) {
       .project-detail,
       .project-detail-content,
-      .project-hero-clean {
+      .project-hero-clean,
+      .media-disclaimer {
         width: 100%;
       }
     }
@@ -269,6 +280,10 @@
     <figure class="project-hero-clean">
       <img src="../images/hein-internship.png" alt="Robotic chemistry automation platform">
     </figure>
+
+    <p class="media-disclaimer">
+      Disclaimer: All images and videos in this section are used with permission from my employer
+    </p>
 
     <div class="project-detail-content">
       <section id="about" class="project-detail-section toc-target">
