@@ -6,6 +6,7 @@
 
 :root {
   --page-scale: 1.2;
+  --scaled-viewport-height: calc(100vh / var(--page-scale));
 }
 
 html {
@@ -73,7 +74,7 @@ nav a:hover {
 ========================= */
 
 .hero {
-  min-height: 100vh;
+  min-height: var(--scaled-viewport-height);
   scroll-snap-align: start;
   background: #111827;
   color: white;
@@ -224,7 +225,7 @@ nav a:hover {
 ========================= */
 
 .expertise-section {
-  min-height: 100vh;
+  min-height: var(--scaled-viewport-height);
   scroll-snap-align: start;
   background: #f8fafc;
   color: #111827;
