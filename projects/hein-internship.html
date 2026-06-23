@@ -217,6 +217,21 @@
       background: rgba(255, 255, 255, 0.32);
     }
 
+    @media (min-width: 1901px) {
+      .project-title-block,
+      .project-detail-content,
+      .project-hero-clean,
+      .media-disclaimer {
+        width: min(1120px, calc(86vw - 340px));
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .page-toc {
+        left: max(20px, calc((100vw - min(1120px, calc(86vw - 340px))) / 2 - 250px));
+      }
+    }
+
     @media (max-width: 1900px) {
       .page-toc {
         display: none;
