@@ -111,21 +111,19 @@
       background: rgba(2, 6, 23, 0.88);
     }
 
-    .hero nav,
     .hero-content,
     .hero-showcase {
       opacity: 0;
       animation: hero-swipe-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 0.12s;
       will-change: opacity, transform, filter;
     }
 
-    .hero-content,
-    .hero-showcase {
-      animation-delay: 0.12s;
-    }
-
     .hero nav {
+      opacity: 0;
+      animation: hero-fade-in 0.85s ease forwards;
       animation-delay: 0.5s;
+      will-change: opacity;
     }
 
     @keyframes hero-swipe-in {
@@ -139,6 +137,16 @@
         opacity: 1;
         transform: translateY(0);
         filter: blur(0);
+      }
+    }
+
+    @keyframes hero-fade-in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
       }
     }
 
