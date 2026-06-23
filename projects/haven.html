@@ -30,8 +30,8 @@
     .page-toc {
       position: fixed;
       top: 50%;
-      left: calc((100vw - min(1400px, 88vw)) / 4);
-      transform: translate(-50%, -50%);
+      left: max(12px, calc((100vw - min(1400px, 88vw)) / 4 - 70px));
+      transform: translateY(-50%);
       z-index: 10;
       width: 220px;
       display: flex;
@@ -51,9 +51,7 @@
       text-transform: uppercase;
       color: #93c5fd;
       font-weight: 800;
-      width: calc(100% + 18px);
-      margin-left: -18px;
-      text-align: center;
+      text-align: left;
     }
 
     .page-toc a {
