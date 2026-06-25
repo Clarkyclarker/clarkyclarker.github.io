@@ -5,13 +5,13 @@
 }
 
 :root {
-  --page-scale: 0.9;
+  --page-scale: 1.0;
   --scaled-viewport-height: calc(100vh / var(--page-scale));
 }
 
 @media (min-width: 1301px) {
   :root {
-    --page-scale: 1.2;
+    --page-scale: 1.0;
   }
 }
 
@@ -29,7 +29,7 @@ body {
   overflow-x: hidden;
 }
 
-@supports not (zoom: 1.2) {
+@supports not (zoom: 1.0) {
   html {
     font-size: calc(100% * var(--page-scale));
   }
