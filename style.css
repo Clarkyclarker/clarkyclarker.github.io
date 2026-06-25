@@ -5,7 +5,7 @@
 }
 
 :root {
-  --page-scale: 1.2;
+  --page-scale: 1.0;
   --scaled-viewport-height: calc(100vh / var(--page-scale));
 }
 
