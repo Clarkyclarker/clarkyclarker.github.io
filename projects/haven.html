@@ -184,6 +184,25 @@
       object-fit: contain;
     }
 
+    .overview-workflow {
+      margin-top: 42px;
+    }
+
+    .workflow-intro {
+      max-width: 980px;
+      color: #dbeafe;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .workflow-image {
+      margin-top: 18px;
+    }
+
+    .workflow-image img {
+      background: white;
+    }
+
     .subsection-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -219,7 +238,8 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin-top: 28px;
+      width: min(1120px, 100%);
+      margin: 34px auto 0;
     }
 
     .metric-card {
@@ -299,6 +319,13 @@
     <section class="project-title-block">
       <p class="project-meta">September 2025 - April 2026 | Project Lead</p>
       <h1>Haven: Robotic Tool Vending Machine</h1>
+
+      <div class="metrics-grid">
+        <div class="metric-card"><strong>30</strong><span>distinct tools supported by the final rotary storage design</span></div>
+        <div class="metric-card"><strong>30 s</strong><span>maximum dispense workflow from website request to user bay</span></div>
+        <div class="metric-card"><strong>152</strong><span>integrated dispense and return cycles completed during testing</span></div>
+        <div class="metric-card"><strong>&gt;96%</strong><span>success rate for various tool categories</span></div>
+      </div>
     </section>
 
     <div class="project-detail-content">
@@ -308,7 +335,7 @@
             <h2>Overview</h2>
             <p>
               Haven is a secure, automated tool checkout kiosk designed for makerspaces. 
-              The system was commisioned by and built for the UBC Integrated Engineering shop, where over 250 users and 50+ capstone projects create heavy demand for shared tools. 
+              The system was commissioned by and built for the UBC Integrated Engineering shop, where over 250 users and 50+ capstone projects create heavy demand for shared tools. 
               In this environment, tools are essential assets, but theft, loss, and misplacement have become recurring issues that increase operating costs and create downtime for student projects. 
               Over the last years, over $3,000 worth of tools and equipment have gone missing.
             </p>
@@ -328,12 +355,16 @@
           </figure>
         </div>
 
-        <div class="metrics-grid">
-          <div class="metric-card"><strong>30</strong><span>distinct tools supported by the final rotary storage design</span></div>
-          <div class="metric-card"><strong>30 s</strong><span>maximum dispense workflow from website request to user bay</span></div>
-          <div class="metric-card"><strong>152</strong><span>integrated dispense and return cycles completed during testing</span></div>
-          <div class="metric-card"><strong>&gt;96%</strong><span>success rate for various tool categories</span></div>
+        <div class="haven-copy overview-workflow">
+          <p class="workflow-intro">
+            The workflow below shows how Haven connects user authentication, automated tool dispensing, RFID validation, and return tracking into one closed-loop checkout process.
+          </p>
         </div>
+
+        <figure class="project-inline-image workflow-image">
+          <img src="../images/haven/haven_workflow.png" alt="Haven automated tool checkout workflow">
+          <figcaption>System workflow from user request to tool dispensing, tracking, and return validation.</figcaption>
+        </figure>
       </section>
 
       <section id="mechanical-design" class="project-detail-section toc-target">
