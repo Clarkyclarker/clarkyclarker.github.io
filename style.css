@@ -5,8 +5,14 @@
 }
 
 :root {
-  --page-scale: 1.0;
+  --page-scale: 0.9;
   --scaled-viewport-height: calc(100vh / var(--page-scale));
+}
+
+@media (min-width: 1301px) {
+  :root {
+    --page-scale: 1.2;
+  }
 }
 
 html {
@@ -33,10 +39,6 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-/* =========================
-   Navigation
-========================= */
 
 nav {
   display: flex;
@@ -68,10 +70,6 @@ nav a:hover {
   color: #9ca3af;
   font-weight: 500;
 }
-
-/* =========================
-   Hero
-========================= */
 
 .hero {
   min-height: var(--scaled-viewport-height);
@@ -168,7 +166,6 @@ nav a:hover {
   font-size: 1.15rem;
 }
 
-/* Plain right-side hero paragraph */
 .hero-side {
   max-width: 620px;
   justify-self: end;
@@ -219,10 +216,6 @@ nav a:hover {
 .scroll-hint i {
   font-size: 0.9rem;
 }
-
-/* =========================
-   Expertise
-========================= */
 
 .expertise-section {
   min-height: var(--scaled-viewport-height);
@@ -329,10 +322,6 @@ nav a:hover {
   padding: 7px 10px;
   border-radius: 999px;
 }
-
-/* =========================
-   Selected Work / Projects
-========================= */
 
 .projects {
   scroll-snap-align: start;
@@ -508,17 +497,9 @@ nav a:hover {
 .project-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(15, 23, 42, 0.16),
-    rgba(15, 23, 42, 0.02)
-  );
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.16), rgba(15, 23, 42, 0.02));
   pointer-events: none;
 }
-
-/* =========================
-   Project Detail Pages
-========================= */
 
 .project-page-header {
   background: #111827;
@@ -528,9 +509,7 @@ nav a:hover {
 }
 
 .project-page-body {
-  background:
-    radial-gradient(circle at top, rgba(37, 99, 235, 0.14), transparent 32%),
-    #020617;
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.14), transparent 32%), #020617;
   color: #e5eefb;
 }
 
@@ -570,9 +549,7 @@ nav a:hover {
 .project-hero-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(2, 6, 23, 0.24), rgba(2, 6, 23, 0.8)),
-    linear-gradient(90deg, rgba(2, 6, 23, 0.55), rgba(2, 6, 23, 0.18));
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.24), rgba(2, 6, 23, 0.8)), linear-gradient(90deg, rgba(2, 6, 23, 0.55), rgba(2, 6, 23, 0.18));
 }
 
 .project-detail-content {
@@ -618,10 +595,6 @@ nav a:hover {
   margin-bottom: 18px;
 }
 
-/* =========================
-   Footer
-========================= */
-
 footer {
   text-align: center;
   padding: 32px 8%;
@@ -632,10 +605,6 @@ footer {
 footer p {
   margin: 0;
 }
-
-/* =========================
-   Responsive
-========================= */
 
 @media (max-width: 1200px) {
   html {
@@ -705,6 +674,10 @@ footer p {
 }
 
 @media (max-width: 700px) {
+  :root {
+    --page-scale: 1.0;
+  }
+
   .hero {
     padding: 24px 7% 30px;
   }
